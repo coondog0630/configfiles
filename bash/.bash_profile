@@ -30,7 +30,7 @@ export PS1="$RED[$NONE\u$RED] [$NONE\w$RED] [$HC\h$RED]$NONE\n> "
 #export PYTHONPATH=/opt/local/lib/python2.5/site-packages
 export MACPORTS_PATH=/opt/local/bin:/opt/local/sbin
 export MACMYSQL_PATH="/usr/local/mysql/bin"
-export DEPOT_TOOLS="~/programming/google/depot_tools"
+export DEPOT_TOOLS="~/build/depot_tools"
 export ANDROID_TOOLS="~/build/droid-sdk/tools"
 
 # Go(oogle) Language
@@ -50,6 +50,6 @@ GIT_EDITOR=vim
 #
 #export PATH=~/.bin:$ANDROID_TOOLS:$MACPORTS_PATH:$MACMYSQL_PATH:$DEPOT_TOOLS:$GWT_HOME:$PYTHONPATH:$PATH
 #export PATH=/opt/ruby-enterprise/bin:/opt/local/bin:/opt/local/sbin:$PATH:/opt/local/lib/postgresql83/bin/
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH:/opt/local/lib/postgresql83/bin/
+export PATH=$MACPORTS_PATH:$PATH:$DEPOT_TOOLS
 export MANPATH=/opt/local/share/man:$MANPATH
 export DISPLAY=:0.0
