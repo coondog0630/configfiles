@@ -105,6 +105,13 @@
 (add-hook 'before-save-hook  'force-backup-of-buffer)
 
 ;;
+; Tramp like backups left on remote server, no good, let's clean those up
+;;
+(add-to-list 'backup-directory-alist
+	     (cons "." "~/emacs/saves/"))
+(setq tramp-backup-directory-alist backup-directory-alist)
+
+;;
 ; Delete Backups older than a week
 ;;
 ;; (message "Deleting old backup files...")
