@@ -25,6 +25,7 @@ export PS1="$RED[$NONE\u$RED] [$NONE\w$RED] [$HC\h$RED]$NONE\n> "
 
 # System Programming paths
 export MACPORTS_PATH="/opt/local/bin:/opt/local/sbin"
+export BREW_PATH="/usr/local/bin:/usr/local/sbin"
 export MACMYSQL_PATH="/usr/local/mysql/bin"
 export DEPOT_TOOLS="~/build/depot_tools"
 export CHROMIUM_ROOT="~/build/google/chromium"
@@ -46,6 +47,6 @@ export GIT_EDITOR=vim
 #
 # PATH
 #
-export PATH=$MACPORTS_PATH:$PATH:$DEPOT_TOOLS
+export PATH=$BREW_PATH:$MACPORTS_PATH:$PATH:$DEPOT_TOOLS
 export MANPATH=/opt/local/share/man:$MANPATH
 export DISPLAY=:0.0
