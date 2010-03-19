@@ -23,6 +23,13 @@ set softtabstop=2
 set expandtab
 set smarttab
 
+" List Long for tab completion
+set wildmenu
+set wildmode=list:longest,full
+
+" Mouse hotness in console
+set mouse=a
+
 " Omni Complete
 let g:rubycomplete_rails = 1
 
