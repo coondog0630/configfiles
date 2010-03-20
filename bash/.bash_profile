@@ -32,10 +32,10 @@ export CHROMIUM_ROOT="~/build/google/chromium"
 export ANDROID_TOOLS="~/build/droid-sdk/tools"
 
 # Go(oogle) Language
-export GOROOT=$HOME/programming/google/go
-export GOOS="darwin"
-export GOARCH="amd64"
-export GOBIN=$HOME/.bin/go
+export GOROOT=`brew --cellar`/go/HEAD
+export GOARCH=amd64
+export GOOS=darwin
+
 
 # Google Web Toolkit
 export GWT_HOME="$HOME/programming/google/gwt/2.0.1"
