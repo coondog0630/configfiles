@@ -1,4 +1,4 @@
-colorscheme darkblue
+" Turn on syntax highlighting
 syntax on
 
 " Turn on line numbering
@@ -34,4 +34,9 @@ set mouse=a
 let g:rubycomplete_rails = 1
 
 " Set the GUI Font
-set guifont="Courier:10"
+if has("gui")
+  set guifont=Monaco:h9
+  colorscheme darkblue
+else
+  colorscheme elflord
+endif
