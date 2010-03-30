@@ -6,11 +6,14 @@
 (setq mac-command-notifier 'hyper)
 
 ;; MAC FONTS
-(set-default-font "-*-monaco-medium-r-*-*-11-*-*-*-*-*-*-*")
-;(set-default-font "-*-atari-medium-r-*-*-8-*-*-*-*-*-*-*")
+(set-default-font "-*-monaco-medium-r-*-*-9-*-*-*-*-*-*-*")
+;(set-default-font "-*-atarismall-*-*-*-*-8-*-*-*-*-*-*-*")
 
 ;; Emacs Path
-(setenv "PATH" (concat (getenv "PATH") ":" "/usr/local/mysql/bin" ":" "/opt/local/bin"))
+
+(setenv "PATH" 
+	(concat 
+	 (getenv "PATH") ":" "/usr/local/bin" ":" "/opt/local/bin")) ; added for homebrew & macports
 (setq exec-path (append exec-path '("/opt/local/bin")))
 
 ;; Visible Bell
@@ -20,8 +23,8 @@
 (show-paren-mode 1)
 
 ;; Programming in C
-;;(setq c-set-style 'stroustrup)
-(setq c-set-style 'gnu)
+(setq c-set-style 'bsd)
+(setq c-basic-offset 4)
 
 ;; NEW
 (global-font-lock-mode t)
@@ -35,7 +38,12 @@
 ;; Remove GUI stuff
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode 1))
+;(if (fboundp 'menu-bar-mode) (menu-bar-mode 1))
+
+;;
+;; JSON
+;;
+(require 'json)
 
 ;;
 ;; GIT
@@ -123,3 +131,10 @@
 ;;                   week))
 ;;       (message file)
 ;;       (delete-file file))))
+
+;;
+;; Autosave 
+;; 
+(setq auto-save-default nil) ; disabled
+
+
