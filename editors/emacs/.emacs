@@ -87,10 +87,6 @@
 ;;
 (require 'tramp)
 (setq tramp-default-method "ssh")
-;Tramp like backups left on remote server, no good, let's clean those up
-(add-to-list 'backup-directory-alist
-	     (cons "." "~/.emacs.d/saves/"))
-(setq tramp-backup-directory-alist backup-directory-alist)
 
 ;;
 ;; Backups
@@ -101,7 +97,7 @@
       kept-old-versions 2 ;; Number of oldest versions to keep
       delete-old-versions t ;; Ask to delete excess backup versions?
       backup-directory-alist ;; don't leave emacs terds everywhere
-      `(("." "~/.emacs.d/saves")) ;; wipe butt in ~/.emacs.d/saves
+      '(("." . "~/.emacs.d/saves")) ;; wipe butt in ~/.emacs.d/saves
       backup-by-copying-when-linked t) ;; Copy linked files, don't rename.
 (defun force-backup-of-buffer ()
   (let ((buffer-backed-up nil))
@@ -111,4 +107,7 @@
 ; Autosave disabled
 (setq auto-save-default nil)
 
-
+;Tramp like backups left on remote server, no good, let's clean those up
+(add-to-list 'backup-directory-alist
+	     (cons "." "~/.emacs.d/saves/"))
+(setq tramp-backup-directory-alist backup-directory-alist)
