@@ -6,11 +6,14 @@
 (setq mac-command-notifier 'hyper)
 
 ;; MAC FONTS
-(set-default-font "-*-monaco-medium-r-*-*-9-*-*-*-*-*-*-*")
-;(set-default-font "-*-atarismall-*-*-*-*-8-*-*-*-*-*-*-*")
+(setq mac-allow-anti-aliasing nil)
+;(set-default-font "-*-ProggyTiny-normal-*-*-*-11-*-*-*-*-*-*-*")
+;(set-default-font "-*-Deka-medium-*-*-*-10-*-*-*-*-*-*-*")
+;(set-default-font "-*-Terminus-medium-*-*-*-11-*-*-*-*-*-*-*")
+;(set-default-font "-*-Anka/Coder-*-*-*-*-10-*-*-*-*-*-*-*")
+(set-default-font "-*-AtariSmall-*-*-*-*-9-*-*-*-*-*-*-*")
 
 ;; Emacs Path
-
 (setenv "PATH" 
 	(concat 
 	 (getenv "PATH") ":" "/usr/local/bin" ":" "/opt/local/bin")) ; added for homebrew & macports
@@ -36,8 +39,8 @@
 (setq column-number-mode t)
 
 ;; Remove GUI stuff
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+;(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+;(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 ;(if (fboundp 'menu-bar-mode) (menu-bar-mode 1))
 
 ;;
@@ -88,14 +91,14 @@
 ;;
 ;; Backups
 ;;
-(setq
- backup-by-copying t      ; don't clobber symlinks
- backup-directory-alist
- '(("." . "~/emacs/saves"))    ; don't litter my fs tree
- delete-old-versions t
- kept-new-versions 6
- kept-old-versions 2
- version-control t)       ; use versioned backups
+;(setq
+; backup-by-copying t      ; don't clobber symlinks
+; backup-directory-alist
+; '(("." . "~/emacs/saves"))    ; don't litter my fs tree
+; delete-old-versions t
+; kept-new-versions 6
+; kept-old-versions 2
+; version-control t)       ; use versioned backups
 
 ;(setq make-backup-files nil) ; Get Rid of Backups
 
