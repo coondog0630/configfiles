@@ -13,8 +13,8 @@ set selectmode=mouse
 filetype plugin indent on
 
 " Set the number of columns and lines
-set lines=80
-set columns=100
+" set lines=80
+" set columns=100
 
 " Tabbing and Spaces for coding
 set tabstop=2
