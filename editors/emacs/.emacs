@@ -1,5 +1,6 @@
 ;; Emacs Load Path
-(progn (cd "~/emacs") (normal-top-level-add-subdirs-to-load-path))
+;(progn (cd "~/emacs") (normal-top-level-add-subdirs-to-load-path))
+(progn (cd "~/.emacs.d/plugins") (normal-top-level-add-subdirs-to-load-path))
 
 ;; This option is for macs to have the meta key from command
 (setq mac-option-modifier 'meta)
@@ -39,8 +40,8 @@
 (setq column-number-mode t)
 
 ;; Remove GUI stuff
-;(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-;(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 ;(if (fboundp 'menu-bar-mode) (menu-bar-mode 1))
 
 ;;
@@ -76,7 +77,6 @@
   (setq indent-tabs-mode nil))
 (add-hook 'scala-mode-hook 'me-turn-off-indent-tabs-mode)
 
-
 ;;
 ;; File Types for different modes
 ;;
@@ -87,57 +87,28 @@
 ;;
 (require 'tramp)
 (setq tramp-default-method "ssh")
+;Tramp like backups left on remote server, no good, let's clean those up
+(add-to-list 'backup-directory-alist
+	     (cons "." "~/.emacs.d/saves/"))
+(setq tramp-backup-directory-alist backup-directory-alist)
 
 ;;
 ;; Backups
 ;;
-;(setq
-; backup-by-copying t      ; don't clobber symlinks
-; backup-directory-alist
-; '(("." . "~/emacs/saves"))    ; don't litter my fs tree
-; delete-old-versions t
-; kept-new-versions 6
-; kept-old-versions 2
-; version-control t)       ; use versioned backups
-
-;(setq make-backup-files nil) ; Get Rid of Backups
-
-;;
 ; Force backups, added hook for before save
-;;
 (setq version-control t ;; Use version numbers for backups
       kept-new-versions 16 ;; Number of newest versions to keep
       kept-old-versions 2 ;; Number of oldest versions to keep
       delete-old-versions t ;; Ask to delete excess backup versions?
+      backup-directory-alist ;; don't leave emacs terds everywhere
+      `(("." "~/.emacs.d/saves")) ;; wipe butt in ~/.emacs.d/saves
       backup-by-copying-when-linked t) ;; Copy linked files, don't rename.
 (defun force-backup-of-buffer ()
   (let ((buffer-backed-up nil))
     (backup-buffer)))
 (add-hook 'before-save-hook  'force-backup-of-buffer)
 
-;;
-; Tramp like backups left on remote server, no good, let's clean those up
-;;
-(add-to-list 'backup-directory-alist
-	     (cons "." "~/emacs/saves/"))
-(setq tramp-backup-directory-alist backup-directory-alist)
-
-;;
-; Delete Backups older than a week
-;;
-;; (message "Deleting old backup files...")
-;; (let ((week (* 60 60 24 7))
-;;       (current (float-time (current-time))))
-;;   (dolist (file (directory-files temporary-file-directory t))
-;;     (when (and (backup-file-name-p file)
-;;                (> (- current (float-time (fifth (file-attributes file))))
-;;                   week))
-;;       (message file)
-;;       (delete-file file))))
-
-;;
-;; Autosave 
-;; 
-(setq auto-save-default nil) ; disabled
+; Autosave disabled
+(setq auto-save-default nil)
 
 
