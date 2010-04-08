@@ -1,17 +1,12 @@
 This README contains the dir tree with the appropriate configuration files and their content.
 
-File Structure w/comments
--------------------------
+.
 |-- README
 |-- bash
 |   |-- bash_profile.macosx -> .bash_profile
 |   `-- bashrc.macosx -> .bashrc
-|-- editors
-|   |-- emacs
-|   |   `-- emacs-config -> .emacs
-|   `-- vim
-|       |-- vimdir -> .vim
-|       `-- vimrc-config -> .vimrc
-`-- screenrc -> .screenrc
+`-- editors
+    |-- emacs
+    `-- vim
 
-5 directories, 6 files
+4 directories, 3 files
