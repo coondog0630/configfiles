@@ -1,0 +1,25 @@
+#!/bin/bash -x
+
+ticket=$(echo $1 | egrep -o [0-9]*-[0-9]*: | tr -d ':');
+tickettype=$(echo $1 | awk -F'::' '{print $2}')
+case "$tickettype" in
+    pub )
+        ~/coremacs/coremacs "$ticket" "$(xclip -o)"
+        ;;
+    pubnoname )
+        ~/coremacs/coremacs $ticket ""
+        ;;
+    priv )
+        ~/coremacs/coremacs -p $ticket
+        ;;
+    newpub )
+        ~/coremacs/coremacs -n "$(xclip -o)"
+        ;;
+    newpubnoname )
+        ~/coremacs/coremacs -n ""
+        ;;
+    newpriv )
+        ~/coremacs/coremacs -n -p
+        ;;
+esac
+

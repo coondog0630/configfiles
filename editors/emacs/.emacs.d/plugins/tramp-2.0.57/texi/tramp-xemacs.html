@@ -1,0 +1,3111 @@
+<html lang="en">
+<head>
+<title>TRAMP User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="TRAMP User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005,
+  2006, 2007, 2008 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.2 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover texts
+     being ``A GNU Manual'', and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License'' in the Emacs manual.
+
+     (a) The FSF's Back-Cover Text is: ``You have the freedom to copy
+     and modify this GNU manual.  Buying copies from the FSF supports
+     it in developing GNU and promoting software freedom.''
+
+     This document is part of a collection distributed under the GNU
+     Free Documentation License.  If you want to distribute this
+     document separately from the collection, you can do so by adding a
+     copy of the license to the document, as described in section 6 of
+     the license.
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Overview">Overview</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered"><span class="sc">tramp</span> version 2.0.57 User Manual</h2>
+
+<p>This file documents <span class="sc">tramp</span> version 2.0.57, a remote file
+editing package for XEmacs.
+
+   <p><span class="sc">tramp</span> stands for `Transparent Remote (file) Access, Multiple
+Protocol'.  This package provides remote file editing, similar to
+EFS.
+
+   <p>The difference is that EFS uses FTP to transfer
+files between the local and the remote host, whereas <span class="sc">tramp</span> uses a
+combination of <samp><span class="command">rsh</span></samp> and <samp><span class="command">rcp</span></samp> or other work-alike
+programs, such as <samp><span class="command">ssh</span></samp>/<samp><span class="command">scp</span></samp>.
+
+   <p>You can find the latest version of this document on the web at
+<a href="http://www.gnu.org/software/tramp/">http://www.gnu.org/software/tramp/</a>.
+
+<!-- Pointer to the other Emacs flavor is necessary only in case of -->
+<!-- standalone installation. -->
+   <p>The manual has been generated for XEmacs. 
+If you're using the other Emacs flavor, you should read the
+<a href="tramp-emacs.html">GNU Emacs</a> pages.
+
+   <p>The latest release of <span class="sc">tramp</span> is available for
+<a href="ftp://ftp.gnu.org/gnu/tramp/">download</a>, or you may see
+<a href="#Obtaining-Tramp">Obtaining Tramp</a> for more details, including the CVS server
+details.
+
+   <p><span class="sc">tramp</span> also has a <a href="http://savannah.gnu.org/projects/tramp/">Savannah Project Page</a>.
+
+   <p>There is a mailing list for <span class="sc">tramp</span>, available at
+<a href="mailto:tramp-devel@gnu.org">tramp-devel@gnu.org</a>, and archived at
+<a href="http://lists.gnu.org/archive/html/tramp-devel/">the <span class="sc">tramp</span> Mail Archive</a>. 
+Older archives are located at
+<a href="http://sourceforge.net/mailarchive/forum.php?forum=tramp-devel">SourceForge Mail Archive</a> and
+<a href="http://www.mail-archive.com/emacs-rcp@ls6.cs.uni-dortmund.de/">The Mail Archive</a>. 
+<!-- in HTML output, there's no new paragraph. -->
+<br><br>
+
+   <p>Copyright &copy; 1999, 2000, 2001, 2002, 2003, 2004, 2005,
+  2006, 2007, 2008 Free Software Foundation, Inc.
+
+   <blockquote>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being &ldquo;A GNU
+Manual&rdquo;, and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled &ldquo;GNU Free Documentation
+License&rdquo; in the Emacs manual.
+
+   <p>(a) The FSF's Back-Cover Text is: &ldquo;You have the freedom to
+copy and modify this GNU manual.  Buying copies from the FSF
+supports it in developing GNU and promoting software freedom.&rdquo;
+
+   <p>This document is part of a collection distributed under the GNU Free
+Documentation License.  If you want to distribute this document
+separately from the collection, you can do so by adding a copy of the
+license to the document, as described in section 6 of the license. 
+</blockquote>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Overview">Overview</a>:                     What <span class="sc">tramp</span> can and cannot do.
+
+</li></ul>
+<p>For the end user:
+
+</p>
+<ul class="menu">
+<li><a accesskey="2" href="#Obtaining-Tramp">Obtaining Tramp</a>:              How to obtain <span class="sc">tramp</span>. 
+<li><a accesskey="3" href="#History">History</a>:                      History of <span class="sc">tramp</span>.
+
+<li><a accesskey="4" href="#Installation">Installation</a>:                 Installing <span class="sc">tramp</span> with your XEmacs. 
+<li><a accesskey="5" href="#Configuration">Configuration</a>:                Configuring <span class="sc">tramp</span> for use. 
+<li><a accesskey="6" href="#Usage">Usage</a>:                        An overview of the operation of <span class="sc">tramp</span>. 
+<li><a accesskey="7" href="#Bug-Reports">Bug Reports</a>:                  Reporting Bugs and Problems. 
+<li><a accesskey="8" href="#Frequently-Asked-Questions">Frequently Asked Questions</a>:   Questions and answers from the mailing list. 
+<li><a accesskey="9" href="#Concept-Index">Concept Index</a>:                An item for each concept.
+
+</li></ul>
+<p>For the developer:
+
+</p>
+<ul class="menu">
+<li><a href="#Version-Control">Version Control</a>:              The inner workings of remote version control. 
+<li><a href="#Files-directories-and-localnames">Files directories and localnames</a>:   How file names, directories and localnames are mangled and managed. 
+<li><a href="#Issues">Issues</a>:                       Debatable Issues and What Was Decided.
+
+<li><a href="#GNU-Free-Documentation-License">GNU Free Documentation License</a>:  The license for this documentation.
+
+</li></ul>
+<p>--- The Detailed Node Listing ---
+
+<p>Installing <span class="sc">tramp</span> with your XEmacs
+
+</p>
+<ul class="menu">
+<li><a href="#Installation-parameters">Installation parameters</a>:      Parameters in order to control installation. 
+<li><a href="#Load-paths">Load paths</a>:                   How to plug-in <span class="sc">tramp</span> into your environment. 
+<li><a href="#Japanese-manual">Japanese manual</a>:              Japanese manual.
+
+</li></ul>
+<p>Configuring <span class="sc">tramp</span> for use
+
+</p>
+<ul class="menu">
+<li><a href="#Connection-types">Connection types</a>:             Types of connections made to remote machines. 
+<li><a href="#Inline-methods">Inline methods</a>:               Inline methods. 
+<li><a href="#External-transfer-methods">External transfer methods</a>:    External transfer methods. 
+<li><a href="#Multi_002dhop-Methods">Multi-hop Methods</a>:            Connecting to a remote host using multiple hops. 
+<li><a href="#Default-Method">Default Method</a>:               Selecting a default method. 
+<li><a href="#Customizing-Methods">Customizing Methods</a>:          Using Non-Standard Methods. 
+<li><a href="#Customizing-Completion">Customizing Completion</a>:       Selecting config files for user/host name completion. 
+<li><a href="#Password-caching">Password caching</a>:             Reusing passwords for several connections. 
+<li><a href="#Remote-Programs">Remote Programs</a>:              How <span class="sc">tramp</span> finds and uses programs on the remote machine. 
+<li><a href="#Remote-shell-setup">Remote shell setup</a>:           Remote shell setup hints. 
+<li><a href="#Windows-setup-hints">Windows setup hints</a>:          Issues with Cygwin ssh. 
+<li><a href="#Auto_002dsave-and-Backup">Auto-save and Backup</a>:         Auto-save and Backup.
+
+</li></ul>
+<p>Using <span class="sc">tramp</span>
+
+</p>
+<ul class="menu">
+<li><a href="#Filename-Syntax">Filename Syntax</a>:              <span class="sc">tramp</span> filename conventions. 
+<li><a href="#Multi_002dhop-filename-syntax">Multi-hop filename syntax</a>:    Multi-hop filename conventions. 
+<li><a href="#Filename-completion">Filename completion</a>:          Filename completion. 
+<li><a href="#Dired">Dired</a>:                        Dired. 
+<li><a href="#Compilation">Compilation</a>:                  Compile remote files.
+
+</li></ul>
+<p>The inner workings of remote version control
+
+</p>
+<ul class="menu">
+<li><a href="#Version-Controlled-Files">Version Controlled Files</a>:     Determining if a file is under version control. 
+<li><a href="#Remote-Commands">Remote Commands</a>:              Executing the version control commands on the remote machine. 
+<li><a href="#Changed-workfiles">Changed workfiles</a>:            Detecting if the working file has changed. 
+<li><a href="#Checking-out-files">Checking out files</a>:           Bringing the workfile out of the repository. 
+<li><a href="#Miscellaneous-Version-Control">Miscellaneous Version Control</a>:   Things related to Version Control that don't fit elsewhere.
+
+</li></ul>
+<p>Things related to Version Control that don't fit elsewhere
+
+</p>
+<ul class="menu">
+<li><a href="#Remote-File-Ownership">Remote File Ownership</a>:        How VC determines who owns a workfile. 
+<li><a href="#Back_002dend-Versions">Back-end Versions</a>:            How VC determines what release your RCS is.
+
+</li></ul>
+<p>How file names, directories and localnames are mangled and managed
+
+</p>
+<ul class="menu">
+<li><a href="#Localname-deconstruction">Localname deconstruction</a>:     Breaking a localname into its components.
+
+   </ul>
+
+<div class="node">
+<a name="Overview"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Obtaining-Tramp">Obtaining Tramp</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 An overview of <span class="sc">tramp</span></h2>
+
+<p><a name="index-overview-1"></a>
+After the installation of <span class="sc">tramp</span> into your XEmacs,
+you will be able to access files on remote machines as though they
+were local.  Access to the remote file system for editing files,
+version control, and <code>dired</code> are transparently enabled.
+
+   <p>Your access to the remote machine can be with the <samp><span class="command">rsh</span></samp>,
+<samp><span class="command">rlogin</span></samp>, <samp><span class="command">telnet</span></samp> programs or with any similar
+connection method.  This connection must pass <acronym>ASCII</acronym>
+successfully to be usable but need not be 8-bit clean.
+
+   <p>The package provides support for <samp><span class="command">ssh</span></samp> connections out of the
+box, one of the more common uses of the package.  This allows
+relatively secure access to machines, especially if <samp><span class="command">ftp</span></samp>
+access is disabled.
+
+   <p>The majority of activity carried out by <span class="sc">tramp</span> requires only that
+the remote login is possible and is carried out at the terminal.  In
+order to access remote files <span class="sc">tramp</span> needs to transfer their content
+to the local machine temporarily.
+
+   <p><span class="sc">tramp</span> can transfer files between the machines in a variety of ways. 
+The details are easy to select, depending on your needs and the
+machines in question.
+
+   <p>The fastest transfer methods (for large files) rely on a remote file
+transfer package such as <samp><span class="command">rcp</span></samp>, <samp><span class="command">scp</span></samp> or
+<samp><span class="command">rsync</span></samp>.
+
+   <p>If the remote copy methods are not suitable for you, <span class="sc">tramp</span> also
+supports the use of encoded transfers directly through the shell. 
+This requires that the <samp><span class="command">mimencode</span></samp> or <samp><span class="command">uuencode</span></samp> tools
+are available on the remote machine.  These methods are generally
+faster for small files.
+
+   <p>Within these limitations, <span class="sc">tramp</span> is quite powerful.  It is worth
+noting that, as of the time of writing, it is far from a polished
+end-user product.  For a while yet you should expect to run into rough
+edges and problems with the code now and then.
+
+   <p>It is finished enough that the developers use it for day to day work but
+the installation and setup can be a little difficult to master, as can
+the terminology.
+
+   <p><span class="sc">tramp</span> is still under active development and any problems you encounter,
+trivial or major, should be reported to the <span class="sc">tramp</span> developers. 
+See <a href="#Bug-Reports">Bug Reports</a>.
+
+<h5 class="subsubheading">Behind the scenes</h5>
+
+<p><a name="index-behind-the-scenes-2"></a><a name="index-details-of-operation-3"></a><a name="index-how-it-works-4"></a>
+This section tries to explain what goes on behind the scenes when you
+access a remote file through <span class="sc">tramp</span>.
+
+   <p>Suppose you type <kbd>C-x C-f</kbd> and enter part of an <span class="sc">tramp</span> file name,
+then hit <kbd>&lt;TAB&gt;</kbd> for completion.  Suppose further that this is
+the first time that <span class="sc">tramp</span> is invoked for the host in question.  Here's
+what happens:
+
+     <ul>
+<li><span class="sc">tramp</span> discovers that it needs a connection to the host.  So it
+invokes &lsquo;<samp><span class="samp">telnet </span><var>host</var></samp>&rsquo; or &lsquo;<samp><span class="samp">rsh </span><var>host</var><span class="samp"> -l
+</span><var>user</var></samp>&rsquo; or a similar tool to connect to the remote host. 
+Communication with this process happens through an
+XEmacs buffer, that is, the output from the remote end
+goes into a buffer.
+
+     <li>The remote host may prompt for a login name (for <samp><span class="command">telnet</span></samp>). 
+The login name is given in the file name, so <span class="sc">tramp</span> sends the
+login name and a newline.
+
+     <li>The remote host may prompt for a password or pass phrase (for
+<samp><span class="command">rsh</span></samp> or for <samp><span class="command">telnet</span></samp> after sending the login name). 
+<span class="sc">tramp</span> displays the prompt in the minibuffer, asking you for the
+password or pass phrase.
+
+     <p>You enter the password or pass phrase.  <span class="sc">tramp</span> sends it to the remote
+host, followed by a newline.
+
+     <li><span class="sc">tramp</span> now waits for the shell prompt or for a message that the login
+failed.
+
+     <p>If <span class="sc">tramp</span> sees neither of them after a certain period of time (a minute,
+say), then it issues an error message saying that it couldn't find the
+remote shell prompt and shows you what the remote host has sent.
+
+     <p>If <span class="sc">tramp</span> sees a &lsquo;<samp><span class="samp">login failed</span></samp>&rsquo; message, it tells you so,
+aborts the login attempt and allows you to try again.
+
+     <li>Suppose that the login was successful and <span class="sc">tramp</span> sees the shell prompt
+from the remote host.  Now <span class="sc">tramp</span> invokes <samp><span class="command">/bin/sh</span></samp> because
+Bourne shells and C shells have different command
+syntaxes.<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>
+
+     <p>After the Bourne shell has come up, <span class="sc">tramp</span> sends a few commands to
+ensure a good working environment.  It turns off echoing, it sets the
+shell prompt, and a few other things.
+
+     <li>Now the remote shell is up and it good working order.  Remember, what
+was supposed to happen is that <span class="sc">tramp</span> tries to find out what files exist
+on the remote host so that it can do filename completion.
+
+     <p>So, <span class="sc">tramp</span> basically issues <samp><span class="command">cd</span></samp> and <samp><span class="command">ls</span></samp> commands and
+also sometimes <samp><span class="command">echo</span></samp> with globbing.  Another command that is
+often used is <samp><span class="command">test</span></samp> to find out whether a file is writable or a
+directory or the like.  The output of each command is parsed for the
+necessary operation.
+
+     <li>Suppose you are finished with filename completion, have entered <kbd>C-x
+C-f</kbd>, a full file name and hit <kbd>&lt;RET&gt;</kbd>.  Now comes the time to
+transfer the file contents from the remote host to the local host so
+that you can edit them.
+
+     <p>See above for an explanation of how <span class="sc">tramp</span> transfers the file contents.
+
+     <p>For inline transfers, <span class="sc">tramp</span> issues a command like &lsquo;<samp><span class="samp">mimencode -b
+/path/to/remote/file</span></samp>&rsquo;, waits until the output has accumulated in the
+buffer that's used for communication, then decodes that output to
+produce the file contents.
+
+     <p>For out-of-band transfers, <span class="sc">tramp</span> issues a command like the following:
+     <pre class="example">          rcp user@host:/path/to/remote/file /tmp/tramp.4711
+</pre>
+     <p>It then reads the local temporary file <samp><span class="file">/tmp/tramp.4711</span></samp> into a
+buffer and deletes the temporary file.
+
+     <li>You now edit the buffer contents, blithely unaware of what has happened
+behind the scenes.  (Unless you have read this section, that is.)  When
+you are finished, you type <kbd>C-x C-s</kbd> to save the buffer.
+
+     <li>Again, <span class="sc">tramp</span> transfers the file contents to the remote host either
+inline or out-of-band.  This is the reverse of what happens when reading
+the file. 
+</ul>
+
+   <p>I hope this has provided you with a basic overview of what happens
+behind the scenes when you open a file with <span class="sc">tramp</span>.
+
+<!-- For the end user -->
+<div class="node">
+<a name="Obtaining-Tramp"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#History">History</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Overview">Overview</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Obtaining Tramp.</h2>
+
+<p><a name="index-obtaining-Tramp-5"></a>
+<span class="sc">tramp</span> is freely available on the Internet and the latest
+release may be downloaded from
+<a href="ftp://ftp.gnu.org/gnu/tramp/">ftp://ftp.gnu.org/gnu/tramp/</a>. This release includes the full
+documentation and code for <span class="sc">tramp</span>, suitable for installation. 
+But GNU Emacs (22 or later) includes <span class="sc">tramp</span> already, and there
+is a <span class="sc">tramp</span> package for XEmacs, as well.  So maybe it is easier
+to just use those.  But if you want the bleeding edge, read
+on<small class="dots">...</small>...
+
+   <p>For the especially brave, <span class="sc">tramp</span> is available from CVS.  The CVS
+version is the latest version of the code and may contain incomplete
+features or new issues. Use these versions at your own risk.
+
+   <p>Instructions for obtaining the latest development version of <span class="sc">tramp</span>
+from CVS can be found by going to the Savannah project page at the
+following URL and then clicking on the CVS link in the navigation bar
+at the top.
+
+<p class="noindent"><a href="http://savannah.gnu.org/projects/tramp/">http://savannah.gnu.org/projects/tramp/</a>
+
+<p class="noindent">Or follow the example session below:
+
+<pre class="example">     ] <strong>cd ~/xemacs</strong>
+     ] <strong>export CVS_RSH="ssh"</strong>
+     ] <strong>cvs -z3 -d:ext:anoncvs@savannah.gnu.org:/cvsroot/tramp co tramp</strong>
+</pre>
+   <p class="noindent">You should now have a directory <samp><span class="file">~/xemacs/tramp</span></samp>
+containing the latest version of <span class="sc">tramp</span>. You can fetch the latest
+updates from the repository by issuing the command:
+
+<pre class="example">     ] <strong>cd ~/xemacs/tramp</strong>
+     ] <strong>export CVS_RSH="ssh"</strong>
+     ] <strong>cvs update -d</strong>
+</pre>
+   <p class="noindent">Once you've got updated files from the CVS repository, you need to run
+<samp><span class="command">autoconf</span></samp> in order to get an up-to-date <samp><span class="file">configure</span></samp>
+script:
+
+<pre class="example">     ] <strong>cd ~/xemacs/tramp</strong>
+     ] <strong>autoconf</strong>
+</pre>
+   <div class="node">
+<a name="History"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Installation">Installation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Obtaining-Tramp">Obtaining Tramp</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 History of <span class="sc">tramp</span></h2>
+
+<p><a name="index-history-6"></a><a name="index-development-history-7"></a>
+Development was started end of November 1998.  The package was called
+<samp><span class="file">rssh.el</span></samp>, back then.  It only provided one method to access a
+file, using <samp><span class="command">ssh</span></samp> to log in to a remote host and using
+<samp><span class="command">scp</span></samp> to transfer the file contents.  After a while, the name
+was changed to <samp><span class="file">rcp.el</span></samp>, and now it's <span class="sc">tramp</span>.  Along the way,
+many more methods for getting a remote shell and for transferring the
+file contents were added.  Support for VC was added.
+
+   <p>The most recent addition of major features were the multi-hop methods
+added in April 2000 and the unification of <span class="sc">tramp</span> and Ange-FTP
+filenames in July 2002.
+
+<!-- Installation chapter is necessary only in case of standalone -->
+<!-- installation.  Text taken from trampinst.texi. -->
+<!-- *-texinfo-*- -->
+<!-- *-texinfo-*- -->
+<!-- texi/trampver.texi.  Generated from trampver.texi.in by configure. -->
+<!-- This is part of the Emacs manual. -->
+<!-- Copyright (C) 2003, 2004, 2005, 2006, 2007, 2008 -->
+<!-- Free Software Foundation, Inc. -->
+<!-- See file emacs.texi for copying conditions. -->
+<!-- In the Tramp CVS, the version number is auto-frobbed from -->
+<!-- configure.ac, so you should edit that file and run -->
+<!-- "autoconf && ./configure" to change the version number. -->
+<!-- Other flags from configuration -->
+<!-- Formatting of the tramp program name consistent. -->
+<!-- Some flags which make the text independent on the (X)Emacs flavor. -->
+<!-- "emacs" resp "xemacs" are set in the Makefile.  Default is "emacs". -->
+<!-- Emacs values. -->
+<!-- XEmacs counterparts. -->
+<!-- The installation chapter. -->
+<div class="node">
+<a name="Installation"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Configuration">Configuration</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#History">History</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">4 Installing <span class="sc">tramp</span> into XEmacs.</h2>
+
+<p><a name="index-installation-8"></a>
+If you use the version that comes with your XEmacs, the
+following information is not necessary.  Installing <span class="sc">tramp</span> into your
+XEmacs is a relatively easy process, at least compared
+to rebuilding your machine from scratch. ;)
+
+   <p>Seriously though, the installation should be a fairly simple matter. 
+The easiest way to proceed is as follows:
+
+     <ul>
+<li>Choose a directory, say <samp><span class="file">~/xemacs/</span></samp>.  Change into that
+directory and unpack the tarball.  This will give you a directory
+<samp><span class="file">~/xemacs/tramp-2.0.57/</span></samp> which contains
+subdirectories <samp><span class="file">lisp</span></samp> for the Lisp code and <samp><span class="file">texi</span></samp> for the
+documentation.  Make a symbolic link:
+
+     <pre class="example">          ln -s tramp-2.0.57 tramp
+</pre>
+     <li><samp><span class="command">cd</span></samp> to <samp><span class="file">~/xemacs/tramp/</span></samp> and type
+<samp><span class="command">./configure --with-contrib</span></samp> to configure Tramp for your
+system.
+
+     <p>Running `configure' takes awhile.  While running, it prints some
+messages telling which features it is checking for.
+
+     <li>Type <samp><span class="command">make</span></samp> to build the byte-compiled Lisp files as well as
+the Info manual.
+
+     <li>Type <samp><span class="command">make install</span></samp> to install the Tramp Lisp files and Info
+manual.
+
+     <li>You can remove the byte-compiled Lisp files and the Info manual from
+the source directory by typing <samp><span class="command">make clean</span></samp>.  To also remove
+the files that <samp><span class="command">configure</span></samp> created, type <samp><span class="command">make
+distclean</span></samp>.
+
+     <li>NOTE: If you run into problems running the example <samp><span class="command">make</span></samp>
+command, don't despair.  You can still byte compile the <samp><span class="file">*.el</span></samp>
+files by opening XEmacs in <code>dired</code> (<kbd>C-x d</kbd>) mode,
+at <samp><span class="file">~/xemacs/tramp/lisp</span></samp>.  Mark the lisp files with
+<kbd>m</kbd>, then press <kbd>B</kbd> to byte compile your selections.
+
+     <p>Something similar can be done to create the info manual.  Just change
+to directory <samp><span class="file">~/xemacs/tramp/texi</span></samp> and load the
+<samp><span class="file">tramp.texi</span></samp> file in XEmacs.  Then press <kbd>M-x
+texinfo-format-buffer &lt;RET&gt;</kbd> to generate
+<samp><span class="file">~/xemacs/tramp/info/tramp</span></samp>. 
+</ul>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Installation-parameters">Installation parameters</a>:      Parameters in order to control installation. 
+<li><a accesskey="2" href="#Load-paths">Load paths</a>:                   How to plug-in <span class="sc">tramp</span> into your environment. 
+<li><a accesskey="3" href="#Japanese-manual">Japanese manual</a>:              Japanese manual. 
+</ul>
+
+<div class="node">
+<a name="Installation-parameters"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Load-paths">Load paths</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Installation">Installation</a>
+
+</div>
+
+<h3 class="section">4.1 Parameters in order to control installation.</h3>
+
+<p><a name="index-installation-9"></a>
+There are some Lisp packages which are not contained in older
+XEmacsen by default yet.  In order to make a link for them
+into Tramp's <samp><span class="file">contrib</span></samp> directory, you must use the
+<samp><span class="option">--with-contrib</span></samp> option:
+
+<pre class="example">     ./configure --with-contrib
+</pre>
+   <p>By default, <samp><span class="command">make install</span></samp> will install <span class="sc">tramp</span>'s files in
+<samp><span class="file">/usr/local/share/emacs/site-lisp</span></samp> and <samp><span class="file">/usr/local/info</span></samp>.  You can specify an
+installation prefix other than <samp><span class="file">/[</span></samp> by giving
+<samp><span class="command">configure</span></samp> the option <samp><span class="option">--prefix=PATH</span></samp>.
+
+   <p>If your installed copy of XEmacs is named something other than
+<samp><span class="option">xemacs</span></samp>, you will need to tell `make' where to find it so
+that it can correctly byte-compile the <span class="sc">tramp</span> sources.
+
+   <p>For example, to force the use of GNU Emacs you might do
+this:
+
+<pre class="example">     ./configure --with-emacs
+     make
+     make install
+</pre>
+   <p>The syntax of <span class="sc">tramp</span> file names is different for XEmacs
+and GNU Emacs.  The Info manual will be generated for
+the Emacs flavor choosen in the <samp><span class="command">configure</span></samp> phase. If you want
+the Info manual for the other version, you need to set the variable
+<samp><span class="option">EMACS_INFO</span></samp> to <samp><span class="command">make</span></samp>:
+
+<pre class="example">     ./configure --with-xemacs
+     make EMACS_INFO=emacs
+</pre>
+   <p>Also, the <samp><span class="option">--prefix=PATH</span></samp> option to <samp><span class="command">configure</span></samp> may
+not be general enough to set the paths you want.  If not, you can pass
+variables to the <samp><span class="command">make</span></samp> command to control the installation. 
+For a complete list of tweakable variables, look in the makefile.
+
+   <p>For example, to put the Lisp files in <samp><span class="file">~/elisp</span></samp> and the Info file
+in <samp><span class="file">~/info</span></samp>, you would type:
+
+<pre class="example">     ./configure
+     make
+     make lispdir=~/elisp infodir=~/info install
+</pre>
+   <p><samp><span class="command">make</span></samp> supports the <samp><span class="option">DESTDIR</span></samp> variable for staged
+installation; see <a href="standards.html#Command-Variables">Command Variables</a>:
+
+<pre class="example">     make DESTDIR=/tmp install
+</pre>
+   <p>Running <samp><span class="command">configure</span></samp> might result in errors or warnings.  The
+output explains in detail what's going wrong.
+
+   <p>In case of errors, it is mandatory to fix them before continuation. 
+This can be missing or wrong versions of <samp><span class="command">xemacs</span></samp>,
+XEmacs packages, <samp><span class="command">make</span></samp>, or <samp><span class="command">makeinfo</span></samp>.
+
+   <p>Warnings let <samp><span class="command">configure</span></samp> (and the whole installation process)
+continue, but parts of Tramp aren't installed.  This can happen with
+missing or wrong versions of <samp><span class="command">texi2dvi</span></samp> or
+<samp><span class="command">install-info</span></samp>.  Here you can decide yourself whether you want
+to renounce on the related feature (<samp><span class="file">tramp.dvi</span></samp> file for printed
+output, Tramp entry in Info's <samp><span class="file">dir</span></samp> file), or whether you want to
+adapt your $PATH environment variable, and rerun <samp><span class="command">configure</span></samp>. 
+An alternative is calling the missed parts manually later on.
+
+<div class="node">
+<a name="Load-paths"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Japanese-manual">Japanese manual</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Installation-parameters">Installation parameters</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Installation">Installation</a>
+
+</div>
+
+<h3 class="section">4.2 How to plug-in <span class="sc">tramp</span> into your environment.</h3>
+
+<p><a name="index-installation-10"></a>
+If you don't install <span class="sc">tramp</span> into the intended directories, but prefer
+to use from the source directory, you need to add the following lines
+into your <samp><span class="file">.emacs</span></samp>:
+
+<pre class="lisp">     (add-to-list 'load-path "~/xemacs/tramp/lisp/")
+     (require 'tramp)
+</pre>
+   <p>NOTE: For XEmacs, the package <samp><span class="file">fsf-compat</span></samp> must be
+installed.  For details on package installation, see <a href="xemacs.html#Packages">Packages</a>. 
+(If the previous link doesn't work, try the XEmacs
+documentation at
+<a href="http://www.xemacs.org/Documentation/packageGuide.html">the XEmacs site</a>.)
+
+   <p>If the environment variable <samp><span class="env">INFOPATH</span></samp> is set, add the directory
+<samp><span class="file">~/xemacs/tramp/info/</span></samp> to it.  Else, add the directory to
+<code>Info-directory-list</code>, as follows:
+
+<pre class="lisp">     (add-to-list 'Info-directory-list "~/xemacs/tramp/info/")
+</pre>
+   <div class="node">
+<a name="Japanese-manual"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Load-paths">Load paths</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Installation">Installation</a>
+
+</div>
+
+<h3 class="section">4.3 Japanese manual.</h3>
+
+<p><a name="index-installation-11"></a>
+Thanks to Yoichi Nakayama <a href="mailto:yoichi@geiin.org">yoichi@geiin.org</a>, there exists a
+japanese translation of the <span class="sc">tramp</span> manual.  You can generate it
+applying the <samp><span class="option">--with-japanese-manual</span></samp> option:
+
+<pre class="example">     ./configure --with-japanese-manual
+</pre>
+   <p>This will result in an Info manual
+<samp><span class="file">tramp_ja</span></samp>.
+
+<div class="node">
+<a name="Configuration"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Usage">Usage</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Installation">Installation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">5 Configuring <span class="sc">tramp</span> for use</h2>
+
+<p><a name="index-configuration-12"></a>
+<a name="index-default-configuration-13"></a><span class="sc">tramp</span> is (normally) fully functional when it is initially
+installed.  It is initially configured to use the <samp><span class="command">scp</span></samp>
+program to connect to the remote host.  So in the easiest case, you
+just type <kbd>C-x C-f</kbd> and then enter the filename
+<samp><span class="file">/[</span><var>user</var><span class="file">@</span><var>machine</var><span class="file">]</span><var>/path/to.file</var></samp>.
+
+   <p>On some hosts, there are problems with opening a connection.  These are
+related to the behavior of the remote shell.  See See <a href="#Remote-shell-setup">Remote shell setup</a>, for details on this.
+
+   <p>If you do not wish to use these commands to connect to the remote
+host, you should change the default connection and transfer method
+that <span class="sc">tramp</span> uses.  There are several different methods that <span class="sc">tramp</span>
+can use to connect to remote machines and transfer files
+(see <a href="#Connection-types">Connection types</a>).
+
+   <p>If you don't know which method is right for you, see See <a href="#Default-Method">Default Method</a>.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Connection-types">Connection types</a>:             Types of connections made to remote machines. 
+<li><a accesskey="2" href="#Inline-methods">Inline methods</a>:               Inline methods. 
+<li><a accesskey="3" href="#External-transfer-methods">External transfer methods</a>:    External transfer methods. 
+<li><a accesskey="4" href="#Multi_002dhop-Methods">Multi-hop Methods</a>:            Connecting to a remote host using multiple hops. 
+<li><a accesskey="5" href="#Default-Method">Default Method</a>:               Selecting a default method. 
+                                  Here we also try to help those who
+                                  don't have the foggiest which method
+                                  is right for them. 
+<li><a accesskey="6" href="#Customizing-Methods">Customizing Methods</a>:          Using Non-Standard Methods. 
+<li><a accesskey="7" href="#Customizing-Completion">Customizing Completion</a>:       Selecting config files for user/host name completion. 
+<li><a accesskey="8" href="#Password-caching">Password caching</a>:             Reusing passwords for several connections. 
+<li><a accesskey="9" href="#Remote-Programs">Remote Programs</a>:              How <span class="sc">tramp</span> finds and uses programs on the remote machine. 
+<li><a href="#Remote-shell-setup">Remote shell setup</a>:           Remote shell setup hints. 
+<li><a href="#Windows-setup-hints">Windows setup hints</a>:          Issues with Cygwin ssh. 
+<li><a href="#Auto_002dsave-and-Backup">Auto-save and Backup</a>:         Auto-save and Backup. 
+</ul>
+
+<div class="node">
+<a name="Connection-types"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Inline-methods">Inline methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration">Configuration</a>
+
+</div>
+
+<h3 class="section">5.1 Types of connections made to remote machines.</h3>
+
+<p><a name="index-connection-types_002c-overview-14"></a>
+There are two basic types of transfer methods, each with its own
+advantages and limitations.  Both types of connection make use of a
+remote shell access program such as <samp><span class="command">rsh</span></samp>, <samp><span class="command">ssh</span></samp> or
+<samp><span class="command">telnet</span></samp> to connect to the remote machine.
+
+   <p>This connection is used to perform many of the operations that <span class="sc">tramp</span>
+requires to make the remote file system transparently accessible from
+the local machine. It is only when visiting files that the methods
+differ.
+
+   <p><a name="index-inline-methods-15"></a><a name="index-external-transfer-methods-16"></a><a name="index-external-methods-17"></a><a name="index-out_002dof_002dband-methods-18"></a><a name="index-methods_002c-inline-19"></a><a name="index-methods_002c-external-transfer-20"></a><a name="index-methods_002c-out_002dof_002dband-21"></a>Loading or saving a remote file requires that the content of the file
+be transfered between the two machines. The content of the file can be
+transfered over the same connection used to log in to the remote
+machine or the file can be transfered through another connection using
+a remote copy program such as <samp><span class="command">rcp</span></samp>, <samp><span class="command">scp</span></samp> or
+<samp><span class="command">rsync</span></samp>.  The former are called <dfn>inline methods</dfn>, the
+latter are called <dfn>out-of-band methods</dfn> or <dfn>external transfer
+methods</dfn> (<dfn>external methods</dfn> for short).
+
+   <p>The performance of the external transfer methods is generally better
+than that of the inline methods, at least for large files.  This is
+caused by the need to encode and decode the data when transferring
+inline.
+
+   <p>The one exception to this rule are the <samp><span class="command">scp</span></samp> based transfer
+methods.  While these methods do see better performance when actually
+transferring files, the overhead of the cryptographic negotiation at
+startup may drown out the improvement in file transfer times.
+
+   <p>External transfer methods should be configured such a way that they
+don't require a password (with <samp><span class="command">ssh-agent</span></samp>, or such alike). 
+If it isn't possible, you should consider <a href="#Password-caching">Password caching</a>,
+otherwise you will be prompted for a password every copy action.
+
+   <p><a name="index-multi_002dhop-methods-22"></a><a name="index-methods_002c-multi_002dhop-23"></a>A variant of the inline methods are the <dfn>multi-hop methods</dfn>. 
+These methods allow you to connect a remote host using a number `hops',
+each of which connects to a different host.  This is useful if you are
+in a secured network where you need to go through a bastion host to
+connect to the outside world.
+
+<div class="node">
+<a name="Inline-methods"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#External-transfer-methods">External transfer methods</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Connection-types">Connection types</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration">Configuration</a>
+
+</div>
+
+<h3 class="section">5.2 Inline methods</h3>
+
+<p><a name="index-inline-methods-24"></a><a name="index-methods_002c-inline-25"></a>
+The inline methods in <span class="sc">tramp</span> are quite powerful and can work in
+situations where you cannot use an external transfer program to connect. 
+Inline methods are the only methods that work when connecting to the
+remote machine via telnet.  (There are also strange inline methods which
+allow you to transfer files between <em>user identities</em> rather than
+hosts, see below.)
+
+   <p>These methods depend on the existence of a suitable encoding and
+decoding command on remote machine.  Locally, <span class="sc">tramp</span> may be able to
+use features of XEmacs to decode and encode the files or
+it may require access to external commands to perform that task.
+
+   <p><a name="index-uuencode-26"></a><a name="index-mimencode-27"></a><a name="index-base_002d64-encoding-28"></a><span class="sc">tramp</span> checks the availability and usability of commands like
+<samp><span class="command">mimencode</span></samp> (part of the <samp><span class="command">metamail</span></samp> package) or
+<samp><span class="command">uuencode</span></samp> on the remote host.  The first reliable command
+will be used.  The search path can be customized, see <a href="#Remote-Programs">Remote Programs</a>.
+
+   <p>If both commands aren't available on the remote host, <span class="sc">tramp</span>
+transfers a small piece of Perl code to the remote host, and tries to
+apply it for encoding and decoding.
+
+     <dl>
+<dt><samp><span class="option">rsh</span></samp><dd><a name="index-method-rsh-29"></a><a name="index-rsh-method-30"></a>
+Connect to the remote host with <samp><span class="command">rsh</span></samp>.  Due to the unsecure
+connection it is recommended for very local host topology only.
+
+     <p>On operating systems which provide the command <samp><span class="command">remsh</span></samp> instead
+of <samp><span class="command">rsh</span></samp>, you can use the method <samp><span class="option">remsh</span></samp>.  This is true
+for HP-UX or Cray UNICOS, for example.
+
+     <br><dt><samp><span class="option">ssh</span></samp><dd><a name="index-method-ssh-31"></a><a name="index-ssh-method-32"></a>
+Connect to the remote host with <samp><span class="command">ssh</span></samp>.  This is identical to
+the previous option except that the <samp><span class="command">ssh</span></samp> package is used,
+making the connection more secure.
+
+     <p>There are also two variants, <samp><span class="option">ssh1</span></samp> and <samp><span class="option">ssh2</span></samp>, that
+call &lsquo;<samp><span class="samp">ssh -1</span></samp>&rsquo; and &lsquo;<samp><span class="samp">ssh -2</span></samp>&rsquo;, respectively.  This way, you can
+explicitly select whether you want to use the SSH protocol version 1
+or 2 to connect to the remote host.  (You can also specify in
+<samp><span class="file">~/.ssh/config</span></samp>, the SSH configuration file, which protocol
+should be used, and use the regular <samp><span class="option">ssh</span></samp> method.)
+
+     <p>Two other variants, <samp><span class="option">ssh1_old</span></samp> and <samp><span class="option">ssh2_old</span></samp>, use the
+<samp><span class="command">ssh1</span></samp> and <samp><span class="command">ssh2</span></samp> commands explicitly.  If you don't
+know what these are, you do not need these options.
+
+     <p>All the methods based on <samp><span class="command">ssh</span></samp> have an additional kludgy
+feature: you can specify a host name which looks like <samp><span class="file">host#42</span></samp>
+(the real host name, then a hash sign, then a port number).  This
+means to connect to the given host but to also pass <code>-p 42</code> as
+arguments to the <samp><span class="command">ssh</span></samp> command.
+
+     <br><dt><samp><span class="option">telnet</span></samp><dd><a name="index-method-telnet-33"></a><a name="index-telnet-method-34"></a>
+Connect to the remote host with <samp><span class="command">telnet</span></samp>.  This is as unsecure
+as the <samp><span class="option">rsh</span></samp> method.
+
+     <br><dt><samp><span class="option">su</span></samp><dd><a name="index-method-su-35"></a><a name="index-su-method-36"></a>
+This method does not connect to a remote host at all, rather it uses
+the <samp><span class="command">su</span></samp> program to allow you to edit files as another user.
+
+     <br><dt><samp><span class="option">sudo</span></samp><dd><a name="index-method-sudo-37"></a><a name="index-sudo-method-38"></a>
+This is similar to the <samp><span class="option">su</span></samp> method, but it uses <samp><span class="command">sudo</span></samp>
+rather than <samp><span class="command">su</span></samp> to become a different user.
+
+     <p>Note that <samp><span class="command">sudo</span></samp> must be configured to allow you to start a
+shell as the user.  It would be nice if it was sufficient if
+<samp><span class="command">ls</span></samp> and <samp><span class="command">mimencode</span></samp> were allowed, but that is not
+easy to implement, so I haven't got around to it, yet.
+
+     <br><dt><samp><span class="option">sshx</span></samp><dd><a name="index-method-sshx-39"></a><a name="index-sshx-method-40"></a>
+As you would expect, this is similar to <samp><span class="option">ssh</span></samp>, only a little
+different.  Whereas <samp><span class="option">ssh</span></samp> opens a normal interactive shell on
+the remote host, this option uses &lsquo;<samp><span class="samp">ssh -t -t </span><var>host</var><span class="samp"> -l
+</span><var>user</var><span class="samp"> /bin/sh</span></samp>&rsquo; to open a connection.  This is useful for users
+where the normal login shell is set up to ask them a number of
+questions when logging in.  This procedure avoids these questions, and
+just gives <span class="sc">tramp</span> a more-or-less `standard' login shell to work
+with.
+
+     <p>Note that this procedure does not eliminate questions asked by
+<samp><span class="command">ssh</span></samp> itself.  For example, <samp><span class="command">ssh</span></samp> might ask &ldquo;Are you
+sure you want to continue connecting?&rdquo; if the host key of the remote
+host is not known.  <span class="sc">tramp</span> does not know how to deal with such a
+question (yet), therefore you will need to make sure that you can log
+in without such questions.
+
+     <p>This is also useful for Windows users where <samp><span class="command">ssh</span></samp>, when
+invoked from an XEmacs buffer, tells them that it is not
+allocating a pseudo tty.  When this happens, the login shell is wont
+to not print any shell prompt, which confuses <span class="sc">tramp</span> mightily. 
+For reasons unknown, some Windows ports for <samp><span class="command">ssh</span></samp> require the
+doubled &lsquo;<samp><span class="samp">-t</span></samp>&rsquo; option.
+
+     <p>This supports the &lsquo;<samp><span class="samp">-p</span></samp>&rsquo; kludge.
+
+     <br><dt><samp><span class="option">krlogin</span></samp><dd><a name="index-method-krlogin-41"></a><a name="index-km-krlogin-42"></a><a name="index-Kerberos-_0028with-krlogin-method_0029-43"></a>
+This method is also similar to <samp><span class="option">ssh</span></samp>.  It only uses the
+<samp><span class="command">krlogin -x</span></samp> command to log in to the remote host.
+
+     <br><dt><samp><span class="option">plink</span></samp><dd><a name="index-method-plink-44"></a><a name="index-plink-method-45"></a>
+This method is mostly interesting for Windows users using the PuTTY
+implementation of SSH.  It uses &lsquo;<samp><span class="samp">plink -ssh</span></samp>&rsquo; to log in to the
+remote host.
+
+     <p>Additionally, the method <samp><span class="option">plink1</span></samp> is provided, which calls
+&lsquo;<samp><span class="samp">plink -1 -ssh</span></samp>&rsquo; in order to use SSH protocol version 1
+explicitly.
+
+     <p>CCC: Do we have to connect to the remote host once from the command
+line to accept the SSH key?  Maybe this can be made automatic?
+
+     <p>CCC: Does <samp><span class="command">plink</span></samp> support the &lsquo;<samp><span class="samp">-p</span></samp>&rsquo; option?  <span class="sc">tramp</span> will
+support that, anyway.
+
+   </dl>
+
+<div class="node">
+<a name="External-transfer-methods"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Multi_002dhop-Methods">Multi-hop Methods</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Inline-methods">Inline methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration">Configuration</a>
+
+</div>
+
+<h3 class="section">5.3 External transfer methods</h3>
+
+<p><a name="index-methods_002c-external-transfer-46"></a><a name="index-methods_002c-out_002dof_002dband-47"></a><a name="index-external-transfer-methods-48"></a><a name="index-out_002dof_002dband-methods-49"></a>
+The external transfer methods operate through multiple channels, using
+the remote shell connection for many actions while delegating file
+transfers to an external transfer utility.
+
+   <p>This saves the overhead of encoding and decoding that multiplexing the
+transfer through the one connection has with the inline methods.
+
+   <p>If you want to use an external transfer method you should be able to
+execute the transfer utility to copy files to and from the remote
+machine without any interaction.
+
+   <p><a name="index-ssh_002dagent-50"></a>This means that you will need to use <samp><span class="command">ssh-agent</span></samp> if you use the
+<samp><span class="command">scp</span></samp> program for transfers, or maybe your version of
+<samp><span class="command">scp</span></samp> accepts a password on the command line.<a rel="footnote" href="#fn-2" name="fnd-2"><sup>2</sup></a>
+If you use <samp><span class="command">rsync</span></samp> via <samp><span class="command">ssh</span></samp> then the same rule must
+apply to that connection.
+
+   <p>If you cannot get an external method to run without asking for a
+password you should consider <a href="#Password-caching">Password caching</a>.
+
+     <dl>
+<dt><samp><span class="option">rcp</span></samp>  &mdash;  <samp><span class="command">rsh</span></samp> and <samp><span class="command">rcp</span></samp><dd><a name="index-method-rcp-51"></a><a name="index-rcp-method-52"></a><a name="index-rcp-_0028with-rcp-method_0029-53"></a><a name="index-rsh-_0028with-rcp-method_0029-54"></a>
+This method uses the <samp><span class="command">rsh</span></samp> and <samp><span class="command">rcp</span></samp> commands to connect
+to the remote machine and transfer files.  This is probably the fastest
+connection method available.
+
+     <p>The alternative method <samp><span class="option">remcp</span></samp> uses the <samp><span class="command">remsh</span></samp> and
+<samp><span class="command">rcp</span></samp> commands.  It should be applied on machines where
+<samp><span class="command">remsh</span></samp> is used instead of <samp><span class="command">rsh</span></samp>.
+
+     <br><dt><samp><span class="option">scp</span></samp>  &mdash;  <samp><span class="command">ssh</span></samp> and <samp><span class="command">scp</span></samp><dd><a name="index-method-scp-55"></a><a name="index-scp-method-56"></a><a name="index-scp-_0028with-scp-method_0029-57"></a><a name="index-ssh-_0028with-scp-method_0029-58"></a>
+Using <samp><span class="command">ssh</span></samp> to connect to the remote host and <samp><span class="command">scp</span></samp> to
+transfer files between the machines is the best method for securely
+connecting to a remote machine and accessing files.
+
+     <p>The performance of this option is also quite good. It may be slower than
+the inline methods when you often open and close small files however. 
+The cost of the cryptographic handshake at the start of an <samp><span class="command">scp</span></samp>
+session can begin to absorb the advantage that the lack of encoding and
+decoding presents.
+
+     <p>There are also two variants, <samp><span class="option">scp1</span></samp> and <samp><span class="option">scp2</span></samp>, that
+call &lsquo;<samp><span class="samp">ssh -1</span></samp>&rsquo; and &lsquo;<samp><span class="samp">ssh -2</span></samp>&rsquo;, respectively.  This way, you can
+explicitly select whether you want to use the SSH protocol version 1
+or 2 to connect to the remote host.  (You can also specify in
+<samp><span class="file">~/.ssh/config</span></samp>, the SSH configuration file, which protocol
+should be used, and use the regular <samp><span class="option">scp</span></samp> method.)
+
+     <p>Two other variants, <samp><span class="option">scp1_old</span></samp> and <samp><span class="option">scp2_old</span></samp>, use the
+<samp><span class="command">ssh1</span></samp> and <samp><span class="command">ssh2</span></samp> commands explicitly.  If you don't
+know what these are, you do not need these options.
+
+     <p>All the <samp><span class="command">ssh</span></samp> based methods support the kludgy &lsquo;<samp><span class="samp">-p</span></samp>&rsquo;
+feature where you can specify a port number to connect to in the host
+name.  For example, the host name <samp><span class="file">host#42</span></samp> tells <span class="sc">tramp</span> to
+specify &lsquo;<samp><span class="samp">-p 42</span></samp>&rsquo; in the argument list for <samp><span class="command">ssh</span></samp>.
+
+     <br><dt><samp><span class="option">rsync</span></samp>  &mdash;  <samp><span class="command">ssh</span></samp> and <samp><span class="command">rsync</span></samp><dd><a name="index-method-rsync-59"></a><a name="index-rsync-method-60"></a><a name="index-rsync-_0028with-rsync-method_0029-61"></a><a name="index-ssh-_0028with-rsync-method_0029-62"></a>
+Using the <samp><span class="command">ssh</span></samp> command to connect securely to the remote
+machine and the <samp><span class="command">rsync</span></samp> command to transfer files is almost
+identical to the <samp><span class="option">scp</span></samp> method.
+
+     <p>While <samp><span class="command">rsync</span></samp> performs much better than <samp><span class="command">scp</span></samp> when
+transferring files that exist on both hosts, this advantage is lost if
+the file exists only on one side of the connection.
+
+     <p>The <samp><span class="command">rsync</span></samp> based method may be considerably faster than the
+<samp><span class="command">rcp</span></samp> based methods when writing to the remote system. Reading
+files to the local machine is no faster than with a direct copy.
+
+     <p>This method supports the &lsquo;<samp><span class="samp">-p</span></samp>&rsquo; hack.
+
+     <br><dt><samp><span class="option">scpx</span></samp> &mdash; <samp><span class="command">ssh</span></samp> and <samp><span class="command">scp</span></samp><dd><a name="index-method-scpx-63"></a><a name="index-scpx-method-64"></a><a name="index-scp-_0028with-scpx-method_0029-65"></a><a name="index-ssh-_0028with-scpx-method_0029-66"></a>
+As you would expect, this is similar to <samp><span class="option">scp</span></samp>, only a little
+different.  Whereas <samp><span class="option">scp</span></samp> opens a normal interactive shell on
+the remote host, this option uses &lsquo;<samp><span class="samp">ssh -t -t </span><var>host</var><span class="samp"> -l
+</span><var>user</var><span class="samp"> /bin/sh</span></samp>&rsquo; to open a connection.  This is useful for users
+where the normal login shell is set up to ask them a number of
+questions when logging in.  This procedure avoids these questions, and
+just gives <span class="sc">tramp</span> a more-or-less `standard' login shell to work
+with.
+
+     <p>This is also useful for Windows users where <samp><span class="command">ssh</span></samp>, when
+invoked from an XEmacs buffer, tells them that it is not
+allocating a pseudo tty.  When this happens, the login shell is wont
+to not print any shell prompt, which confuses <span class="sc">tramp</span> mightily.
+
+     <p>This method supports the &lsquo;<samp><span class="samp">-p</span></samp>&rsquo; hack.
+
+     <br><dt><samp><span class="option">scpc</span></samp> &mdash; <samp><span class="command">ssh</span></samp> and <samp><span class="command">scp</span></samp><dd><a name="index-method-scpx-67"></a><a name="index-scpx-method-68"></a><a name="index-scp-_0028with-scpx-method_0029-69"></a><a name="index-ssh-_0028with-scpx-method_0029-70"></a>
+Newer versions of <samp><span class="option">ssh</span></samp> (for example OpenSSH 4) offer an option
+<samp><span class="option">ControlMaster</span></samp>.  This allows <samp><span class="option">scp</span></samp> to reuse an existing
+<samp><span class="option">ssh</span></samp> channel, which increases performance.
+
+     <p>Before you use this method, you shall check whether your <samp><span class="option">ssh</span></samp>
+implementation does support this option.  Try from the command line
+
+     <pre class="example">          ssh localhost -o ControlMaster=yes
+</pre>
+     <p>This method supports the &lsquo;<samp><span class="samp">-p</span></samp>&rsquo; hack.
+
+     <br><dt><samp><span class="option">pscp</span></samp> &mdash; <samp><span class="command">plink</span></samp> and <samp><span class="command">pscp</span></samp><dd><a name="index-method-pscp-71"></a><a name="index-pscp-method-72"></a><a name="index-pscp-_0028with-pscp-method_0029-73"></a><a name="index-plink-_0028with-pscp-method_0029-74"></a><a name="index-PuTTY-_0028with-pscp-method_0029-75"></a>
+This method is similar to <samp><span class="option">scp</span></samp>, but it uses the
+<samp><span class="command">plink</span></samp> command to connect to the remote host, and it uses
+<samp><span class="command">pscp</span></samp> for transferring the files.  These programs are part
+of PuTTY, an SSH implementation for Windows.
+
+     <p>CCC: Does <samp><span class="command">plink</span></samp> support the &lsquo;<samp><span class="samp">-p</span></samp>&rsquo; hack?
+
+     <br><dt><samp><span class="option">fcp</span></samp> &mdash; <samp><span class="command">fsh</span></samp> and <samp><span class="command">fcp</span></samp><dd><a name="index-method-fcp-76"></a><a name="index-fcp-method-77"></a><a name="index-fsh-_0028with-fcp-method_0029-78"></a><a name="index-fcp-_0028with-fcp-method_0029-79"></a>
+This method is similar to <samp><span class="option">scp</span></samp>, but it uses the <samp><span class="command">fsh</span></samp>
+command to connect to the remote host, and it uses <samp><span class="command">fcp</span></samp> for
+transferring the files.  <samp><span class="command">fsh/fcp</span></samp> are a front-end for
+<samp><span class="command">ssh</span></samp> which allow for reusing the same <samp><span class="command">ssh</span></samp> session
+for submitting several commands.  This avoids the startup overhead of
+<samp><span class="command">scp</span></samp> (which has to establish a secure connection whenever it
+is called).  Note, however, that you can also use one of the inline
+methods to achieve a similar effect.
+
+     <p>This method uses the command &lsquo;<samp><span class="samp">fsh </span><var>host</var><span class="samp"> -l </span><var>user</var><span class="samp">
+/bin/sh -i</span></samp>&rsquo; to establish the connection, it does not work to just say
+<samp><span class="command">fsh </span><var>host</var><span class="command"> -l </span><var>user</var></samp>.
+
+     <p><a name="index-method-fsh-80"></a><a name="index-fsh-method-81"></a>
+There is no inline method using <samp><span class="command">fsh</span></samp> as the multiplexing
+provided by the program is not very useful in our context.  <span class="sc">tramp</span>
+opens just one connection to the remote host and then keeps it open,
+anyway.
+
+     <br><dt><samp><span class="option">ftp</span></samp><dd><a name="index-method-ftp-82"></a><a name="index-ftp-method-83"></a>
+This is not a native <span class="sc">tramp</span> method. Instead of, it forwards all
+requests to EFS. 
+This works only for unified filenames, see <a href="#Issues">Issues</a>.
+
+     <br><dt><samp><span class="option">smb</span></samp> &mdash; <samp><span class="command">smbclient</span></samp><dd><a name="index-method-smb-84"></a><a name="index-smb-method-85"></a>
+This is another not natural <span class="sc">tramp</span> method.  It uses the
+<samp><span class="command">smbclient</span></samp> command on different Unices in order to connect to
+an SMB server.  An SMB server might be a Samba (or CIFS) server on
+another UNIX host or, more interesting, a host running MS Windows.  So
+far, it is tested towards MS Windows NT, MS Windows 2000, and MS
+Windows XP.
+
+     <p>The first directory in the localname must be a share name on the remote
+host.  Remember, that the <code>$</code> character in which default shares
+usually end, must be written <code>$$</code> due to environment variable
+substitution in file names.  If no share name is given (i.e. remote
+directory <code>/</code>), all available shares are listed.
+
+     <p>Since authorization is done on share level, you will be prompted
+always for a password if you access another share on the same host. 
+This can be suppressed by <a href="#Password-caching">Password caching</a>.
+
+     <p>MS Windows uses for authorization both a user name and a domain name. 
+Because of this, the <span class="sc">tramp</span> syntax has been extended: you can
+specify a user name which looks like <code>user%domain</code> (the real user
+name, then a percent sign, then the domain name).  So, to connect to
+the machine <code>melancholia</code> as user <code>daniel</code> of the domain
+<code>BIZARRE</code>, and edit <samp><span class="file">.emacs</span></samp> in the home directory (share
+<code>daniel$</code>) I would specify the filename
+<samp><span class="file">/[smb/daniel%BIZARRE@melancholia]/daniel$$/.emacs</span></samp>.
+
+     <p>The domain name as well as the user name are optional.  If no user
+name is specified at all, the anonymous user (without password
+prompting) is assumed.  This is different from all other <span class="sc">tramp</span>
+methods, where in such a case the local user name is taken.
+
+     <p>The <samp><span class="option">smb</span></samp> method supports the &lsquo;<samp><span class="samp">-p</span></samp>&rsquo; hack.
+
+     <p><strong>Please note:</strong> If XEmacs runs locally under MS
+Windows, this method isn't available.  Instead of, you can use UNC
+file names like <samp><span class="file">//melancholia/daniel$$/.emacs</span></samp>.  The only
+disadvantage is that there's no possibility to specify another user
+name.
+
+   </dl>
+
+<div class="node">
+<a name="Multi-hop-Methods"></a>
+<a name="Multi_002dhop-Methods"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Default-Method">Default Method</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#External-transfer-methods">External transfer methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration">Configuration</a>
+
+</div>
+
+<h3 class="section">5.4 Connecting to a remote host using multiple hops</h3>
+
+<p><a name="index-multi_002dhop-methods-86"></a><a name="index-methods_002c-multi_002dhop-87"></a>
+Sometimes, the methods described before are not sufficient.  Sometimes,
+it is not possible to connect to a remote host using a simple command. 
+For example, if you are in a secured network, you might have to log in
+to a `bastion host' first before you can connect to the outside world. 
+Of course, the target host may also require a bastion host.  The format
+of multi-hop filenames is slightly different than the format of normal
+<span class="sc">tramp</span> methods.
+
+   <p><a name="index-method-multi-88"></a><a name="index-multi-method-89"></a>A multi-hop file name specifies a method, a number of hops, and a
+localname (path name on the remote system).  The method name is always
+<samp><span class="option">multi</span></samp>.
+
+   <p>Each hop consists of a <dfn>hop method</dfn> specification, a user name and
+a host name.  The hop method can be an inline method only.  The
+following hop methods are (currently) available:
+
+     <dl>
+<dt><samp><span class="option">telnet</span></samp><dd><a name="index-hop-method-telnet-90"></a><a name="index-telnet-hop-method-91"></a>
+Uses the well-known <samp><span class="command">telnet</span></samp> program to connect to the host. 
+Whereas user name and host name are supplied in the file name, the
+user is queried for the password.
+
+     <br><dt><samp><span class="option">rsh</span></samp><dd><a name="index-hop-method-rsh-92"></a><a name="index-rsh-hop-method-93"></a>
+This uses <samp><span class="command">rsh</span></samp> to connect to the host.  You do not need to
+enter a password unless <samp><span class="command">rsh</span></samp> explicitly asks for it.
+
+     <p>The variant <samp><span class="option">remsh</span></samp> uses the <samp><span class="command">remsh</span></samp> command.  It
+should be applied on machines where <samp><span class="command">remsh</span></samp> is used instead of
+<samp><span class="command">rsh</span></samp>.
+
+     <br><dt><samp><span class="option">ssh</span></samp><dd><a name="index-hop-method-ssh-94"></a><a name="index-ssh-hop-method-95"></a>
+This uses <samp><span class="command">ssh</span></samp> to connect to the host.  You might have to enter
+a password or a pass phrase.
+
+     <br><dt><samp><span class="option">su</span></samp><dd><a name="index-hop-method-su-96"></a><a name="index-su-hop-method-97"></a>
+This method does not actually contact a different host, but it allows
+you to become a different user on the host you're currently on.  This
+might be useful if you want to edit files as root, but the remote host
+does not allow remote root logins.  In this case you can use
+<samp><span class="option">telnet</span></samp>, <samp><span class="option">rsh</span></samp> or <samp><span class="option">ssh</span></samp> to connect to the
+remote host as a non-root user, then use an <samp><span class="option">su</span></samp> hop to become
+root.  But <samp><span class="option">su</span></samp> need not be the last hop in a sequence, you could
+also use it somewhere in the middle, if the need arises.
+
+     <p>Even though you <em>must</em> specify both user and host with an
+<samp><span class="option">su</span></samp> hop, the host name is ignored and only the user name is
+used.
+
+     <br><dt><samp><span class="option">sudo</span></samp><dd><a name="index-hop-method-sudo-98"></a><a name="index-sudo-hop-method-99"></a>
+This is similar to the <samp><span class="option">su</span></samp> hop, except that it uses
+<samp><span class="command">sudo</span></samp> rather than <samp><span class="command">su</span></samp> to become a different user.
+
+   </dl>
+
+   <p>Some people might wish to use port forwarding with <samp><span class="command">ssh</span></samp> or
+maybe they have to use a nonstandard port.  This can be accomplished
+by putting a stanza in <samp><span class="file">~/.ssh/config</span></samp> for the account which
+specifies a different port number for a certain host name.  But it can
+also be accomplished within <span class="sc">tramp</span>, by adding a multi-hop method. 
+For example:
+
+<pre class="lisp">     (add-to-list
+      'tramp-multi-connection-function-alist
+      '("sshf" tramp-multi-connect-rlogin "ssh %h -l %u -p 4400%n"))
+</pre>
+   <p>Now you can use an <samp><span class="option">sshf</span></samp> hop which connects to port 4400 instead of
+the standard port.
+
+<div class="node">
+<a name="Default-Method"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Customizing-Methods">Customizing Methods</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Multi_002dhop-Methods">Multi-hop Methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration">Configuration</a>
+
+</div>
+
+<h3 class="section">5.5 Selecting a default method</h3>
+
+<p><a name="index-default-method-100"></a>
+<a name="index-tramp_002ddefault_002dmethod-101"></a>When you select an appropriate transfer method for your typical usage
+you should set the variable <code>tramp-default-method</code> to reflect that
+choice.  This variable controls which method will be used when a method
+is not specified in the <span class="sc">tramp</span> file name.  For example:
+
+<pre class="lisp">     (setq tramp-default-method "ssh")
+</pre>
+   <p><a name="index-tramp_002ddefault_002dmethod_002dalist-102"></a>You can also specify different methods for certain user/host
+combinations, via the variable <code>tramp-default-method-alist</code>.  For
+example, the following two lines specify to use the <samp><span class="option">ssh</span></samp>
+method for all user names matching &lsquo;<samp><span class="samp">john</span></samp>&rsquo; and the <samp><span class="option">rsync</span></samp>
+method for all host names matching &lsquo;<samp><span class="samp">lily</span></samp>&rsquo;.  The third line
+specifies to use the <samp><span class="option">su</span></samp> method for the user &lsquo;<samp><span class="samp">root</span></samp>&rsquo; on
+the machine &lsquo;<samp><span class="samp">localhost</span></samp>&rsquo;.
+
+<pre class="lisp">     (add-to-list 'tramp-default-method-alist '("" "john" "ssh"))
+     (add-to-list 'tramp-default-method-alist '("lily" "" "rsync"))
+     (add-to-list 'tramp-default-method-alist
+                  '("\\`localhost\\'" "\\`root\\'" "su"))
+</pre>
+   <p class="noindent">See the documentation for the variable
+<code>tramp-default-method-alist</code> for more details.
+
+   <p>External transfer methods are normally preferable to inline transfer
+methods, giving better performance.
+
+   <p>See <a href="#Inline-methods">Inline methods</a>. 
+See <a href="#External-transfer-methods">External transfer methods</a>. 
+See <a href="#Multi_002dhop-Methods">Multi-hop Methods</a>.
+
+   <p>Another consideration with the selection of transfer methods is the
+environment you will use them in and, especially when used over the
+Internet, the security implications of your preferred method.
+
+   <p>The <samp><span class="option">rsh</span></samp> and <samp><span class="option">telnet</span></samp> methods send your password as
+plain text as you log in to the remote machine, as well as
+transferring the files in such a way that the content can easily be
+read from other machines.
+
+   <p>If you need to connect to remote systems that are accessible from the
+Internet, you should give serious thought to using <samp><span class="option">ssh</span></samp> based
+methods to connect. These provide a much higher level of security,
+making it a non-trivial exercise for someone to obtain your password
+or read the content of the files you are editing.
+
+<h4 class="subsection">5.5.1 Which method is the right one for me?</h4>
+
+<p><a name="index-choosing-the-right-method-103"></a>
+Given all of the above, you are probably thinking that this is all fine
+and good, but it's not helping you to choose a method!  Right you are. 
+As a developer, we don't want to boss our users around but give them
+maximum freedom instead.  However, the reality is that some users would
+like to have some guidance, so here I'll try to give you this guidance
+without bossing you around.  You tell me whether it works <small class="dots">...</small>
+
+   <p>My suggestion is to use an inline method.  For large files, out-of-band
+methods might be more efficient, but I guess that most people will want
+to edit mostly small files.
+
+   <p>I guess that these days, most people can access a remote machine by
+using <samp><span class="command">ssh</span></samp>.  So I suggest that you use the <samp><span class="option">ssh</span></samp>
+method.  So, type <kbd>C-x C-f
+/[ssh/root@otherhost]/etc/motd
+&lt;RET&gt;</kbd> to edit the <samp><span class="file">/etc/motd</span></samp> file on the other host.
+
+   <p>If you can't use <samp><span class="option">ssh</span></samp> to log in to the remote host, then
+select a method that uses a program that works.  For instance, Windows
+users might like the <samp><span class="option">plink</span></samp> method which uses the PuTTY
+implementation of <samp><span class="command">ssh</span></samp>.  Or you use Kerberos and thus like
+<samp><span class="option">krlogin</span></samp>.
+
+   <p>For the special case of editing files on the local host as another
+user, see the <samp><span class="option">su</span></samp> or <samp><span class="option">sudo</span></samp> methods.  They offer
+shortened syntax for the &lsquo;<samp><span class="samp">root</span></samp>&rsquo; account, like
+<samp><span class="file">/[su/]/etc/motd</span></samp>.
+
+   <p>People who edit large files may want to consider <samp><span class="option">scp</span></samp> instead
+of <samp><span class="option">ssh</span></samp>, or <samp><span class="option">pscp</span></samp> instead of <samp><span class="option">plink</span></samp>.  These
+out-of-band methods are faster than inline methods for large files. 
+Note, however, that out-of-band methods suffer from some limitations. 
+Please try first whether you really get a noticeable speed advantage
+from using an out-of-band method!  Maybe even for large files, inline
+methods are fast enough.
+
+<div class="node">
+<a name="Customizing-Methods"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Customizing-Completion">Customizing Completion</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Default-Method">Default Method</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration">Configuration</a>
+
+</div>
+
+<h3 class="section">5.6 Using Non-Standard Methods</h3>
+
+<p><a name="index-customizing-methods-104"></a><a name="index-using-non_002dstandard-methods-105"></a><a name="index-create-your-own-methods-106"></a>
+There is a variable <code>tramp-methods</code> which you can change if the
+predefined methods don't seem right.
+
+   <p>For the time being, I'll refer you to the Lisp documentation of that
+variable, accessible with <kbd>C-h v tramp-methods &lt;RET&gt;</kbd>.
+
+<div class="node">
+<a name="Customizing-Completion"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Password-caching">Password caching</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Customizing-Methods">Customizing Methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration">Configuration</a>
+
+</div>
+
+<h3 class="section">5.7 Selecting config files for user/host name completion</h3>
+
+<p><a name="index-customizing-completion-107"></a><a name="index-selecting-config-files-108"></a><a name="index-tramp_002dcompletion_002dfunction_002dalist-109"></a>
+The variable <code>tramp-completion-function-alist</code> is intended to
+customize which files are taken into account for user and host name
+completion (see <a href="#Filename-completion">Filename completion</a>).  For every method, it keeps
+a set of configuration files, accompanied by a Lisp function able to
+parse that file.  Entries in <code>tramp-completion-function-alist</code>
+have the form (<var>method</var> <var>pair1</var> <var>pair2</var> ...).
+
+   <p>Each <var>pair</var> is composed of (<var>function</var> <var>file</var>). 
+<var>function</var> is responsible to extract user names and host names
+from <var>file</var> for completion.  There are two functions which access
+this variable:
+
+<div class="defun">
+&mdash; Function: <b>tramp-get-completion-function</b><var> method<a name="index-tramp_002dget_002dcompletion_002dfunction-110"></a></var><br>
+<blockquote><p>This function returns the list of completion functions for <var>method</var>.
+
+        <p>Example:
+     <pre class="example">          (tramp-get-completion-function "rsh")
+          
+               &rArr; ((tramp-parse-rhosts "/etc/hosts.equiv")
+                   (tramp-parse-rhosts "~/.rhosts"))
+</pre>
+        </blockquote></div>
+
+<div class="defun">
+&mdash; Function: <b>tramp-set-completion-function</b><var> method function-list<a name="index-tramp_002dset_002dcompletion_002dfunction-111"></a></var><br>
+<blockquote><p>This function sets <var>function-list</var> as list of completion functions
+for <var>method</var>.
+
+        <p>Example:
+     <pre class="example">          (tramp-set-completion-function "ssh"
+           '((tramp-parse-sconfig "/etc/ssh_config")
+             (tramp-parse-sconfig "~/.ssh/config")))
+          
+               &rArr; ((tramp-parse-sconfig "/etc/ssh_config")
+                   (tramp-parse-sconfig "~/.ssh/config"))
+</pre>
+        </blockquote></div>
+
+   <p>The following predefined functions parsing configuration files exist:
+
+     <dl>
+<dt><code>tramp-parse-rhosts</code><dd><a name="index-tramp_002dparse_002drhosts-112"></a>
+This function parses files which are syntactical equivalent to
+<samp><span class="file">~/.rhosts</span></samp>.  It returns both host names and user names, if
+specified.
+
+     <br><dt><code>tramp-parse-shosts</code><dd><a name="index-tramp_002dparse_002dshosts-113"></a>
+This function parses files which are syntactical equivalent to
+<samp><span class="file">~/.ssh/known_hosts</span></samp>.  Since there are no user names specified
+in such files, it can return host names only.
+
+     <br><dt><code>tramp-parse-sconfig</code><dd><a name="index-tramp_002dparse_002dshosts-114"></a>
+This function returns the host nicknames defined by <code>Host</code> entries
+in <samp><span class="file">~/.ssh/config</span></samp> style files.
+
+     <br><dt><code>tramp-parse-shostkeys</code><dd><a name="index-tramp_002dparse_002dshostkeys-115"></a>
+SSH2 parsing of directories <samp><span class="file">/etc/ssh2/hostkeys/*</span></samp> and
+<samp><span class="file">~/ssh2/hostkeys/*</span></samp>.  Hosts are coded in file names
+<samp><span class="file">hostkey_</span><var>portnumber</var><span class="file">_</span><var>host-name</var><span class="file">.pub</span></samp>.  User names
+are always <code>nil</code>.
+
+     <br><dt><code>tramp-parse-sknownhosts</code><dd><a name="index-tramp_002dparse_002dshostkeys-116"></a>
+Another SSH2 style parsing of directories like
+<samp><span class="file">/etc/ssh2/knownhosts/*</span></samp> and <samp><span class="file">~/ssh2/knownhosts/*</span></samp>.  This
+case, hosts names are coded in file names
+<samp><var>host-name</var><span class="file">.</span><var>algorithm</var><span class="file">.pub</span></samp>.  User names are always <code>nil</code>.
+
+     <br><dt><code>tramp-parse-hosts</code><dd><a name="index-tramp_002dparse_002dhosts-117"></a>
+A function dedicated to <samp><span class="file">/etc/hosts</span></samp> style files.  It returns
+host names only.
+
+     <br><dt><code>tramp-parse-passwd</code><dd><a name="index-tramp_002dparse_002dpasswd-118"></a>
+A function which parses <samp><span class="file">/etc/passwd</span></samp> like files.  Obviously, it
+can return user names only.
+
+     <br><dt><code>tramp-parse-netrc</code><dd><a name="index-tramp_002dparse_002dnetrc-119"></a>
+Finally, a function which parses <samp><span class="file">~/.netrc</span></samp> like files. 
+</dl>
+
+   <p>If you want to keep your own data in a file, with your own structure,
+you might provide such a function as well.  This function must meet
+the following conventions:
+
+<div class="defun">
+&mdash; Function: <b>my-tramp-parse</b><var> file<a name="index-my_002dtramp_002dparse-120"></a></var><br>
+<blockquote><p><var>file</var> must be either a file name on your host, or <code>nil</code>. The
+function must return a list of (<var>user</var> <var>host</var>), which are
+taken as candidates for user and host name completion.
+
+        <p>Example:
+     <pre class="example">          (my-tramp-parse "~/.my-tramp-hosts")
+          
+               &rArr; ((nil "toto") ("daniel" "melancholia"))
+</pre>
+        </blockquote></div>
+
+<div class="node">
+<a name="Password-caching"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Remote-Programs">Remote Programs</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Customizing-Completion">Customizing Completion</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration">Configuration</a>
+
+</div>
+
+<h3 class="section">5.8 Reusing passwords for several connections.</h3>
+
+<p><a name="index-passwords-121"></a>
+Sometimes it is necessary to connect to the same remote host several
+times.  Reentering passwords again and again would be annoying, when
+the chosen method does not support access without password prompt
+through own configuration.
+
+   <p>By default, <span class="sc">tramp</span> caches the passwords entered by you.  They will
+be reused next time if a connection needs them for the same user name
+and host name, independently of the connection method.
+
+   <p><a name="index-password_002dcache_002dexpiry-122"></a>Passwords are not saved permanently, that means the password caching
+is limited to the lifetime of your XEmacs session.  You
+can influence the lifetime of password caching by customizing the
+variable <code>password-cache-expiry</code>.  The value is the number of
+seconds how long passwords are cached.  Setting it to <code>nil</code>
+disables the expiration.
+
+   <p><a name="index-tramp_002dclear_002dpasswd-123"></a>A password is removed from the cache if a connection isn't established
+successfully.  You can remove a password from the cache also by
+executing <kbd>M-x tramp-clear-passwd</kbd> in a buffer containing a
+related remote file or directory.
+
+   <p><a name="index-password_002dcache-124"></a>If you don't like this feature for security reasons, password caching
+can be disabled totally by customizing the variable
+<code>password-cache</code> (setting it to <code>nil</code>).
+
+   <p>Implementation Note: password caching is based on the package
+password.el in No Gnus.  For the time being, it is activated only when
+this package is seen in the <code>load-path</code> while loading <span class="sc">tramp</span>. 
+If you don't use No Gnus, you can take password.el from the <span class="sc">tramp</span>
+<samp><span class="file">contrib</span></samp> directory, see <a href="#Installation-parameters">Installation parameters</a>. 
+It will be activated mandatory once No Gnus has found its way into
+XEmacs.
+
+<div class="node">
+<a name="Remote-Programs"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Remote-shell-setup">Remote shell setup</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Password-caching">Password caching</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration">Configuration</a>
+
+</div>
+
+<h3 class="section">5.9 How <span class="sc">tramp</span> finds and uses programs on the remote machine.</h3>
+
+<p><span class="sc">tramp</span> depends on a number of programs on the remote host in order to
+function, including <samp><span class="command">ls</span></samp>, <samp><span class="command">test</span></samp>, <samp><span class="command">find</span></samp> and
+<samp><span class="command">cat</span></samp>.
+
+   <p>In addition to these required tools, there are various tools that may be
+required based on the connection method. See <a href="#Inline-methods">Inline methods</a> and
+<a href="#External-transfer-methods">External transfer methods</a> for details on these.
+
+   <p>Certain other tools, such as <samp><span class="command">perl</span></samp> (or <samp><span class="command">perl5</span></samp>) and
+<samp><span class="command">grep</span></samp> will be used if they can be found. When they are
+available, they are used to improve the performance and accuracy of
+remote file access.
+
+   <p><a name="index-tramp_002dremote_002dpath-125"></a>When <span class="sc">tramp</span> connects to the remote machine, it searches for the
+programs that it can use. The variable <var>tramp-remote-path</var> controls
+the directories searched on the remote machine.
+
+   <p>By default, this is set to a reasonable set of defaults for most
+machines. It is possible, however, that your local (or remote ;) system
+administrator has put the tools you want in some obscure local
+directory.
+
+   <p>In this case, you can still use them with <span class="sc">tramp</span>. You simply need to
+add code to your <samp><span class="file">.emacs</span></samp> to add the directory to the remote path. 
+This will then be searched by <span class="sc">tramp</span> when you connect and the software
+found.
+
+   <p>To add a directory to the remote search path, you could use code such
+as:
+
+<pre class="lisp">     <i>;; We load </i><span class="sc">tramp</span><i> to define the variable.</i>
+     (require 'tramp)
+     <i>;; We have </i><samp><span class="command">perl</span></samp><i> in "/usr/local/perl/bin"</i>
+     (add-to-list 'tramp-remote-path "/usr/local/perl/bin")
+</pre>
+   <div class="node">
+<a name="Remote-shell-setup"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Windows-setup-hints">Windows setup hints</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Remote-Programs">Remote Programs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration">Configuration</a>
+
+</div>
+
+<!-- node-name,  next,  previous,  up -->
+<h3 class="section">5.10 Remote shell setup hints</h3>
+
+<p><a name="index-remote-shell-setup-126"></a><a name="index-g_t_0040file_007b_002eprofile_007d-file-127"></a><a name="index-g_t_0040file_007b_002elogin_007d-file-128"></a><a name="index-shell-init-files-129"></a>
+As explained in the <a href="#Overview">Overview</a> section, <span class="sc">tramp</span> connects to the
+remote host and talks to the shell it finds there.  Of course, when you
+log in, the shell executes its init files.  Suppose your init file
+requires you to enter the birth date of your mother; clearly <span class="sc">tramp</span>
+does not know this and hence fails to log you in to that host.
+
+   <p>There are different possible strategies for pursuing this problem.  One
+strategy is to enable <span class="sc">tramp</span> to deal with all possible situations. 
+This is a losing battle, since it is not possible to deal with
+<em>all</em> situations.  The other strategy is to require you to set up
+the remote host such that it behaves like <span class="sc">tramp</span> expects.  This might
+be inconvenient because you have to invest a lot of effort into shell
+setup before you can begin to use <span class="sc">tramp</span>.
+
+   <p>The package, therefore, pursues a combined approach.  It tries to
+figure out some of the more common setups, and only requires you to
+avoid really exotic stuff.  For example, it looks through a list of
+directories to find some programs on the remote host.  And also, it
+knows that it is not obvious how to check whether a file exists, and
+therefore it tries different possibilities.  (On some hosts and
+shells, the command <samp><span class="command">test -e</span></samp> does the trick, on some hosts
+the shell builtin doesn't work but the program <samp><span class="command">/usr/bin/test
+-e</span></samp> or <samp><span class="command">/bin/test -e</span></samp> works.  And on still other hosts,
+<samp><span class="command">ls -d</span></samp> is the right way to do this.)
+
+   <p>Below you find a discussion of a few things that <span class="sc">tramp</span> does not deal
+with, and that you therefore have to set up correctly.
+
+     <dl>
+<dt><var>shell-prompt-pattern</var><dd><a name="index-shell_002dprompt_002dpattern-130"></a>
+After logging in to the remote host, <span class="sc">tramp</span> has to wait for the remote
+shell startup to finish before it can send commands to the remote
+shell.  The strategy here is to wait for the shell prompt.  In order to
+recognize the shell prompt, the variable <code>shell-prompt-pattern</code> has
+to be set correctly to recognize the shell prompt on the remote host.
+
+     <p>Note that <span class="sc">tramp</span> requires the match for <code>shell-prompt-pattern</code>
+to be at the end of the buffer.  Many people have something like the
+following as the value for the variable: <code>"^[^&gt;$][&gt;$] *"</code>.  Now
+suppose your shell prompt is <code>a &lt;b&gt; c $ </code>.  In this case,
+<span class="sc">tramp</span> recognizes the <code>&gt;</code> character as the end of the prompt,
+but it is not at the end of the buffer.
+
+     <br><dt><var>tramp-shell-prompt-pattern</var><dd><a name="index-tramp_002dshell_002dprompt_002dpattern-131"></a>
+This regular expression is used by <span class="sc">tramp</span> in the same way as
+<code>shell-prompt-pattern</code>, to match prompts from the remote shell. 
+This second variable exists because the prompt from the remote shell
+might be different from the prompt from a local shell &mdash; after all,
+the whole point of <span class="sc">tramp</span> is to log in to remote hosts as a
+different user.  The default value of
+<code>tramp-shell-prompt-pattern</code> is the same as the default value of
+<code>shell-prompt-pattern</code>, which is reported to work well in many
+circumstances.
+
+     <br><dt><samp><span class="command">tset</span></samp> and other questions<dd><a name="index-Unix-command-tset-132"></a><a name="index-tset-Unix-command-133"></a>
+Some people invoke the <samp><span class="command">tset</span></samp> program from their shell startup
+scripts which asks the user about the terminal type of the shell. 
+Maybe some shells ask other questions when they are started.  <span class="sc">tramp</span>
+does not know how to answer these questions.  There are two approaches
+for dealing with this problem.  One approach is to take care that the
+shell does not ask any questions when invoked from <span class="sc">tramp</span>.  You can
+do this by checking the <code>TERM</code> environment variable, it will be
+set to <code>dumb</code> when connecting.
+
+     <p><a name="index-tramp_002dterminal_002dtype-134"></a>The variable <code>tramp-terminal-type</code> can be used to change this value
+to <code>dumb</code>.
+
+     <p>The other approach is to teach <span class="sc">tramp</span> about these questions.  See
+the variables <code>tramp-actions-before-shell</code> and
+<code>tramp-multi-actions</code> (for multi-hop connections).
+
+     <br><dt>Environment variables named like users in <samp><span class="file">.profile</span></samp><dd>
+If you have a user named frumple and set the variable <code>FRUMPLE</code> in
+your shell environment, then this might cause trouble.  Maybe rename
+the variable to <code>FRUMPLE_DIR</code> or the like.
+
+     <p>This weird effect was actually reported by a <span class="sc">tramp</span> user!
+
+     <br><dt>Non-Bourne commands in <samp><span class="file">.profile</span></samp><dd>
+After logging in to the remote host, <span class="sc">tramp</span> issues the command
+<samp><span class="command">exec /bin/sh</span></samp>.  (Actually, the command is slightly
+different.)  When <samp><span class="command">/bin/sh</span></samp> is executed, it reads some init
+files, such as <samp><span class="file">~/.shrc</span></samp> or <samp><span class="file">~/.profile</span></samp>.
+
+     <p>Now, some people have a login shell which is not <code>/bin/sh</code> but a
+Bourne-ish shell such as bash or ksh.  Some of these people might put
+their shell setup into the files <samp><span class="file">~/.shrc</span></samp> or <samp><span class="file">~/.profile</span></samp>. 
+This way, it is possible for non-Bourne constructs to end up in those
+files.  Then, <samp><span class="command">exec /bin/sh</span></samp> might cause the Bourne shell to
+barf on those constructs.
+
+     <p>As an example, imagine somebody putting <samp><span class="command">export FOO=bar</span></samp> into
+the file <samp><span class="file">~/.profile</span></samp>.  The standard Bourne shell does not
+understand this syntax and will emit a syntax error when it reaches
+this line.
+
+     <p>Another example is the tilde (<code>~</code>) character, say when adding
+<samp><span class="file">~/bin</span></samp> to <code>$PATH</code>.  Many Bourne shells will not expand this
+character, and since there is usually no directory whose name consists
+of the single character tilde, strange things will happen.
+
+     <p>What can you do about this?
+
+     <p>Well, one possibility is to make sure that everything in <samp><span class="file">~/.shrc</span></samp>
+and <samp><span class="file">~/.profile</span></samp> on all remote hosts is Bourne-compatible.  In the
+above example, instead of <samp><span class="command">export FOO=bar</span></samp>, you might use
+<samp><span class="command">FOO=bar; export FOO</span></samp> instead.
+
+     <p>The other possibility is to put your non-Bourne shell setup into some
+other files.  For example, bash reads the file <samp><span class="file">~/.bash_profile</span></samp>
+instead of <samp><span class="file">~/.profile</span></samp>, if the former exists.  So bash
+aficionados just rename their <samp><span class="file">~/.profile</span></samp> to
+<samp><span class="file">~/.bash_profile</span></samp> on all remote hosts, and Bob's your uncle.
+
+     <p>The <span class="sc">tramp</span> developers would like to circumvent this problem, so
+if you have an idea about it, please tell us.  However, we are afraid
+it is not that simple: before saying <samp><span class="command">exec /bin/sh</span></samp>,
+<span class="sc">tramp</span> does not know which kind of shell it might be talking
+to.  It could be a Bourne-ish shell like ksh or bash, or it could be a
+csh derivative like tcsh, or it could be zsh, or even rc.  If the
+shell is Bourne-ish already, then it might be prudent to omit the
+<samp><span class="command">exec /bin/sh</span></samp> step.  But how to find out if the shell is
+Bourne-ish?
+
+   </dl>
+
+<div class="node">
+<a name="Auto-save-and-Backup"></a>
+<a name="Auto_002dsave-and-Backup"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Windows-setup-hints">Windows setup hints</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration">Configuration</a>
+
+</div>
+
+<h3 class="section">5.11 Auto-save and Backup configuration</h3>
+
+<p><a name="index-auto_002dsave-135"></a><a name="index-backup-136"></a><a name="index-bkup_002dbackup_002ddirectory_002dinfo-137"></a>
+Normally, XEmacs writes backup files to the same directory
+as the original files, but this behavior can be changed via the
+variable
+<code>bkup-backup-directory-info</code>. 
+In connection with <span class="sc">tramp</span>, this can have unexpected side effects. 
+Suppose that you specify that all backups should go to the directory
+<samp><span class="file">~/.emacs.d/backups/</span></samp>, and then you edit the file
+<samp><span class="file">/[su/root@localhost]/etc/secretfile</span></samp>. 
+The effect is that the backup file will be owned by you and not by
+root, thus possibly enabling others to see it even if they were not
+intended to see it.
+
+   <p>When
+<code>bkup-backup-directory-info</code>
+is <code>nil</code> (the default), such problems do not occur.
+
+   <p>Therefore, it is useful to set special values for <span class="sc">tramp</span>
+files.  For example, the following statement effectively `turns off'
+the effect of
+<code>bkup-backup-directory-info</code>
+for <span class="sc">tramp</span> files:
+
+<pre class="lisp">     (require 'backup-dir)
+     (add-to-list 'bkup-backup-directory-info
+                  (list tramp-file-name-regexp ""))
+</pre>
+   <p>Another possibility is to use the <span class="sc">tramp</span> variable
+<code>tramp-bkup-backup-directory-info</code>. 
+This variable has the same meaning like
+<code>bkup-backup-directory-info</code>. 
+If a <span class="sc">tramp</span> file is backed up, and DIRECTORY is an absolute
+local file name, DIRECTORY is prepended with the <span class="sc">tramp</span> file
+name prefix of the file to be backed up.
+
+<p class="noindent">Example:
+
+<pre class="lisp">     (require 'backup-dir)
+     (add-to-list 'bkup-backup-directory-info
+                  (list "." "~/.emacs.d/backups/" 'full-path))
+     (setq tramp-bkup-backup-directory-info bkup-backup-directory-info)
+</pre>
+   <p class="noindent">The backup file name of
+<samp><span class="file">/[su/root@localhost]/etc/secretfile</span></samp>
+would be
+<samp><span class="file">/[su/root@localhost]~/.emacs.d/backups/![su!root@localhost]!etc!secretfile~</span></samp>
+
+   <p>The same problem can happen with auto-saving files. 
+For this purpose you can set the variable <code>auto-save-directory</code>
+to a proper value.
+
+<div class="node">
+<a name="Windows-setup-hints"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Auto_002dsave-and-Backup">Auto-save and Backup</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Remote-shell-setup">Remote shell setup</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration">Configuration</a>
+
+</div>
+
+<h3 class="section">5.12 Issues with Cygwin ssh</h3>
+
+<p><a name="index-Cygwin_002c-issues-138"></a>
+This section needs a lot of work!  Please help.
+
+   <p><a name="index-method-sshx-with-Cygwin-139"></a><a name="index-sshx-method-with-Cygwin-140"></a>The recent Cygwin installation of <samp><span class="command">ssh</span></samp> works only with a
+Cygwinized XEmacs.  You can check it by typing <kbd>M-x
+eshell</kbd>, and starting <kbd>ssh test.machine</kbd>.  The problem is evident
+if you see a message like this:
+
+<pre class="example">     Pseudo-terminal will not be allocated because stdin is not a terminal.
+</pre>
+   <p>Older <samp><span class="command">ssh</span></samp> versions of Cygwin are told to cooperate with
+<span class="sc">tramp</span> selecting <samp><span class="option">sshx</span></samp> as the connection method.  You
+can find information about setting up Cygwin in their FAQ at
+<a href="http://cygwin.com/faq/">http://cygwin.com/faq/</a>.
+
+   <p><a name="index-method-scpx-with-Cygwin-141"></a><a name="index-scpx-method-with-Cygwin-142"></a>If you wish to use the <samp><span class="option">scpx</span></samp> connection method, then you might
+have the problem that XEmacs calls <samp><span class="command">scp</span></samp> with a
+Windows filename such as <code>c:/foo</code>.  The Cygwin version of
+<samp><span class="command">scp</span></samp> does not know about Windows filenames and interprets this
+as a remote filename on the host <code>c</code>.
+
+   <p>One possible workaround is to write a wrapper script for <samp><span class="option">scp</span></samp>
+which converts the Windows filename to a Cygwinized filename.
+
+   <p><a name="index-Cygwin-and-ssh_002dagent-143"></a><a name="index-SSH_005fAUTH_005fSOCK-and-_0040value_007bemacsname_007d-on-Windows-144"></a>If you want to use either <samp><span class="option">ssh</span></samp> based method on Windows, then
+you might encounter problems with <samp><span class="command">ssh-agent</span></samp>.  Using this
+program, you can avoid typing the pass-phrase every time you log in. 
+However, if you start XEmacs from a desktop shortcut, then
+the environment variable <code>SSH_AUTH_SOCK</code> is not set and so
+XEmacs and thus <span class="sc">tramp</span> and thus <samp><span class="command">ssh</span></samp> and
+<samp><span class="command">scp</span></samp> started from <span class="sc">tramp</span> cannot communicate with
+<samp><span class="command">ssh-agent</span></samp>.  It works better to start XEmacs from
+the shell.
+
+   <p>If anyone knows how to start <samp><span class="command">ssh-agent</span></samp> under Windows in such a
+way that desktop shortcuts can profit, please holler.  I don't really
+know anything at all about Windows<small class="dots">...</small>
+
+<div class="node">
+<a name="Usage"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Bug-Reports">Bug Reports</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Configuration">Configuration</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">6 Using <span class="sc">tramp</span></h2>
+
+<p><a name="index-using-_0040value_007btramp_007d-145"></a>
+Once you have installed <span class="sc">tramp</span> it will operate fairly transparently. You
+will be able to access files on any remote machine that you can log in
+to as though they were local.
+
+   <p>Files are specified to <span class="sc">tramp</span> using a formalized syntax specifying the
+details of the system to connect to.  This is similar to the syntax used
+by the EFS package.
+
+   <p><a name="index-type_002dahead-146"></a>Something that might happen which surprises you is that
+XEmacs remembers all your keystrokes, so if you see a
+password prompt from XEmacs, say, and hit <kbd>&lt;RET&gt;</kbd>
+twice instead of once, then the second keystroke will be processed by
+XEmacs after <span class="sc">tramp</span> has done its thing.  Why, this
+type-ahead is normal behavior, you say.  Right you are, but be aware
+that opening a remote file might take quite a while, maybe half a
+minute when a connection needs to be opened.  Maybe after half a
+minute you have already forgotten that you hit that key!
+
+<ul class="menu">
+<li><a accesskey="1" href="#Filename-Syntax">Filename Syntax</a>:              <span class="sc">tramp</span> filename conventions. 
+<li><a accesskey="2" href="#Multi_002dhop-filename-syntax">Multi-hop filename syntax</a>:    Multi-hop filename conventions. 
+<li><a accesskey="3" href="#Filename-completion">Filename completion</a>:          Filename completion. 
+<li><a accesskey="4" href="#Dired">Dired</a>:                        Dired. 
+<li><a accesskey="5" href="#Compilation">Compilation</a>:                  Compile remote files. 
+</ul>
+
+<div class="node">
+<a name="Filename-Syntax"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Multi_002dhop-filename-syntax">Multi-hop filename syntax</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
+
+</div>
+
+<h3 class="section">6.1 <span class="sc">tramp</span> filename conventions</h3>
+
+<p><a name="index-filename-syntax-147"></a><a name="index-filename-examples-148"></a>
+To access the file <var>localname</var> on the remote machine <var>machine</var> you
+would specify the filename
+<samp><span class="file">/[</span><var>machine</var><span class="file">]</span><var>localname</var></samp>. 
+This will connect to <var>machine</var> and transfer the file using the
+default method.  See <a href="#Default-Method">Default Method</a>.
+
+   <p>Some examples of <span class="sc">tramp</span> filenames are shown below.
+
+     <dl>
+<dt><samp><span class="file">/[melancholia].emacs</span></samp><dd>Edit the file <samp><span class="file">.emacs</span></samp> in your home directory on the machine
+<code>melancholia</code>.
+
+     <br><dt><samp><span class="file">/[melancholia.danann.net].emacs</span></samp><dd>This edits the same file, using the fully qualified domain name of
+the machine.
+
+     <br><dt><samp><span class="file">/[melancholia]~/.emacs</span></samp><dd>This also edits the same file &mdash; the <samp><span class="file">~</span></samp> is expanded to your
+home directory on the remote machine, just like it is locally.
+
+     <br><dt><samp><span class="file">/[melancholia]~daniel/.emacs</span></samp><dd>This edits the file <samp><span class="file">.emacs</span></samp> in the home directory of the user
+<code>daniel</code> on the machine <code>melancholia</code>. The <samp><span class="file">~&lt;user&gt;</span></samp>
+construct is expanded to the home directory of that user on the remote
+machine.
+
+     <br><dt><samp><span class="file">/[melancholia]/etc/squid.conf</span></samp><dd>This edits the file <samp><span class="file">/etc/squid.conf</span></samp> on the machine
+<code>melancholia</code>.
+
+   </dl>
+
+   <p>Unless you specify a different name to use, <span class="sc">tramp</span> will use the
+current local user name as the remote user name to log in with. If you
+need to log in as a different user, you can specify the user name as
+part of the filename.
+
+   <p>To log in to the remote machine as a specific user, you use the syntax
+<samp><span class="file">/[</span><var>user</var><span class="file">@</span><var>machine</var><span class="file">]/</span><var>path/to.file</var></samp>. 
+That means that connecting to <code>melancholia</code> as <code>daniel</code> and
+editing <samp><span class="file">.emacs</span></samp> in your home directory you would specify
+<samp><span class="file">/[daniel@melancholia].emacs</span></samp>.
+
+   <p>It is also possible to specify other file transfer methods
+(see <a href="#Default-Method">Default Method</a>) as part of the filename. 
+This is done by replacing the initial
+<samp><span class="file">/[</span></samp> with
+<samp><span class="file">/[&lt;method&gt;/</span></samp>. 
+(Note the trailing slash!). 
+The user, machine and file specification remain the same.
+
+   <p>So, to connect to the machine <code>melancholia</code> as <code>daniel</code>,
+using the <samp><span class="option">ssh</span></samp> method to transfer files, and edit <samp><span class="file">.emacs</span></samp>
+in my home directory I would specify the filename
+<samp><span class="file">/[ssh/daniel@melancholia].emacs</span></samp>.
+
+<div class="node">
+<a name="Multi-hop-filename-syntax"></a>
+<a name="Multi_002dhop-filename-syntax"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Filename-completion">Filename completion</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Filename-Syntax">Filename Syntax</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
+
+</div>
+
+<h3 class="section">6.2 Multi-hop filename conventions</h3>
+
+<p><a name="index-filename-syntax-for-multi_002dhop-files-149"></a><a name="index-multi_002dhop-filename-syntax-150"></a>
+The syntax of multi-hop file names is necessarily slightly different
+than the syntax of other <span class="sc">tramp</span> file names.  Here's an example
+multi-hop file name:
+
+<pre class="example">     /[multi/rsh:out@gate/telnet:kai@real.host]/path/to.file
+</pre>
+   <p>This is quite a mouthful.  So let's go through it step by step.  The
+file name consists of three parts. 
+The parts are separated by slashes and square brackets. 
+The first part is <samp><span class="file">/[multi</span></samp>, the method
+specification.  The second part is
+<samp><span class="file">rsh:out@gate/telnet:kai@real.host</span></samp>
+and specifies the hops.  The final part is <samp><span class="file">/path/to.file</span></samp> and
+specifies the file name on the remote host.
+
+   <p>The first part and the final part should be clear.  See <a href="#Multi_002dhop-Methods">Multi-hop Methods</a>, for a list of alternatives for the method specification.
+
+   <p>The second part can be subdivided again into components, so-called
+hops.  In the above file name, there are two hops,
+<samp><span class="file">rsh:out@gate</span></samp> and
+<samp><span class="file">telnet:kai@real.host</span></samp>.
+
+   <p>Each hop can <em>again</em> be subdivided into (three) components, the
+<dfn>hop method</dfn>, the <dfn>user name</dfn> and the <dfn>host name</dfn>.  The
+meaning of the second and third component should be clear, and the hop
+method says what program to use to perform that hop.
+
+   <p>The first hop, <samp><span class="file">rsh:out@gate</span></samp>,
+says to use <samp><span class="command">rsh</span></samp> to log in as user <code>out</code> to the host
+<code>gate</code>.  Starting at that host, the second hop,
+<samp><span class="file">telnet:kai@real.host</span></samp>, says to
+use <samp><span class="command">telnet</span></samp> to log in as user <code>kai</code> to host
+<code>real.host</code>.
+
+   <p>See <a href="#Multi_002dhop-Methods">Multi-hop Methods</a>, for a list of possible hop method values. 
+The variable <code>tramp-multi-connection-function-alist</code> contains the
+list of possible hop methods and information on how to execute them,
+should you want to add your own.
+
+<div class="node">
+<a name="Filename-completion"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Dired">Dired</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Multi_002dhop-filename-syntax">Multi-hop filename syntax</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
+
+</div>
+
+<h3 class="section">6.3 Filename completion</h3>
+
+<p><a name="index-filename-completion-151"></a>
+Filename completion works with <span class="sc">tramp</span> for completion of method
+names, of user names and of machine names (except multi-hop methods)
+as well as for completion of file names on remote machines.
+
+   <p>If you, for example, type <kbd>C-x C-f /[t
+&lt;TAB&gt;</kbd>, <span class="sc">tramp</span> might give you as result the choice for
+
+<pre class="example">     [telnet/				   [toto]
+</pre>
+   <p>&lsquo;<samp><span class="samp">[telnet/</span></samp>&rsquo;
+is a possible completion for the respective method,
+and &lsquo;<samp><span class="samp">[toto]</span></samp>&rsquo;
+might be a host <span class="sc">tramp</span> has detected in your <samp><span class="file">~/.ssh/known_hosts</span></samp>
+file (given you're using default method <samp><span class="option">ssh</span></samp>).
+
+   <p>If you go on to type <kbd>e &lt;TAB&gt;</kbd>, the minibuffer is completed to
+&lsquo;<samp><span class="samp">/[telnet/</span></samp>&rsquo;. 
+Next <kbd>&lt;TAB&gt;</kbd> brings you all machine names <span class="sc">tramp</span> detects in
+your <samp><span class="file">/etc/hosts</span></samp> file, let's say
+
+<pre class="example">     [telnet/127.0.0.1]		   [telnet/192.168.0.1]
+     [telnet/localhost]		   [telnet/melancholia.danann.net]
+     [telnet/melancholia]
+</pre>
+   <p>Now you can choose the desired machine, and you can continue to
+complete file names on that machine.
+
+   <p>As filename completion needs to fetch the listing of files from the
+remote machine, this feature is sometimes fairly slow.  As <span class="sc">tramp</span>
+does not yet cache the results of directory listing, there is no gain
+in performance the second time you complete filenames.
+
+   <p>If the configuration files (see <a href="#Customizing-Completion">Customizing Completion</a>), which
+<span class="sc">tramp</span> uses for analysis of completion, offer user names, those user
+names will be taken into account as well.
+
+<div class="node">
+<a name="Dired"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Compilation">Compilation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Filename-completion">Filename completion</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
+
+</div>
+
+<h3 class="section">6.4 Dired</h3>
+
+<p><a name="index-dired-152"></a>
+<span class="sc">tramp</span> works transparently with dired, enabling you to use this powerful
+file management tool to manage files on any machine you have access to
+over the Internet.
+
+   <p>If you need to browse a directory tree, Dired is a better choice, at
+present, than filename completion.  Dired has its own cache mechanism
+and will only fetch the directory listing once.
+
+<div class="node">
+<a name="Compilation"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Dired">Dired</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Usage">Usage</a>
+
+</div>
+
+<h3 class="section">6.5 Compile remote files</h3>
+
+<p><a name="index-compile-153"></a><a name="index-recompile-154"></a>
+<span class="sc">tramp</span> provides commands for compilation of files on remote
+machines.  In order to get them loaded, you need to require
+<samp><span class="file">tramp-util.el</span></samp>:
+
+<pre class="lisp">     (require 'tramp-util)
+</pre>
+   <p>Afterwards, you can use the commands <code>tramp-compile</code> and
+<code>tramp-recompile</code> instead of <code>compile</code> and <code>recompile</code>,
+respectively; see <a href="xemacs.html#Compilation">Compilation</a>.  This does not
+work for the <samp><span class="option">ftp</span></samp> and <samp><span class="option">smb</span></samp> methods.
+
+   <p>The corresponding key bindings and menu entries calling these commands
+are redefined automatically for buffers associated with remote files.
+
+   <p>After finishing the compilation, you can use the usual commands like
+<code>previous-error</code>, <code>next-error</code> and <code>first-error</code> for
+navigation in the <samp><span class="file">*Compilation*</span></samp> buffer.
+
+<div class="node">
+<a name="Bug-Reports"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Frequently-Asked-Questions">Frequently Asked Questions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Usage">Usage</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">7 Reporting Bugs and Problems</h2>
+
+<p><a name="index-bug-reports-155"></a>
+Bugs and problems with <span class="sc">tramp</span> are actively worked on by the
+development team. Feature requests and suggestions are also more than
+welcome.
+
+   <p>The <span class="sc">tramp</span> mailing list is a great place to get information on
+working with <span class="sc">tramp</span>, solving problems and general discussion
+and advice on topics relating to the package.  It is moderated so
+non-subscribers can post but messages will be delayed, possibly up to
+48 hours (or longer in case of holidays), until the moderator approves
+your message.
+
+   <p>The mailing list is at <a href="mailto:tramp-devel@gnu.org">tramp-devel@gnu.org</a>.  Messages sent to
+this address go to all the subscribers. This is <em>not</em> the address
+to send subscription requests to.
+
+   <p>Subscribing to the list is performed via
+<a href="http://lists.gnu.org/mailman/listinfo/tramp-devel/">the <span class="sc">tramp</span> Mail Subscription Page</a>.
+
+   <p>To report a bug in <span class="sc">tramp</span>, you should execute <kbd>M-x tramp-bug</kbd>. This
+will automatically generate a buffer with the details of your system and
+<span class="sc">tramp</span> version.
+
+   <p>When submitting a bug report, please try to describe in excruciating
+detail the steps required to reproduce the problem, the setup of the
+remote machine and any special conditions that exist.  You should also
+check that your problem is not described already in See <a href="#Frequently-Asked-Questions">Frequently Asked Questions</a>.
+
+   <p>If you can identify a minimal test case that reproduces the problem,
+include that with your bug report. This will make it much easier for the
+development team to analyze and correct the problem.
+
+<div class="node">
+<a name="Frequently-Asked-Questions"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Concept-Index">Concept Index</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Bug-Reports">Bug Reports</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">8 Frequently Asked Questions</h2>
+
+<p><a name="index-frequently-asked-questions-156"></a><a name="index-FAQ-157"></a>
+     <ul>
+<li>Where can I get the latest <span class="sc">tramp</span>?
+
+     <p><span class="sc">tramp</span> is available under the URL below.
+
+     <p class="noindent"><a href="ftp://ftp.gnu.org/gnu/tramp/">ftp://ftp.gnu.org/gnu/tramp/</a>
+
+     <p class="noindent">There is also a Savannah project page.
+
+     <p class="noindent"><a href="http://savannah.gnu.org/projects/tramp/">http://savannah.gnu.org/projects/tramp/</a>
+
+     <li>Which systems does it work on?
+
+     <p>The package has been used successfully on GNU Emacs 20, GNU Emacs 21
+and GNU Emacs 22, as well as XEmacs 21.  XEmacs 20 is more
+problematic, see the notes in <samp><span class="file">tramp.el</span></samp>.  I don't think anybody
+has really tried it on GNU Emacs 19.
+
+     <p>The package was intended to work on Unix, and it really expects a
+Unix-like system on the remote end (except the <samp><span class="option">smb</span></samp> method),
+but some people seemed to have some success getting it to work on MS
+Windows NT/2000/XP XEmacs.
+
+     <p>There is some informations on <span class="sc">tramp</span> on NT at the following URL;
+many thanks to Joe Stoy for providing the information:
+<a href="ftp://ftp.comlab.ox.ac.uk/tmp/Joe.Stoy/">ftp://ftp.comlab.ox.ac.uk/tmp/Joe.Stoy/</a>
+
+     <!-- The link is broken. I've contacted Tom for clarification. Michael. -->
+     <li><span class="sc">tramp</span> does not connect to the remote host
+
+     <p>When <span class="sc">tramp</span> does not connect to the remote host, there are two
+reasons heading the bug mailing list:
+
+          <ul>
+<li>Unknown characters in the prompt
+
+          <p><span class="sc">tramp</span> needs to recognize the prompt on the remote machine
+after execution any command.  This is not possible, when the prompt
+contains unknown characters like escape sequences for coloring.  This
+should be avoided on the remote side.  See <a href="#Remote-shell-setup">Remote shell setup</a>. for
+setting the regular expression detecting the prompt.
+
+          <p>A special problem is the zsh, which uses left-hand side and right-hand
+side prompts in parallel.  Therefore, it is necessary to disable the
+zsh line editor on the remote host.  You shall add to <samp><span class="file">~/.zshrc</span></samp>
+the following command:
+
+          <pre class="example">               [ $TERM = "dumb" ] &amp;&amp; unsetopt zle &amp;&amp; PS1='$ '
+</pre>
+          <li><span class="sc">tramp</span> doesn't transfer strings with more than 500 characters
+correctly
+
+          <p>On some few systems, the implementation of <code>process-send-string</code>
+seems to be broken for longer strings.  This case, you should
+customize the variable <code>tramp-chunksize</code> to 500.  For a
+description how to determine whether this is necessary see the
+documentation of <code>tramp-chunksize</code>. 
+</ul>
+
+     <li>File name completion does not work with <span class="sc">tramp</span>
+
+     <p>When you log in to the remote machine, do you see the output of
+<samp><span class="command">ls</span></samp> in color? If so, this may be the cause of your problems.
+
+     <p><samp><span class="command">ls</span></samp> outputs <acronym>ANSI</acronym> escape sequences that your terminal
+emulator interprets to set the colors.  These escape sequences will
+confuse <span class="sc">tramp</span> however.
+
+     <p>In your <samp><span class="file">.bashrc</span></samp>, <samp><span class="file">.profile</span></samp> or equivalent on the remote
+machine you probably have an alias configured that adds the option
+<samp><span class="option">--color=yes</span></samp> or <samp><span class="option">--color=auto</span></samp>.
+
+     <p>You should remove that alias and ensure that a new login <em>does not</em>
+display the output of <samp><span class="command">ls</span></samp> in color.  If you still cannot use
+filename completion, report a bug to the <span class="sc">tramp</span> developers.
+
+     <li>File name completion does not work in large directories
+
+     <p><span class="sc">tramp</span> uses globbing for some operations.  (Globbing means to use the
+shell to expand wildcards such as `*.c'.)  This might create long
+command lines, especially in directories with many files.  Some shells
+choke on long command lines, or don't cope well with the globbing
+itself.
+
+     <p>If you have a large directory on the remote end, you may wish to execute
+a command like &lsquo;<samp><span class="samp">ls -d * ..?* &gt; /dev/null</span></samp>&rsquo; and see if it hangs. 
+Note that you must first start the right shell, which might be
+<samp><span class="command">/bin/sh</span></samp>, <samp><span class="command">ksh</span></samp> or <samp><span class="command">bash</span></samp>, depending on which
+of those supports tilde expansion.
+
+     <li>How can I get notified when <span class="sc">tramp</span> file transfers are complete?
+
+     <p>The following snippet can be put in your <samp><span class="file">~/.emacs</span></samp> file.  It
+makes XEmacs beep after reading from or writing to the
+remote host.
+
+     <pre class="lisp">          (defadvice tramp-handle-write-region
+            (after tramp-write-beep-advice activate)
+           " make tramp beep after writing a file."
+           (interactive)
+           (beep))
+          (defadvice tramp-handle-do-copy-or-rename-file
+            (after tramp-copy-beep-advice activate)
+           " make tramp beep after copying a file."
+           (interactive)
+           (beep))
+          (defadvice tramp-handle-insert-file-contents
+            (after tramp-copy-beep-advice activate)
+           " make tramp beep after copying a file."
+           (interactive)
+           (beep))
+</pre>
+     <li>There's this <samp><span class="file">~/.sh_history</span></samp> file on the remote host which keeps
+growing and growing.  What's that?
+
+     <p>Sometimes, <span class="sc">tramp</span> starts <samp><span class="command">ksh</span></samp> on the remote host for
+tilde expansion.  Maybe <samp><span class="command">ksh</span></samp> saves the history by default. 
+<span class="sc">tramp</span> tries to turn off saving the history, but maybe you have
+to help.  For example, you could put this in your <samp><span class="file">.kshrc</span></samp>:
+
+     <pre class="example">          if [ -f $HOME/.sh_history ] ; then
+             /bin/rm $HOME/.sh_history
+          fi
+          if [ "${HISTFILE-unset}" != "unset" ] ; then
+             unset HISTFILE
+          fi
+          if [ "${HISTSIZE-unset}" != "unset" ] ; then
+             unset HISTSIZE
+          fi
+</pre>
+     <li>How can I disable <span class="sc">tramp</span>?
+
+     <p>Shame on you, why did you read until now?
+
+     <p>Unloading <span class="sc">tramp</span> can be achieved by applying <kbd>M-x
+tramp-unload-tramp</kbd>. 
+</ul>
+
+<!-- For the developer -->
+<div class="node">
+<a name="Version-Control"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Files-directories-and-localnames">Files directories and localnames</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Concept-Index">Concept Index</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">9 The inner workings of remote version control</h2>
+
+<p><a name="index-Version-Control-158"></a>
+Unlike EFS, <span class="sc">tramp</span> has full shell access to the
+remote machine. This makes it possible to provide version control for
+files accessed under <span class="sc">tramp</span>.
+
+   <p>The actual version control binaries must be installed on the remote
+machine, accessible in the directories specified in
+<var>tramp-remote-path</var>.
+
+   <p>This transparent integration with the version control systems is one of
+the most valuable features provided by <span class="sc">tramp</span>, but it is far from perfect. 
+Work is ongoing to improve the transparency of the system.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Version-Controlled-Files">Version Controlled Files</a>:     Determining if a file is under version control. 
+<li><a accesskey="2" href="#Remote-Commands">Remote Commands</a>:              Executing the version control commands on the remote machine. 
+<li><a accesskey="3" href="#Changed-workfiles">Changed workfiles</a>:            Detecting if the working file has changed. 
+<li><a accesskey="4" href="#Checking-out-files">Checking out files</a>:           Bringing the workfile out of the repository. 
+<li><a accesskey="5" href="#Miscellaneous-Version-Control">Miscellaneous Version Control</a>:   Things related to Version Control that don't fit elsewhere. 
+</ul>
+
+<div class="node">
+<a name="Version-Controlled-Files"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Remote-Commands">Remote Commands</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Version-Control">Version Control</a>
+
+</div>
+
+<h3 class="section">9.1 Determining if a file is under version control</h3>
+
+<p>The VC package uses the existence of on-disk revision control master
+files to determine if a given file is under revision control. These file
+tests happen on the remote machine through the standard <span class="sc">tramp</span> mechanisms.
+
+<div class="node">
+<a name="Remote-Commands"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Changed-workfiles">Changed workfiles</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Version-Controlled-Files">Version Controlled Files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Version-Control">Version Control</a>
+
+</div>
+
+<h3 class="section">9.2 Executing the version control commands on the remote machine</h3>
+
+<p>There are no hooks provided by VC to allow intercepting of the version
+control command execution. The calls occur through the
+<code>call-process</code> mechanism, a function that is somewhat more
+efficient than the <code>shell-command</code> function but that does not
+provide hooks for remote execution of commands.
+
+   <p>To work around this, the functions <code>vc-do-command</code> and
+<code>vc-simple-command</code> have been advised to intercept requests for
+operations on files accessed via <span class="sc">tramp</span>.
+
+   <p>In the case of a remote file, the <code>shell-command</code> interface is
+used, with some wrapper code, to provide the same functionality on the
+remote machine as would be seen on the local machine.
+
+<div class="node">
+<a name="Changed-workfiles"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Checking-out-files">Checking out files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Remote-Commands">Remote Commands</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Version-Control">Version Control</a>
+
+</div>
+
+<h3 class="section">9.3 Detecting if the working file has changed</h3>
+
+<p>As there is currently no way to get access to the mtime of a file on a
+remote machine in a portable way, the <code>vc-workfile-unchanged-p</code>
+function is advised to call an <span class="sc">tramp</span> specific function for remote files.
+
+   <p>The <code>tramp-vc-workfile-unchanged-p</code> function uses the functioning VC
+diff functionality to determine if any changes have occurred between the
+workfile and the version control master.
+
+   <p>This requires that a shell command be executed remotely, a process that
+is notably heavier-weight than the mtime comparison used for local
+files. Unfortunately, unless a portable solution to the issue is found,
+this will remain the cost of remote version control.
+
+<div class="node">
+<a name="Checking-out-files"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Miscellaneous-Version-Control">Miscellaneous Version Control</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Changed-workfiles">Changed workfiles</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Version-Control">Version Control</a>
+
+</div>
+
+<h3 class="section">9.4 Bringing the workfile out of the repository</h3>
+
+<p>VC will, by default, check for remote files and refuse to act on them
+when checking out files from the repository. To work around this
+problem, the function <code>vc-checkout</code> knows about <span class="sc">tramp</span> files and
+allows version control to occur.
+
+<div class="node">
+<a name="Miscellaneous-Version-Control"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Checking-out-files">Checking out files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Version-Control">Version Control</a>
+
+</div>
+
+<h3 class="section">9.5 Things related to Version Control that don't fit elsewhere</h3>
+
+<p>Minor implementation details, &amp;c.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Remote-File-Ownership">Remote File Ownership</a>:        How VC determines who owns a workfile. 
+<li><a accesskey="2" href="#Back_002dend-Versions">Back-end Versions</a>:            How VC determines what release your RCS is. 
+</ul>
+
+<div class="node">
+<a name="Remote-File-Ownership"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Back_002dend-Versions">Back-end Versions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Miscellaneous-Version-Control">Miscellaneous Version Control</a>
+
+</div>
+
+<h4 class="subsection">9.5.1 How VC determines who owns a workfile</h4>
+
+<p>XEmacs provides the <code>user-full-name</code> function to
+return the login name of the current user as well as mapping from
+arbitrary user id values back to login names. The VC code uses this
+functionality to map from the uid of the owner of a workfile to the
+login name in some circumstances.
+
+   <p>This will not, for obvious reasons, work if the remote system has a
+different set of logins. As such, it is necessary to delegate to the
+remote machine the job of determining the login name associated with a
+uid.
+
+   <p>Unfortunately, with the profusion of distributed management systems such
+as <code>NIS</code>, <code>NIS+</code> and <code>NetInfo</code>, there is no simple,
+reliable and portable method for performing this mapping.
+
+   <p>Thankfully, the only place in the VC code that depends on the mapping of
+a uid to a login name is the <code>vc-file-owner</code> function. This returns
+the login of the owner of the file as a string.
+
+   <p>This function has been advised to use the output of <samp><span class="command">ls</span></samp> on the
+remote machine to determine the login name, delegating the problem of
+mapping the uid to the login to the remote system which should know more
+about it than I do.
+
+<div class="node">
+<a name="Back-end-Versions"></a>
+<a name="Back_002dend-Versions"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Remote-File-Ownership">Remote File Ownership</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Miscellaneous-Version-Control">Miscellaneous Version Control</a>
+
+</div>
+
+<h4 class="subsection">9.5.2 How VC determines what release your RCS is</h4>
+
+<p>VC needs to know what release your revision control binaries you are
+running as not all features VC supports are available with older
+versions of <samp><span class="command">rcs(1)</span></samp>, <samp><span class="command">cvs(1)</span></samp> or <samp><span class="command">sccs(1)</span></samp>.
+
+   <p>The default implementation of VC determines this value the first time it
+is needed and then stores the value globally to avoid the overhead of
+executing a process and parsing its output each time the information is
+needed.
+
+   <p>Unfortunately, life is not quite so easy when remote version control
+comes into the picture. Each remote machine may have a different version
+of the version control tools and, while this is painful, we need to
+ensure that unavailable features are not used remotely.
+
+   <p>To resolve this issue, <span class="sc">tramp</span> currently takes the sledgehammer
+approach of making the release values of the revision control tools
+local to each <span class="sc">tramp</span> buffer, forcing VC to determine these values
+again each time a new file is visited.
+
+   <p>This has, quite obviously, some performance implications. Thankfully,
+most of the common operations performed by VC do not actually require
+that the remote version be known. This makes the problem far less
+apparent.
+
+   <p>Eventually these values will be captured by <span class="sc">tramp</span> on a system by
+system basis and the results cached to improve performance.
+
+<div class="node">
+<a name="Files-directories-and-localnames"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Issues">Issues</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Version-Control">Version Control</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">10 How file names, directories and localnames are mangled and managed.</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Localname-deconstruction">Localname deconstruction</a>:     Breaking a localname into its components. 
+</ul>
+
+<div class="node">
+<a name="Localname-deconstruction"></a>
+<p><hr>
+Up:&nbsp;<a rel="up" accesskey="u" href="#Files-directories-and-localnames">Files directories and localnames</a>
+
+</div>
+
+<h3 class="section">10.1 Breaking a localname into its components.</h3>
+
+<p><span class="sc">tramp</span> file names are somewhat different, obviously, to ordinary file
+names. As such, the lisp functions <code>file-name-directory</code> and
+<code>file-name-nondirectory</code> are overridden within the <span class="sc">tramp</span>
+package.
+
+   <p>Their replacements are reasonably simplistic in their approach. They
+dissect the filename, call the original handler on the localname and
+then rebuild the <span class="sc">tramp</span> file name with the result.
+
+   <p>This allows the platform specific hacks in the original handlers to take
+effect while preserving the <span class="sc">tramp</span> file name information.
+
+<div class="node">
+<a name="Issues"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#GNU-Free-Documentation-License">GNU Free Documentation License</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Files-directories-and-localnames">Files directories and localnames</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">11 Debatable Issues and What Was Decided</h2>
+
+     <ul>
+<li>The uuencode method does not always work.
+
+     <p>Due to the design of <span class="sc">tramp</span>, the encoding and decoding programs
+need to read from stdin and write to stdout.  On some systems,
+<samp><span class="command">uudecode -o -</span></samp> will read stdin and write the decoded file to
+stdout, on other systems <samp><span class="command">uudecode -p</span></samp> does the same thing. 
+But some systems have uudecode implementations which cannot do this at
+all&mdash;it is not possible to call these uudecode implementations with
+suitable parameters so that they write to stdout.
+
+     <p>Of course, this could be circumvented: the <code>begin foo 644</code> line
+could be rewritten to put in some temporary file name, then
+<samp><span class="command">uudecode</span></samp> could be called, then the temp file could be
+printed and deleted.
+
+     <p>But I have decided that this is too fragile to reliably work, so on some
+systems you'll have to do without the uuencode methods.
+
+     <li><span class="sc">tramp</span> does not work on XEmacs 20.
+
+     <p>This is because it requires the macro <code>with-timeout</code> which does not
+appear to exist in XEmacs 20.  I'm somewhat reluctant to add an
+emulation macro to <span class="sc">tramp</span>, but if somebody who uses XEmacs 20 steps
+forward and wishes to implement and test it, please contact me or the
+mailing list.
+
+     <li>The <span class="sc">tramp</span> filename syntax differs between GNU Emacs and XEmacs.
+
+     <p>The GNU Emacs maintainers wish to use a unified filename syntax for
+Ange-FTP and <span class="sc">tramp</span> so that users don't have to learn a new
+syntax.  It is sufficient to learn some extensions to the old syntax.
+
+     <p>For the XEmacs maintainers, the problems caused from using a unified
+filename syntax are greater than the gains.  The XEmacs package system
+uses EFS for downloading new packages.  So, obviously, EFS has to be
+installed from the start.  If the filenames were unified, <span class="sc">tramp</span>
+would have to be installed from the start, too.
+
+     <p><strong>Note:</strong> If you'd like to use a similar syntax like
+EFS, you need the following settings in your init
+file:
+
+     <pre class="lisp">          (setq tramp-unified-filenames t)
+          (require 'tramp)
+</pre>
+     <p>The autoload of the XEmacs <span class="sc">tramp</span> package must be
+disabled.  This can be achieved by setting file permissions <code>000</code>
+to the files <samp><span class="file">.../xemacs-packages/lisp/tramp/auto-autoloads.el*</span></samp>.
+
+     <p>In case of unified filenames, all XEmacs download sites
+are added to <code>tramp-default-method-alist</code> with default method
+<samp><span class="option">ftp</span></samp> See <a href="#Default-Method">Default Method</a>.  These settings shouldn't be touched
+for proper working of the XEmacs package system.
+
+     <p>The syntax for unified filenames is described in the <span class="sc">tramp</span> manual
+for GNU Emacs. 
+</ul>
+
+<div class="node">
+<a name="GNU-Free-Documentation-License"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Issues">Issues</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="appendix">Appendix A GNU Free Documentation License</h2>
+
+<!-- *-texinfo-*- -->
+<div align="center">Version 1.2, November 2002</div>
+
+<pre class="display">     Copyright (C) 2000,2001,2002  Free Software Foundation, Inc.
+     51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+     
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+</pre>
+   <pre class="sp">
+
+</pre>
+     <ol type=1 start=0>
+<li>PREAMBLE
+
+     <p>The purpose of this License is to make a manual, textbook, or other
+functional and useful document &ldquo;free&rdquo; in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially. 
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.
+
+     <p>This License is a kind of &ldquo;copyleft,&rdquo; which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the GNU General Public License, which is a copyleft
+license designed for free software.
+
+     <p>We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+
+     <pre class="sp">
+     
+     </pre>
+     <li>APPLICABILITY AND DEFINITIONS
+
+     <p>This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The &ldquo;Document,&rdquo; below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as &ldquo;you.&rdquo;  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.
+
+     <p>A &ldquo;Modified Version&rdquo; of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+
+     <p>A &ldquo;Secondary Section&rdquo; is a named appendix or a front-matter section of
+the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document's overall subject
+(or to related matters) and contains nothing that could fall directly
+within that overall subject.  (Thus, if the Document is in part a
+textbook of mathematics, a Secondary Section may not explain any
+mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+
+     <p>The &ldquo;Invariant Sections&rdquo; are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.
+
+     <p>The &ldquo;Cover Texts&rdquo; are certain short passages of text that are listed,
+as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+the Document is released under this License.  A Front-Cover Text may
+be at most 5 words, and a Back-Cover Text may be at most 25 words.
+
+     <p>A &ldquo;Transparent&rdquo; copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent. 
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not &ldquo;Transparent&rdquo; is called &ldquo;Opaque.&rdquo;
+
+     <p>Examples of suitable formats for Transparent copies include plain
+ASCII without markup, Texinfo input format, LaTeX input format, SGML
+or XML using a publicly available DTD, and standard-conforming simple
+HTML, PostScript or PDF designed for human modification.  Examples of
+transparent image formats include PNG, XCF and JPG.  Opaque formats
+include proprietary formats that can be read and edited only by
+proprietary word processors, SGML or XML for which the DTD and/or
+processing tools are not generally available, and the
+machine-generated HTML, PostScript or PDF produced by some word
+processors for output purposes only.
+
+     <p>The &ldquo;Title Page&rdquo; means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, &ldquo;Title Page&rdquo; means
+the text near the most prominent appearance of the work's title,
+preceding the beginning of the body of the text.
+
+     <p>A section &ldquo;Entitled XYZ&rdquo; means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as &ldquo;Acknowledgements,&rdquo;
+&ldquo;Dedications,&rdquo; &ldquo;Endorsements,&rdquo; or &ldquo;History.&rdquo;)  To &ldquo;Preserve the Title&rdquo;
+of such a section when you modify the Document means that it remains a
+section &ldquo;Entitled XYZ&rdquo; according to this definition.
+
+     <p>The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.
+     <pre class="sp">
+     
+     </pre>
+     <li>VERBATIM COPYING
+
+     <p>You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no other
+conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+
+     <p>You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+     <pre class="sp">
+     
+     </pre>
+     <li>COPYING IN QUANTITY
+
+     <p>If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document's license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition. 
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+
+     <p>If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+
+     <p>If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material. 
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+
+     <p>It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to give
+them a chance to provide you with an updated version of the Document.
+     <pre class="sp">
+     
+     </pre>
+     <li>MODIFICATIONS
+
+     <p>You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+
+     <p>A. Use in the Title Page (and on the covers, if any) a title distinct
+   from that of the Document, and from those of previous versions
+   (which should, if there were any, be listed in the History section
+   of the Document).  You may use the same title as a previous version
+   if the original publisher of that version gives permission.<br>
+B. List on the Title Page, as authors, one or more persons or entities
+   responsible for authorship of the modifications in the Modified
+   Version, together with at least five of the principal authors of the
+   Document (all of its principal authors, if it has fewer than five),
+   unless they release you from this requirement.<br>
+C. State on the Title page the name of the publisher of the
+   Modified Version, as the publisher.<br>
+D. Preserve all the copyright notices of the Document.<br>
+E. Add an appropriate copyright notice for your modifications
+   adjacent to the other copyright notices.<br>
+F. Include, immediately after the copyright notices, a license notice
+   giving the public permission to use the Modified Version under the
+   terms of this License, in the form shown in the Addendum below.<br>
+G. Preserve in that license notice the full lists of Invariant Sections
+   and required Cover Texts given in the Document's license notice.<br>
+H. Include an unaltered copy of this License.<br>
+I. Preserve the section Entitled &ldquo;History,&rdquo; Preserve its Title, and add
+   to it an item stating at least the title, year, new authors, and
+   publisher of the Modified Version as given on the Title Page.  If
+   there is no section Entitled &ldquo;History&rdquo; in the Document, create one
+   stating the title, year, authors, and publisher of the Document as
+   given on its Title Page, then add an item describing the Modified
+   Version as stated in the previous sentence.<br>
+J. Preserve the network location, if any, given in the Document for
+   public access to a Transparent copy of the Document, and likewise
+   the network locations given in the Document for previous versions
+   it was based on.  These may be placed in the &ldquo;History&rdquo; section. 
+   You may omit a network location for a work that was published at
+   least four years before the Document itself, or if the original
+   publisher of the version it refers to gives permission.<br>
+K. For any section Entitled &ldquo;Acknowledgements&rdquo; or &ldquo;Dedications,&rdquo;
+   Preserve the Title of the section, and preserve in the section all
+   the substance and tone of each of the contributor acknowledgements
+   and/or dedications given therein.<br>
+L. Preserve all the Invariant Sections of the Document,
+   unaltered in their text and in their titles.  Section numbers
+   or the equivalent are not considered part of the section titles.<br>
+M. Delete any section Entitled &ldquo;Endorsements.&rdquo;  Such a section
+   may not be included in the Modified Version.<br>
+N. Do not retitle any existing section to be Entitled &ldquo;Endorsements&rdquo;
+   or to conflict in title with any Invariant Section.<br>
+O. Preserve any Warranty Disclaimers.<br>
+     <pre class="sp">
+     
+     </pre>
+     If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version's license notice. 
+These titles must be distinct from any other section titles.
+
+     <p>You may add a section Entitled &ldquo;Endorsements,&rdquo; provided it contains
+nothing but endorsements of your Modified Version by various
+parties&ndash;for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+
+     <p>You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+
+     <p>The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+     <pre class="sp">
+     
+     </pre>
+     <li>COMBINING DOCUMENTS
+
+     <p>You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.
+
+     <p>The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number. 
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+
+     <p>In the combination, you must combine any sections Entitled &ldquo;History&rdquo;
+in the various original documents, forming one section Entitled
+&ldquo;History&rdquo;; likewise combine any sections Entitled &ldquo;Acknowledgements,&rdquo;
+and any sections Entitled &ldquo;Dedications.&rdquo;  You must delete all sections
+Entitled &ldquo;Endorsements.&rdquo;
+     <pre class="sp">
+     
+     </pre>
+     <li>COLLECTIONS OF DOCUMENTS
+
+     <p>You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of this
+License in the various documents with a single copy that is included in
+the collection, provided that you follow the rules of this License for
+verbatim copying of each of the documents in all other respects.
+
+     <p>You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of this
+License into the extracted document, and follow this License in all
+other respects regarding verbatim copying of that document.
+     <pre class="sp">
+     
+     </pre>
+     <li>AGGREGATION WITH INDEPENDENT WORKS
+
+     <p>A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an &ldquo;aggregate&rdquo; if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation's users beyond what the individual works permit. 
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+
+     <p>If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document's Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form. 
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.
+     <pre class="sp">
+     
+     </pre>
+     <li>TRANSLATION
+
+     <p>Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4. 
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.
+
+     <p>If a section in the Document is Entitled &ldquo;Acknowledgements,&rdquo;
+&ldquo;Dedications,&rdquo; or &ldquo;History,&rdquo; the requirement (section 4) to Preserve
+its Title (section 1) will typically require changing the actual
+title.
+     <pre class="sp">
+     
+     </pre>
+     <li>TERMINATION
+
+     <p>You may not copy, modify, sublicense, or distribute the Document except
+as expressly provided for under this License.  Any other attempt to
+copy, modify, sublicense or distribute the Document is void, and will
+automatically terminate your rights under this License.  However,
+parties who have received copies, or rights, from you under this
+License will not have their licenses terminated so long as such
+parties remain in full compliance.
+     <pre class="sp">
+     
+     </pre>
+     <li>FUTURE REVISIONS OF THIS LICENSE
+
+     <p>The Free Software Foundation may publish new, revised versions
+of the GNU Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+http://www.gnu.org/copyleft/.
+
+     <p>Each version of the License is given a distinguishing version number. 
+If the Document specifies that a particular numbered version of this
+License &ldquo;or any later version&rdquo; applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.
+
+        </ol>
+
+<h3 class="unnumberedsec">ADDENDUM: How to use this License for your documents</h3>
+
+<p>To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and
+license notices just after the title page:
+
+<pre class="smallexample">     Copyright (C)  <var>year</var>  <var>your name</var>.
+     Permission is granted to copy, distribute and/or modify this document
+     under the terms of the GNU Free Documentation License, Version 1.2
+     or any later version published by the Free Software Foundation;
+     with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+     A copy of the license is included in the section entitled ``GNU
+     Free Documentation License.''
+</pre>
+   <p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the &ldquo;with...Texts.&rdquo; line with this:
+
+<pre class="smallexample">     with the Invariant Sections being <var>list their titles</var>, with the
+     Front-Cover Texts being <var>list</var>, and with the Back-Cover Texts being
+     <var>list</var>.
+</pre>
+   <p>If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+
+   <p>If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License,
+to permit their use in free software.
+
+<div class="node">
+<a name="Concept-Index"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Version-Control">Version Control</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Frequently-Asked-Questions">Frequently Asked Questions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<!-- node-name,    next,  previous,      up -->
+<h2 class="unnumbered">Concept Index</h2>
+
+<ul class="index-cp" compact>
+<li><a href="#index-g_t_0040file_007b_002elogin_007d-file-128"><samp><span class="file">.login</span></samp> file</a>: <a href="#Remote-shell-setup">Remote shell setup</a></li>
+<li><a href="#index-g_t_0040file_007b_002eprofile_007d-file-127"><samp><span class="file">.profile</span></samp> file</a>: <a href="#Remote-shell-setup">Remote shell setup</a></li>
+<li><a href="#index-auto_002dsave-135">auto-save</a>: <a href="#Auto_002dsave-and-Backup">Auto-save and Backup</a></li>
+<li><a href="#index-backup-136">backup</a>: <a href="#Auto_002dsave-and-Backup">Auto-save and Backup</a></li>
+<li><a href="#index-base_002d64-encoding-28">base-64 encoding</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-behind-the-scenes-2">behind the scenes</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-bug-reports-155">bug reports</a>: <a href="#Bug-Reports">Bug Reports</a></li>
+<li><a href="#index-choosing-the-right-method-103">choosing the right method</a>: <a href="#Default-Method">Default Method</a></li>
+<li><a href="#index-compile-153">compile</a>: <a href="#Compilation">Compilation</a></li>
+<li><a href="#index-configuration-12">configuration</a>: <a href="#Configuration">Configuration</a></li>
+<li><a href="#index-connection-types_002c-overview-14">connection types, overview</a>: <a href="#Connection-types">Connection types</a></li>
+<li><a href="#index-create-your-own-methods-106">create your own methods</a>: <a href="#Customizing-Methods">Customizing Methods</a></li>
+<li><a href="#index-customizing-completion-107">customizing completion</a>: <a href="#Customizing-Completion">Customizing Completion</a></li>
+<li><a href="#index-customizing-methods-104">customizing methods</a>: <a href="#Customizing-Methods">Customizing Methods</a></li>
+<li><a href="#index-Cygwin-and-ssh_002dagent-143">Cygwin and ssh-agent</a>: <a href="#Windows-setup-hints">Windows setup hints</a></li>
+<li><a href="#index-Cygwin_002c-issues-138">Cygwin, issues</a>: <a href="#Windows-setup-hints">Windows setup hints</a></li>
+<li><a href="#index-default-configuration-13">default configuration</a>: <a href="#Configuration">Configuration</a></li>
+<li><a href="#index-default-method-100">default method</a>: <a href="#Default-Method">Default Method</a></li>
+<li><a href="#index-details-of-operation-3">details of operation</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-development-history-7">development history</a>: <a href="#History">History</a></li>
+<li><a href="#index-dired-152">dired</a>: <a href="#Dired">Dired</a></li>
+<li><a href="#index-external-methods-17">external methods</a>: <a href="#Connection-types">Connection types</a></li>
+<li><a href="#index-external-transfer-methods-16">external transfer methods</a>: <a href="#Connection-types">Connection types</a></li>
+<li><a href="#index-external-transfer-methods-48">external transfer methods</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-FAQ-157">FAQ</a>: <a href="#Frequently-Asked-Questions">Frequently Asked Questions</a></li>
+<li><a href="#index-fcp-_0028with-fcp-method_0029-79">fcp (with fcp method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-fcp-method-77">fcp method</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-filename-completion-151">filename completion</a>: <a href="#Filename-completion">Filename completion</a></li>
+<li><a href="#index-filename-examples-148">filename examples</a>: <a href="#Filename-Syntax">Filename Syntax</a></li>
+<li><a href="#index-filename-syntax-147">filename syntax</a>: <a href="#Filename-Syntax">Filename Syntax</a></li>
+<li><a href="#index-filename-syntax-for-multi_002dhop-files-149">filename syntax for multi-hop files</a>: <a href="#Multi_002dhop-filename-syntax">Multi-hop filename syntax</a></li>
+<li><a href="#index-frequently-asked-questions-156">frequently asked questions</a>: <a href="#Frequently-Asked-Questions">Frequently Asked Questions</a></li>
+<li><a href="#index-fsh-_0028with-fcp-method_0029-78">fsh (with fcp method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-fsh-method-81">fsh method</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-ftp-method-83">ftp method</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-history-6">history</a>: <a href="#History">History</a></li>
+<li><a href="#index-hop-method-rsh-92">hop method rsh</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-hop-method-ssh-94">hop method ssh</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-hop-method-su-96">hop method su</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-hop-method-sudo-98">hop method sudo</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-hop-method-telnet-90">hop method telnet</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-how-it-works-4">how it works</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-inline-methods-24">inline methods</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-inline-methods-15">inline methods</a>: <a href="#Connection-types">Connection types</a></li>
+<li><a href="#index-installation-10">installation</a>: <a href="#Load-paths">Load paths</a></li>
+<li><a href="#index-installation-11">installation</a>: <a href="#Japanese-manual">Japanese manual</a></li>
+<li><a href="#index-installation-8">installation</a>: <a href="#Installation">Installation</a></li>
+<li><a href="#index-installation-9">installation</a>: <a href="#Installation-parameters">Installation parameters</a></li>
+<li><a href="#index-Kerberos-_0028with-krlogin-method_0029-43">Kerberos (with krlogin method)</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-km-krlogin-42">km krlogin</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-method-fcp-76">method fcp</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-method-fsh-80">method fsh</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-method-ftp-82">method ftp</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-method-krlogin-41">method krlogin</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-method-multi-88">method multi</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-method-plink-44">method plink</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-method-pscp-71">method pscp</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-method-rcp-51">method rcp</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-method-rsh-29">method rsh</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-method-rsync-59">method rsync</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-method-scp-55">method scp</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-method-scpx-67">method scpx</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-method-scpx-with-Cygwin-141">method scpx with Cygwin</a>: <a href="#Windows-setup-hints">Windows setup hints</a></li>
+<li><a href="#index-method-smb-84">method smb</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-method-ssh-31">method ssh</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-method-sshx-39">method sshx</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-method-sshx-with-Cygwin-139">method sshx with Cygwin</a>: <a href="#Windows-setup-hints">Windows setup hints</a></li>
+<li><a href="#index-method-su-35">method su</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-method-sudo-37">method sudo</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-method-telnet-33">method telnet</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-methods_002c-external-transfer-20">methods, external transfer</a>: <a href="#Connection-types">Connection types</a></li>
+<li><a href="#index-methods_002c-external-transfer-46">methods, external transfer</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-methods_002c-inline-19">methods, inline</a>: <a href="#Connection-types">Connection types</a></li>
+<li><a href="#index-methods_002c-inline-25">methods, inline</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-methods_002c-multi_002dhop-87">methods, multi-hop</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-methods_002c-multi_002dhop-23">methods, multi-hop</a>: <a href="#Connection-types">Connection types</a></li>
+<li><a href="#index-methods_002c-out_002dof_002dband-47">methods, out-of-band</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-methods_002c-out_002dof_002dband-21">methods, out-of-band</a>: <a href="#Connection-types">Connection types</a></li>
+<li><a href="#index-mimencode-27">mimencode</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-multi-method-89">multi method</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-multi_002dhop-filename-syntax-150">multi-hop filename syntax</a>: <a href="#Multi_002dhop-filename-syntax">Multi-hop filename syntax</a></li>
+<li><a href="#index-multi_002dhop-methods-86">multi-hop methods</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-multi_002dhop-methods-22">multi-hop methods</a>: <a href="#Connection-types">Connection types</a></li>
+<li><a href="#index-obtaining-Tramp-5">obtaining Tramp</a>: <a href="#Obtaining-Tramp">Obtaining Tramp</a></li>
+<li><a href="#index-out_002dof_002dband-methods-18">out-of-band methods</a>: <a href="#Connection-types">Connection types</a></li>
+<li><a href="#index-out_002dof_002dband-methods-49">out-of-band methods</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-overview-1">overview</a>: <a href="#Overview">Overview</a></li>
+<li><a href="#index-passwords-121">passwords</a>: <a href="#Password-caching">Password caching</a></li>
+<li><a href="#index-plink-_0028with-pscp-method_0029-74">plink (with pscp method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-plink-method-45">plink method</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-pscp-_0028with-pscp-method_0029-73">pscp (with pscp method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-pscp-method-72">pscp method</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-PuTTY-_0028with-pscp-method_0029-75">PuTTY (with pscp method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-rcp-_0028with-rcp-method_0029-53">rcp (with rcp method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-rcp-method-52">rcp method</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-recompile-154">recompile</a>: <a href="#Compilation">Compilation</a></li>
+<li><a href="#index-remote-shell-setup-126">remote shell setup</a>: <a href="#Remote-shell-setup">Remote shell setup</a></li>
+<li><a href="#index-rsh-_0028with-rcp-method_0029-54">rsh (with rcp method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-rsh-hop-method-93">rsh hop method</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-rsh-method-30">rsh method</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-rsync-_0028with-rsync-method_0029-61">rsync (with rsync method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-rsync-method-60">rsync method</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-scp-_0028with-scp-method_0029-57">scp (with scp method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-scp-_0028with-scpx-method_0029-69">scp (with scpx method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-scp-method-56">scp method</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-scpx-method-64">scpx method</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-scpx-method-with-Cygwin-142">scpx method with Cygwin</a>: <a href="#Windows-setup-hints">Windows setup hints</a></li>
+<li><a href="#index-selecting-config-files-108">selecting config files</a>: <a href="#Customizing-Completion">Customizing Completion</a></li>
+<li><a href="#index-shell-init-files-129">shell init files</a>: <a href="#Remote-shell-setup">Remote shell setup</a></li>
+<li><a href="#index-smb-method-85">smb method</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-ssh-_0028with-rsync-method_0029-62">ssh (with rsync method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-ssh-_0028with-scp-method_0029-58">ssh (with scp method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-ssh-_0028with-scpx-method_0029-66">ssh (with scpx method)</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-ssh-hop-method-95">ssh hop method</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-ssh-method-32">ssh method</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-ssh_002dagent-50">ssh-agent</a>: <a href="#External-transfer-methods">External transfer methods</a></li>
+<li><a href="#index-SSH_005fAUTH_005fSOCK-and-_0040value_007bemacsname_007d-on-Windows-144">SSH_AUTH_SOCK and XEmacs on Windows</a>: <a href="#Windows-setup-hints">Windows setup hints</a></li>
+<li><a href="#index-sshx-method-40">sshx method</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-sshx-method-with-Cygwin-140">sshx method with Cygwin</a>: <a href="#Windows-setup-hints">Windows setup hints</a></li>
+<li><a href="#index-su-hop-method-97">su hop method</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-su-method-36">su method</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-sudo-hop-method-99">sudo hop method</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-sudo-method-38">sudo method</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-telnet-hop-method-91">telnet hop method</a>: <a href="#Multi_002dhop-Methods">Multi-hop Methods</a></li>
+<li><a href="#index-telnet-method-34">telnet method</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-tset-Unix-command-133">tset Unix command</a>: <a href="#Remote-shell-setup">Remote shell setup</a></li>
+<li><a href="#index-type_002dahead-146">type-ahead</a>: <a href="#Usage">Usage</a></li>
+<li><a href="#index-Unix-command-tset-132">Unix command tset</a>: <a href="#Remote-shell-setup">Remote shell setup</a></li>
+<li><a href="#index-using-non_002dstandard-methods-105">using non-standard methods</a>: <a href="#Customizing-Methods">Customizing Methods</a></li>
+<li><a href="#index-using-_0040value_007btramp_007d-145">using <span class="sc">tramp</span></a>: <a href="#Usage">Usage</a></li>
+<li><a href="#index-uuencode-26">uuencode</a>: <a href="#Inline-methods">Inline methods</a></li>
+<li><a href="#index-Version-Control-158">Version Control</a>: <a href="#Version-Control">Version Control</a></li>
+   </ul>
+<div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top"><span class="sc">tramp</span> version 2.0.57 User Manual</a>
+<li><a name="toc_Overview" href="#Overview">1 An overview of <span class="sc">tramp</span></a>
+<li><a name="toc_Obtaining-Tramp" href="#Obtaining-Tramp">2 Obtaining Tramp.</a>
+<li><a name="toc_History" href="#History">3 History of <span class="sc">tramp</span></a>
+<li><a name="toc_Installation" href="#Installation">4 Installing <span class="sc">tramp</span> into XEmacs.</a>
+<ul>
+<li><a href="#Installation-parameters">4.1 Parameters in order to control installation.</a>
+<li><a href="#Load-paths">4.2 How to plug-in <span class="sc">tramp</span> into your environment.</a>
+<li><a href="#Japanese-manual">4.3 Japanese manual.</a>
+</li></ul>
+<li><a name="toc_Configuration" href="#Configuration">5 Configuring <span class="sc">tramp</span> for use</a>
+<ul>
+<li><a href="#Connection-types">5.1 Types of connections made to remote machines.</a>
+<li><a href="#Inline-methods">5.2 Inline methods</a>
+<li><a href="#External-transfer-methods">5.3 External transfer methods</a>
+<li><a href="#Multi_002dhop-Methods">5.4 Connecting to a remote host using multiple hops</a>
+<li><a href="#Default-Method">5.5 Selecting a default method</a>
+<ul>
+<li><a href="#Default-Method">5.5.1 Which method is the right one for me?</a>
+</li></ul>
+<li><a href="#Customizing-Methods">5.6 Using Non-Standard Methods</a>
+<li><a href="#Customizing-Completion">5.7 Selecting config files for user/host name completion</a>
+<li><a href="#Password-caching">5.8 Reusing passwords for several connections.</a>
+<li><a href="#Remote-Programs">5.9 How <span class="sc">tramp</span> finds and uses programs on the remote machine.</a>
+<li><a href="#Remote-shell-setup">5.10 Remote shell setup hints</a>
+<li><a href="#Auto_002dsave-and-Backup">5.11 Auto-save and Backup configuration</a>
+<li><a href="#Windows-setup-hints">5.12 Issues with Cygwin ssh</a>
+</li></ul>
+<li><a name="toc_Usage" href="#Usage">6 Using <span class="sc">tramp</span></a>
+<ul>
+<li><a href="#Filename-Syntax">6.1 <span class="sc">tramp</span> filename conventions</a>
+<li><a href="#Multi_002dhop-filename-syntax">6.2 Multi-hop filename conventions</a>
+<li><a href="#Filename-completion">6.3 Filename completion</a>
+<li><a href="#Dired">6.4 Dired</a>
+<li><a href="#Compilation">6.5 Compile remote files</a>
+</li></ul>
+<li><a name="toc_Bug-Reports" href="#Bug-Reports">7 Reporting Bugs and Problems</a>
+<li><a name="toc_Frequently-Asked-Questions" href="#Frequently-Asked-Questions">8 Frequently Asked Questions</a>
+<li><a name="toc_Version-Control" href="#Version-Control">9 The inner workings of remote version control</a>
+<ul>
+<li><a href="#Version-Controlled-Files">9.1 Determining if a file is under version control</a>
+<li><a href="#Remote-Commands">9.2 Executing the version control commands on the remote machine</a>
+<li><a href="#Changed-workfiles">9.3 Detecting if the working file has changed</a>
+<li><a href="#Checking-out-files">9.4 Bringing the workfile out of the repository</a>
+<li><a href="#Miscellaneous-Version-Control">9.5 Things related to Version Control that don't fit elsewhere</a>
+<ul>
+<li><a href="#Remote-File-Ownership">9.5.1 How VC determines who owns a workfile</a>
+<li><a href="#Back_002dend-Versions">9.5.2 How VC determines what release your RCS is</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Files-directories-and-localnames" href="#Files-directories-and-localnames">10 How file names, directories and localnames are mangled and managed.</a>
+<ul>
+<li><a href="#Localname-deconstruction">10.1 Breaking a localname into its components.</a>
+</li></ul>
+<li><a name="toc_Issues" href="#Issues">11 Debatable Issues and What Was Decided</a>
+<li><a name="toc_GNU-Free-Documentation-License" href="#GNU-Free-Documentation-License">Appendix A GNU Free Documentation License</a>
+<ul>
+<li><a href="#GNU-Free-Documentation-License">ADDENDUM: How to use this License for your documents</a>
+</li></ul>
+<li><a name="toc_Concept-Index" href="#Concept-Index">Concept Index</a>
+</li></ul>
+</div>
+
+<!-- End of tramp.texi - the TRAMP User Manual -->
+<div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> Invoking <samp><span class="command">/bin/sh</span></samp> will fail if your login
+shell doesn't recognize &lsquo;<samp><span class="samp">exec /bin/sh</span></samp>&rsquo; as a valid command. 
+Maybe you use the Scheme shell <samp><span class="command">scsh</span></samp><small class="dots">...</small></p>
+
+   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> PuTTY's
+<samp><span class="command">pscp</span></samp> allows you to specify the password on the command line.</p>
+
+   <hr></div>
+
+</body></html>
+

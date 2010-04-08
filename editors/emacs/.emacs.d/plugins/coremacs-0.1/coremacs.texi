@@ -1,0 +1,138 @@
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename coremacs.info
+@settitle Coremacs Manual
+
+@set CMVER 0.1
+@set DATE July 2008
+
+@c Version and Contact Info
+@set MAINTAINERSITE @uref{http://work.j4y.net/coremacs/,maintainers webpage}
+@set AUTHOR Jason Dunsmore
+@set MAINTAINER Jason Dunsmore
+@set MAINTAINEREMAIL @email{jason.dunsmore@rackspace.com}
+@set MAINTAINERCONTACT @uref{mailto:jason.dunsmore@rackspace.com,contact the maintainer}
+@c %**end of header
+
+@copying
+This manual is for Coremacs version @value{CMVER}.
+
+Copyright @copyright{} 2008 Free Software Foundation
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover texts being ``A GNU Manual,''
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled ``GNU Free Documentation
+License.''
+
+(a) The FSF's Back-Cover Text is: ``You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.''
+@end quotation
+@end copying
+
+@titlepage
+@title Coremacs Manual
+
+@subtitle Release @value{CMVER}
+@author by Jason Dunsmore
+
+@c The following two commands start the copyright page.
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@c Output the table of contents at the beginning.
+@contents
+
+@ifnottex
+@node Top, Introduction, (dir), (dir)
+@top Coremacs Manual
+
+@insertcopying
+@end ifnottex
+
+@menu
+* Introduction::                Getting started
+* Ticket mode::                 Mode for writing tickets
+* Extending::                   Coremacs is easy to extend
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+Introduction
+
+* Summary::                     What Coremacs does
+* Installation::                How to install Coremacs
+* Configuration::               How to configure Coremacs
+* Feedback::                    Send bug reports, ideas, patches...
+
+Ticket mode
+
+* Typical workflow::            Creating, editing, and submitting a ticket
+
+To create a ticket, 
+
+Extending
+
+* Coremacs functions::          Useful functions for extending Coremacs
+* Example::                     Example of adding a new feature
+
+@end detailmenu
+@end menu
+
+@node Introduction, Ticket mode, Top, Top
+@chapter Introduction
+@cindex introduction
+
+@menu
+* Summary::                     What Coremacs does
+* Installation::                How to install Coremacs
+* Configuration::               How to configure Coremacs
+* Feedback::                    Send bug reports, ideas, patches...
+@end menu
+
+@node Summary, Installation, Introduction, Introduction
+@section Summary
+
+
+Ticket mode
+
+@node Installation, Configuration, Summary, Introduction
+@section Installation
+
+@node Configuration, Feedback, Installation, Introduction
+@section Configuration
+
+@node Feedback,  , Configuration, Introduction
+@section Feedback
+
+@node Ticket mode, Extending, Introduction, Top
+@chapter Ticket mode
+
+@menu
+* Typical workflow::            Creating, editing, and submitting a ticket
+@end menu
+
+@node Typical workflow,  , Ticket mode, Ticket mode
+@section Typical workflow
+
+@node Extending,  , Ticket mode, Top
+@chapter Extending
+
+@menu
+* Coremacs functions::          Useful functions for extending Coremacs
+* Example::                     Example of adding a new feature
+@end menu
+
+@node Coremacs functions, Example, Extending, Extending
+@section Coremacs functions
+
+@node Example,  , Coremacs functions, Extending
+@section Example
+
+@bye

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+while getopts "pns" options; do
+    case $options in
+        p ) priv=1;;
+        n ) new=1;;
+        s ) sub=1;;
+    esac
+done
+
+shift $(($OPTIND - 1))
+
+if [[ $new ]]; then
+    if [[ $priv ]]; then
+        /usr/bin/emacsclient -e "(coremacs-write-new-private)"
+    elif [[ -z "$2" ]]; then
+        /usr/bin/emacsclient -e "(coremacs-write-new-public \"\")"
+    else
+        /usr/bin/emacsclient -e "(coremacs-write-new-public \"$1\")"
+    fi
+#elif [[ $sub ]]; then
+#    if [[ $priv ]]; then
+#        /usr/bin/emacsclient -e "(write
+else
+    if [[ $priv ]]; then
+        /usr/bin/emacsclient -e "(coremacs-private-blank \"$1\")"
+    elif [[ -z "$2" ]]; then
+        /usr/bin/emacsclient -e "(coremacs-public-blank \"$1\" \"\")"
+    else
+        /usr/bin/emacsclient -e "(coremacs-public-blank \"$1\" \"$2\")"
+    fi
+fi
