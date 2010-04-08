@@ -45,6 +45,19 @@
 ;(if (fboundp 'menu-bar-mode) (menu-bar-mode 1))
 
 ;;
+;; Fit Frames
+;;
+(require 'fit-frame)
+;(add-hook 'after-make-frame-functions 'fit-frame)
+(global-set-key (kbd "C-_") 'fit-frame)
+
+;;
+;; Auto-fit frames
+;;
+;(requre 'autofit-frame)
+;(add-hook 'after-make-frame-functions 'fit-frame)
+
+;;
 ;; JSON
 ;;
 (require 'json)
