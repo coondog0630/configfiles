@@ -1,0 +1,118 @@
+I tried to make my Emacs Configuration as portable as possible.
+Carry around my custom .emacs as well as the plugin set I know it works with :).
+.
+`-- .emacs.d
+    `-- plugins
+        |-- autofit
+        |-- color-theme-6.6.0
+        |   `-- themes
+        |-- coremacs-0.1
+        |-- ecb
+        |   |-- ecb-images
+        |   |   |-- default
+        |   |   |   |-- height-10
+        |   |   |   |-- height-14
+        |   |   |   |-- height-15
+        |   |   |   |-- height-16
+        |   |   |   |-- height-17
+        |   |   |   |-- height-18
+        |   |   |   |-- height-19
+        |   |   |   |-- height-20
+        |   |   |   `-- height-21
+        |   |   |-- directories
+        |   |   |   |-- height-10
+        |   |   |   |-- height-14
+        |   |   |   |-- height-15
+        |   |   |   |-- height-16
+        |   |   |   |-- height-17
+        |   |   |   |-- height-18
+        |   |   |   |-- height-19
+        |   |   |   |-- height-20
+        |   |   |   `-- height-21
+        |   |   |-- methods
+        |   |   |   `-- height-14_to_21
+        |   |   `-- sources
+        |   |       `-- height-14_to_21
+        |   |-- html-help
+        |   `-- info-help
+        |-- ecb-2.40
+        |   |-- ecb-images
+        |   |   |-- default
+        |   |   |   |-- height-10
+        |   |   |   |-- height-14
+        |   |   |   |-- height-15
+        |   |   |   |-- height-16
+        |   |   |   |-- height-17
+        |   |   |   |-- height-18
+        |   |   |   |-- height-19
+        |   |   |   |-- height-20
+        |   |   |   `-- height-21
+        |   |   |-- directories
+        |   |   |   |-- height-10
+        |   |   |   |-- height-14
+        |   |   |   |-- height-15
+        |   |   |   |-- height-16
+        |   |   |   |-- height-17
+        |   |   |   |-- height-18
+        |   |   |   |-- height-19
+        |   |   |   |-- height-20
+        |   |   |   `-- height-21
+        |   |   |-- methods
+        |   |   |   `-- height-14_to_21
+        |   |   `-- sources
+        |   |       `-- height-14_to_21
+        |   |-- html-help
+        |   `-- info-help
+        |-- fit-frame
+        |-- git
+        |-- json
+        |-- php-mode-1.5.0
+        |-- ri-emacs
+        |-- scala-mode
+        |   |-- .svn
+        |   |   |-- prop-base
+        |   |   `-- text-base
+        |   `-- contrib
+        |       |-- .svn
+        |       |   |-- prop-base
+        |       |   `-- text-base
+        |       `-- yasnippet
+        |           |-- .svn
+        |           `-- snippets
+        |               |-- .svn
+        |               `-- text-mode
+        |                   |-- .svn
+        |                   `-- scala-mode
+        |                       `-- .svn
+        |-- tramp-2.0.57
+        |   |-- contrib
+        |   |-- info
+        |   |-- lisp
+        |   |-- test
+        |   `-- texi
+        |-- yasnippet-0.6.1c
+        |   `-- snippets
+        |       `-- text-mode
+        |           |-- cc-mode
+        |           |   |-- c++-mode
+        |           |   |-- c-mode
+        |           |   |-- csharp-mode
+        |           |   `-- objc-mode
+        |           |-- css-mode
+        |           |-- emacs-lisp-mode
+        |           |-- erlang-mode
+        |           |-- f90-mode
+        |           |-- html-mode
+        |           |-- latex-mode
+        |           |-- markdown-mode
+        |           |-- nxml-mode
+        |           |-- perl-mode
+        |           |-- python-mode
+        |           |-- rst-mode
+        |           |-- ruby-mode
+        |           |-- scala-mode
+        |           |-- snippet-mode
+        |           `-- sql-mode
+        `-- yasnippet-bundle
+
+113 directories
