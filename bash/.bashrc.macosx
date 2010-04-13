@@ -1,16 +1,47 @@
-#Black       0;30     Dark Gray     1;30
-#Blue        0;34     Light Blue    1;34
-#Green       0;32     Light Green   1;32
-#Cyan        0;36     Light Cyan    1;36
-#Red         0;31     Light Red     1;31
-#Purple      0;35     Light Purple  1;35
-#Brown       0;33     Yellow        1;33
-#Light Gray  0;37     White         1;37
-
 # Aliases
 alias l="ls -G"
 alias ls="ls -G"
 alias port="sudo port"
+alias brew="sudo brew -v"
 alias rm="rm -f"
+alias psql="psql -U postgres"
+alias ec="emacsclient"
+alias grepi="grep -i"
+
+# Launchctl aliases
 alias run_postgresql="sudo launchctl load -w /Library/LaunchDaemons/org.macports.postgresql83-server.plist"
 alias run_memcached="sudo launchctl load -w /Library/LaunchDaemons/org.macports.memcached.plist"
+
+# Git Stuff
+alias git_log="git log --graph --pretty=oneline --abbrev-commit"
+
+# Colors
+COLOR_WHITE='\033[1;37m'
+COLOR_LIGHTGRAY='033[0;37m'
+COLOR_GRAY='\033[1;30m'
+COLOR_BLACK='\033[0;30m'
+COLOR_RED='\033[0;31m'
+COLOR_LIGHTRED='\033[1;31m'
+COLOR_GREEN='\033[0;32m'
+COLOR_LIGHTGREEN='\033[1;32m'
+COLOR_BROWN='\033[0;33m'
+COLOR_YELLOW='\033[1;33m'
+COLOR_BLUE='\033[0;34m'
+COLOR_LIGHTBLUE='\033[1;34m'
+COLOR_PURPLE='\033[0;35m'
+COLOR_PINK='\033[1;35m'
+COLOR_CYAN='\033[0;36m'
+COLOR_LIGHTCYAN='\033[1;36m'
+COLOR_DEFAULT='\033[0m'
+
+# Bashish
+BASHISHDIR="/usr/local/share/bashish"                 ## line added by bashish
+TTY=`tty 2>/dev/null` && if test "x$BASHISHDIR" != x;then       ## line added by bashish
+test "$BASHISH_OLDPATH"||BASHISH_OLDPATH="$PATH"                ## line added by bashish
+PATH="$HOME/.bashish/launcher:$BASHISHDIR/lib:$BASHISH_OLDPATH" ## line added by bashish
+BASHSISH_CP=437                                                 ## line added by bashish
+TEST_TERM="$TERM" _bashish_utfcheck && BASHISH_CP=utf8          ## line added by bashish
+ENV="$HOME/.profile"                                            ## line added by bashish
+export BASHISH_CP BASHISH_OLDPATH TTY ENV                       ## line added by bashish
+. "$BASHISHDIR/main/prompt/sh/init"                             ## line added by bashish
+fi                                                              ## line added by bashish
