@@ -1,0 +1,20 @@
+;;
+; Emacs Defaults
+;;
+(set-default-font "-*-drift-*-*-*-*-9-*-*-*-*-*-*-*") ; Default Font
+(setq visible-bell 1) ; Visible Bell
+(global-font-lock-mode t) ; Turn on font font locking
+
+;;
+; Colors
+;;
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-taming-mr-arneson)
+
+;;
+;; Programming Related
+;;
+(autoload 'python-mode "python-mode.el" "Python mode." t)
+(setq auto-mode-alist
+      (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
