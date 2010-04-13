@@ -1,9 +1,25 @@
 ;;
+; Load Path
+;;
+(progn (cd "~/.emacs.d/plugins") (normal-top-level-add-subdirs-to-load-path))
+
+;;
 ; Emacs Defaults
 ;;
 (set-default-font "-*-drift-*-*-*-*-9-*-*-*-*-*-*-*") ; Default Font
 (setq visible-bell 1) ; Visible Bell
 (global-font-lock-mode t) ; Turn on font font locking
+(setq use-file-dialog nil) ; don't use file dialogs
+(setq line-number-mode t) ; line numbers
+(setq column-number-mode t) ; column numbers
+(setq transient-mark-mode t) ; transient mark mode
+
+;;
+;; Emacs L&F 
+;;
+(setq inhibit-startup-screen t) ; disable startup screen
+(windmove-default-keybindings)  ; winmove default keybindings enabled
+
 
 ;;
 ; Colors
@@ -15,6 +31,30 @@
 ;;
 ;; Programming Related
 ;;
+
+; Yasnippet
+(require 'yasnippet) 
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
+
+; C programming style
+(setq c-set-style 'ellemtel)
+
+; Python Mode
 (autoload 'python-mode "python-mode.el" "Python mode." t)
 (setq auto-mode-alist
       (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
+
+;;
+;; Backups
+;;
+(setq version-control t
+      kept-new-versions 16
+      kept-old-versions 10
+      delete-old-versions t
+      backup-directory-alist
+      '(("." . "~/.emacs.d/saves")) ; wipe butt in ~/.emacs.d/saves folder instead of file systems
+; Tramp compatibility for emacs terds
+(add-to-list 'backup-directory-alist
+	     (cons "." "~/.emacs.d/saves/"))
+(setq tramp-backup-directory-alist backup-directory-alist)
