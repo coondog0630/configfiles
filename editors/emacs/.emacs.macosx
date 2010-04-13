@@ -8,17 +8,14 @@
 
 ;; MAC FONTS
 (setq mac-allow-anti-aliasing nil)
-;(set-default-font "-*-ProggyTiny-normal-*-*-*-11-*-*-*-*-*-*-*")
+(set-default-font "-*-ProggyTiny-normal-*-*-*-11-*-*-*-*-*-*-*")
 ;(set-default-font "-*-Deka-medium-*-*-*-10-*-*-*-*-*-*-*")
-;(set-default-font "-*-Terminus-medium-*-*-*-11-*-*-*-*-*-*-*")
-;(set-default-font "-*-Anka/Coder-*-*-*-*-10-*-*-*-*-*-*-*")
-(set-default-font "-*-AtariSmall-*-*-*-*-9-*-*-*-*-*-*-*")
+;(set-default-font "-*-Terminus-medium-*-*-*-12-*-*-*-*-*-*-*")
+;(set-default-font "-*-Anka/Coder-*-*-*-*-12-*-*-*-*-*-*-*")
+;(set-default-font "-*-AtariSmall-*-*-*-*-9-*-*-*-*-*-*-*")
 
 ;; Emacs Path
-(setenv "PATH" 
-	(concat 
-	 (getenv "PATH") ":" "/usr/local/bin" ":" "/opt/local/bin")) ; added for homebrew & macports
-(setq exec-path (append exec-path '("/opt/local/bin")))
+(setq exec-path (append exec-path '("/usr/local/bin" . "/opt/local/bin")))
 
 ;; Visible Bell
 (setq visible-bell 1)
