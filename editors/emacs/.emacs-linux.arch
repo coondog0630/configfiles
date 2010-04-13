@@ -3,6 +3,12 @@
 ;;
 (progn (cd "~/.emacs.d/plugins") (normal-top-level-add-subdirs-to-load-path))
 
+(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+    (let* ((my-lisp-dir "~/.emacs.d/plugins/")
+	   (default-directory my-lisp-dir))
+      (setq load-path (cons my-lisp-dir load-path))
+      (normal-top-level-add-subdirs-to-load-path)))
+
 ;;
 ; Emacs Defaults
 ;;
@@ -20,8 +26,8 @@
 (setq inhibit-startup-screen t) ; disable startup screen
 (windmove-default-keybindings)  ; winmove default keybindings enabled
 
-; remove toolbar
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+;; ; remove toolbar
+;; (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
 ; key bindings
 (global-set-key (kbd "<f1>") 'comment-region)
@@ -62,7 +68,8 @@
       kept-old-versions 10
       delete-old-versions t
       backup-directory-alist
-      '(("." . "~/.emacs.d/saves")) ; wipe butt in ~/.emacs.d/saves folder instead of file systems
+      '(("." . "~/.emacs.d/saves"))) ; wipe butt in ~/.emacs.d/saves folder instead of file systems
+
 ; Tramp compatibility for emacs terds
 (add-to-list 'backup-directory-alist
 	     (cons "." "~/.emacs.d/saves/"))
