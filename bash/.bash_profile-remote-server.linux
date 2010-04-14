@@ -1,0 +1,21 @@
+#
+# Load other bash files
+#
+if [ -a ~/.bashrc ]; then
+  source ~/.bashrc
+fi
+
+if [ -a ~/.bash_alias ]; then
+  source ~/.bash_alias
+fi
+
+if [ $TERM == "screen" ]; then
+  echo -ne "\ek${HOSTNAME}\e\\";
+fi
+
+# PS1 & PATH 
+export NONE="\[\033[0m\]"
+export RED="\[\033[0;31m\]"
+export HC="\[\033[0;32m\]"
+export PS1="|$RED($NONE\u$RED)($NONE\h$RED)($NONE\w$RED)$NONE\n|_> "
+export PATH=/opt/ruby-enterprise/bin:$PATH
