@@ -1,12 +1,12 @@
 This README contains the dir tree with the appropriate configuration files and their content.
 
 .
-|-- README
 |-- bash
-|   |-- bash_profile.macosx -> .bash_profile
-|   `-- bashrc.macosx -> .bashrc
-`-- editors
-    |-- emacs
-    `-- vim
+|-- conky
+|-- editors
+|   |-- emacs
+|   `-- vim
+|-- screen
+`-- xmodmap
 
-4 directories, 3 files
+7 directories
