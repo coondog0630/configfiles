@@ -26,8 +26,11 @@
 (setq inhibit-startup-screen t) ; disable startup screen
 (windmove-default-keybindings)  ; winmove default keybindings enabled
 
-;; ; remove toolbar
-;; (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+; Fit Frames
+(require 'fit-frame)
+
+; remove toolbar
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
 ; key bindings
 (global-set-key (kbd "<f1>") 'comment-region)
@@ -35,6 +38,7 @@
 (global-set-key (kbd "<f5>") 'search-forward)
 (global-set-key (kbd "<f11>") 'compile)
 (global-set-key (kbd "<f12>") 'goto-line)
+(global-set-key (kbd "C-_") 'fit-frame)
 
 ;;
 ; Colors
