@@ -24,13 +24,11 @@ fi
 
 
 # PS1 Variable setup
-export NONE="\[\033[0m\]"
-export RED="\[\033[0;31m\]" 
-if [ $HOSTNAME == "krios.local" ]; then
-    export HC="\[\033[0;32m\]"
-else
-    export HC="\[\033[1;33m\]"
-fi
+NONE="\[\033[0m\]"
+WHITE="\[\033[1;37m\]"
+RED="\[\033[0;31m\]" 
+HC="\[\033[0;32m\]"
+export PS1="$RED[$WHITE\u$RED][$HC\h$RED][$WHITE\t$RED]\n[:$WHITE\w$RED:]$WHITE\n:] $NONE"
 
 # System Programming paths
 export MACPORTS_PATH="/opt/local/bin:/opt/local/sbin"
