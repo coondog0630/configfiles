@@ -28,7 +28,7 @@ NONE="\[\033[0m\]"
 WHITE="\[\033[1;37m\]"
 RED="\[\033[0;31m\]" 
 HC="\[\033[0;32m\]"
-export PS1="$RED[$WHITE\u$RED][$HC\h$RED][$WHITE\t$RED]\n[:$WHITE\w$RED:]$WHITE\n:] $NONE"
+export PS1="$RED[$WHITE\u$RED][$HC\h$RED][$WHITE\t$RED]\n[:$WHITE\w$RED:]$WHITE\n:]$NONE"
 
 # System Programming paths
 export MACPORTS_PATH="/opt/local/bin:/opt/local/sbin"
