@@ -4,6 +4,10 @@
 
 # Aliases
 alias ls='ls --color=auto'
+alias psql="psql -U postgres"
+
+# Arch Linux
+alias pacman="sudo pacman"
 
 #Black       0;30     Dark Gray     1;30
 #Blue        0;34     Light Blue    1;34
