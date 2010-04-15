@@ -1,5 +1,4 @@
 ;; Emacs Load Path
-;(progn (cd "~/emacs") (normal-top-level-add-subdirs-to-load-path))
 (progn (cd "~/.emacs.d/plugins") (normal-top-level-add-subdirs-to-load-path))
 
 ;; This option is for macs to have the meta key from command
@@ -43,12 +42,6 @@
 (require 'fit-frame)
 ;(add-hook 'after-make-frame-functions 'fit-frame)
 (global-set-key (kbd "C-_") 'fit-frame)
-
-;;
-;; Auto-fit frames
-;;
-;(requre 'autofit-frame)
-;(add-hook 'after-make-frame-functions 'fit-frame)
 
 ;;
 ;; JSON
