@@ -10,7 +10,8 @@
 (set-default-font "-*-ProggyTiny-normal-*-*-*-11-*-*-*-*-*-*-*")
 
 ;; Emacs Path
-(setq exec-path (append exec-path '("/usr/local/bin" . "/opt/local/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 
 ;; Visible Bell
 (setq visible-bell 1)
@@ -26,7 +27,7 @@
 (global-font-lock-mode t)
 (windmove-default-keybindings)
 (setq use-file-dialog nil)
-;(fset 'yes-or-no-p 'y-or-no-p)
+(defalias 'yes-or-no-p 'y-or-n-p)
 (setq transient-mark-mode t)
 (setq line-number-mode t)
 (setq column-number-mode t)
@@ -34,13 +35,12 @@
 ;; Remove GUI stuff
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-;(if (fboundp 'menu-bar-mode) (menu-bar-mode 1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode 1))
 
 ;;
 ;; Fit Frames
 ;;
 (require 'fit-frame)
-;(add-hook 'after-make-frame-functions 'fit-frame)
 (global-set-key (kbd "C-_") 'fit-frame)
 
 ;;
@@ -56,8 +56,9 @@
 ;;
 ;; YASNIPPET
 ;;
-(require 'yasnippet-bundle)
-
+(require 'yasnippet) ;; not yasnippet-bundle
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")
 
 ;;
 ;; Color Theme plugin
