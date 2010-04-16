@@ -58,7 +58,8 @@
 ;;
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
-(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
+(setq yas/snippet-dirs "~/.emacs.d/plugins/yasnippet/snippets")
+(yas/load-directory yas/snippet-dirs)
 
 ;;
 ;; Color Theme plugin
