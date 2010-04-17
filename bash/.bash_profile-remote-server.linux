@@ -13,6 +13,8 @@ if [ $TERM == "screen" ]; then
   echo -ne "\ek${HOSTNAME}\e\\";
 fi
 
+export EDITOR=vim
+
 # PS1 & PATH 
 export NONE="\[\033[0m\]"
 export RED="\[\033[0;31m\]"
