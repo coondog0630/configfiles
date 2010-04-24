@@ -8,9 +8,7 @@ alias psql="psql -U postgres"
 alias ec="emacsclient"
 alias grepi="grep -i"
 
-# Launchctl aliases
-alias run_postgresql="sudo launchctl load -w /Library/LaunchDaemons/org.macports.postgresql83-server.plist"
-alias run_memcached="sudo launchctl load -w /Library/LaunchDaemons/org.macports.memcached.plist"
+alias pg_ctl="sudo -u postgres /usr/local/bin/pg_ctl -D /usr/local/var/lib/postgresql/data -l /usr/local/var/log/postgresql/pgsql.log"
 
 # Git Stuff
 alias git_log="git log --graph --pretty=oneline --abbrev-commit"
