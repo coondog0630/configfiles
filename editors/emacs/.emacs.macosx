@@ -38,6 +38,12 @@
 (if (fboundp 'menu-bar-mode) (menu-bar-mode 1))
 
 ;;
+;; Key bindings
+;;
+(global-set-key (kbd "C-c c") 'comment-region)
+(global-set-key (kbd "C-c u") 'uncomment-region)
+
+;;
 ;; Fit Frames
 ;;
 (require 'fit-frame)
