@@ -12,6 +12,10 @@ set selectmode=mouse
 " Enable filetype-specific indenting on plugins
 filetype plugin indent on
 
+" Set the number of columns and lines
+" set lines=80
+" set columns=100
+
 " Tabbing and Spaces for coding
 set tabstop=2
 set shiftwidth=2
@@ -31,7 +35,9 @@ let g:rubycomplete_rails = 1
 
 " Set the GUI Font
 if has("gui")
-  set guifont=Monaco:h9
+  "set guifont=ProFontX:h9
+  set guifont=ProggyTiny:h11
+  "set guifont=Deka:h10
   colorscheme darkblue
 else
   colorscheme elflord
