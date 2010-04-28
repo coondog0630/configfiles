@@ -2,7 +2,6 @@
 alias l="ls -G"
 alias ls="ls -G"
 alias port="sudo port"
-alias brew="sudo brew -v"
 alias rm="rm -f"
 alias psql="psql -U postgres"
 alias ec="emacsclient"
