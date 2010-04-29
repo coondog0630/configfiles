@@ -30,3 +30,5 @@ COLOR_PINK='\033[1;35m'
 COLOR_CYAN='\033[0;36m'
 COLOR_LIGHTCYAN='\033[1;36m'
 COLOR_DEFAULT='\033[0m'
+
+export LSCOLORS="dxfxcxdxbxegedabagacad"
