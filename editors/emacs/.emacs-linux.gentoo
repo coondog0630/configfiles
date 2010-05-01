@@ -12,28 +12,32 @@
 ;;
 ; Emacs Defaults
 ;;
-(set-default-font "-*-drift-*-*-*-*-9-*-*-*-*-*-*-*") ; Default Font
-(setq visible-bell 1) ; Visible Bell
+(set-default-font "-*-lime-*-*-*-*-*-*-*-*-*-*-*-*") ; Default Font
 (global-font-lock-mode t) ; Turn on font font locking
-(setq use-file-dialog nil) ; don't use file dialogs
-(setq line-number-mode t) ; line numbers
-(setq column-number-mode t) ; column numbers
-(setq transient-mark-mode t) ; transient mark mode
+
+; Setq Defaults
+(setq
+ visible-bell 1 ; visual bell
+ use-file-dialog nil ; don't use file dialogs
+ line-number-mode t ; line numbers
+ column-number-mode t ; column numbers
+ transient-mark-mode t) ; transient mark mode 
 
 ;;
 ;; Emacs L&F 
 ;;
 (setq inhibit-startup-screen t) ; disable startup screen
 (windmove-default-keybindings)  ; winmove default keybindings enabled
-(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'yes-or-no-p 'y-or-n-p) ; 
 
-;; ; remove toolbar
-;; (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+; remove toolbar
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
 ; key bindings
 (global-set-key (kbd "<f1>") 'comment-region)
 (global-set-key (kbd "<f2>") 'uncomment-region)
 (global-set-key (kbd "<f5>") 'search-forward)
+(global-set-key (kbd "<f6>") 'undo)
 (global-set-key (kbd "<f11>") 'compile)
 (global-set-key (kbd "<f12>") 'goto-line)
 
