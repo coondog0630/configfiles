@@ -1,18 +1,32 @@
-# Aliases
+###########
+# ALIASES #
+###########
+
+# Bash 
 alias l="ls -G"
 alias ls="ls -G"
-alias port="sudo port"
 alias rm="rm -f"
-alias psql="psql -U postgres"
-alias ec="emacsclient"
 alias grepi="grep -i"
 
+# Dir shortcuts
+alias gh="cd ~/programming/github"
+
+# Ports
+alias port="sudo port"
+
+# Editors
+alias ec="emacsclient"
+
+# Postgresql
+alias psql="psql -U postgres"
 alias pg_ctl="sudo -u postgres /usr/local/bin/pg_ctl -D /usr/local/var/lib/postgresql/data -l /usr/local/var/log/postgresql/pgsql.log"
 
 # Git Stuff
 alias git_log="git log --graph --pretty=oneline --abbrev-commit"
 
-# Colors
+##########
+# Colors #
+##########
 COLOR_WHITE='\033[1;37m'
 COLOR_LIGHTGRAY='033[0;37m'
 COLOR_GRAY='\033[1;30m'
@@ -31,4 +45,5 @@ COLOR_CYAN='\033[0;36m'
 COLOR_LIGHTCYAN='\033[1;36m'
 COLOR_DEFAULT='\033[0m'
 
-export LSCOLORS="dxfxcxdxbxegedabagacad"
+# Directory Colors for BSD
+export LSCOLORS="dxfxcxdxbxegedabagacad" # yellow
