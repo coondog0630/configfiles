@@ -1,0 +1,67 @@
+#This file is sourced by bash when you log in interactively.
+[ -f ~/.bashrc ] && . ~/.bashrc
+
+
+# PS1
+WHITE="\[\033[1;37m\]"
+RED="\[\033[0;31m\]"
+YELLOW="\[\033[1;31m\]"
+BGB="\[\033[44m\]"
+
+# SPECIAL CHARACTERS
+
+
+##
+## Black       0;30     Dark Gray     1;30
+## Blue        0;34     Light Blue    1;34
+## Green       0;32     Light Green   1;32
+## Cyan        0;36     Light Cyan    1;36
+## Red         0;31     Light Red     1;31
+## Purple      0;35     Light Purple  1;35
+## Brown       0;33     Yellow        1;33
+## Light Gray  0;37     White         1;37
+##
+if [ $HOSTNAME == "zeus" ]; then
+    SERVERCOLOR="\[\033[0;35m\]"
+elif [ $HOSTNAME == "www.sahilcooner.com" ]; then
+    SERVERCOLOR="\[\033[1;34m\]"
+else
+    SERVERCOLOR="\[\033[1;37m\]"
+fi
+
+
+export PS1="$RED[$WHITE\u@$SERVERCOLOR\h$RED] [$WHITE\w$RED] [$WHITE\t$RED]\n$WHITE::]$WHITE"
+
+unset WHITE RED YELLOW BGB
+#endof PS1
+
+## PATH
+export PATH="$PATH:~/.bin:~/.bin/security:"
+
+## System Variables I like
+export EDITOR="vim"
+export IGNOREOF="100"
+
+# GO Stuff
+export GOARCH="amd64"
+export GOBIN="~/bin/go"
+export GOOS="linux"
+export GOROOT="~/build/go"
+
+## CVS
+export CVS_RSH=`which ssh`
+export CVSEDITOR="vim"
+#export CVSROOT=$CVSGLOBALAPP
+
+## PATH
+export PATH="~/.bin/scripts:$PATH:$PYTHONPATH:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin"
+
+
+# #Core Dumps
+ulimit -c unlimited
+
+export DISPLAY=":0"
+
+fortune
+
+test -r /sw/bin/init.sh && . /sw/bin/init.sh

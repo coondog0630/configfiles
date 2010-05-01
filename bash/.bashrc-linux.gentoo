@@ -1,0 +1,18 @@
+alias ls='ls --color=auto'
+alias j='jobs'
+alias rdesktop='rdesktop -g 1280x1024'
+alias e='emacs -g 120x40'
+alias firefox='firefox --no-xshm'
+alias nautilus='nautilus --no-desktop'
+alias nvidia-settings="nvidia-settings --assign=SyncToVBlank=1"
+alias qwerty="xmodmap ~/.qwerty"
+alias dvorak="xmodmap ~/.dvorak"
+alias grepi="grep -i"
+alias nautilus="nautilus --no-desktop"
+
+alias apt-get="sudo apt-get"
+
+# Setup screen output
+if [ $TERM == "screen.rxvt" ]; then
+      echo -ne "\ek${HOSTNAME}\e\\";
+fi  
