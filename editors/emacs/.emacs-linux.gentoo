@@ -17,6 +17,7 @@
 
 ; Setq Defaults
 (setq
+ show-paren-mode t
  visible-bell 1 ; visual bell
  use-file-dialog nil ; don't use file dialogs
  line-number-mode t ; line numbers
