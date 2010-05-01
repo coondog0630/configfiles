@@ -1,14 +1,9 @@
-# Change the keybinding
-#escape \
-#
+defshell -bash
 startup_message off
-
 defscrollback 5000
-#deflogin on
 
 # Launch these screens
-screen -t macbox 0 bash 
-screen -t ec2 1 ssh neuro@sahilcooner.com
+screen -t macbox 0 -bash
 
 logfile ~/.screen-logs/screen.log
 
@@ -17,8 +12,3 @@ logfile ~/.screen-logs/screen.log
 #
 hardstatus alwayslastline
 hardstatus string "%-w%{= BW}%50>%n %t%{-}%+w%<"
-#hardstatus alwayslastline
-#hardstatus string '%{= mK}%-Lw%{= KW}%50>%n%f* %t%{= mK} %+Lw%< %{= kG}%-=%D %d %M %Y %c:%s%{-}'
-#hardstatus '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR} (%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}] %{=b C}[ %m/%d %c ]%{W}'
-#hardstatus '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
-#caption string "%w"
