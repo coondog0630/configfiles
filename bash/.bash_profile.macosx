@@ -12,7 +12,6 @@ if [ -a ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
-
 # Bash Completion
 if [ -f /usr/local/etc/bash_completion ]; then
   . /usr/local/etc/bash_completion
@@ -29,11 +28,10 @@ export PS1="$RED[$WHITE\u$RED][$HC\h$RED][$WHITE\t$RED]\n[:$WHITE\w$RED:]$WHITE\
 # System Programming paths
 export MACPORTS_PATH="/opt/local/bin:/opt/local/sbin"
 export BREW_PATH="/usr/local/bin:/usr/local/sbin"
-export MACMYSQL_PATH="/usr/local/mysql/bin"
 export DEPOT_TOOLS="~/build/google/depot_tools"
 
 # Python Path & Bin
-export PYTHONBIN=`brew --cellar`/python/2.6.5/bin
+#export PYTHONBIN=`brew --cellar`/python/2.6.5/bin
 
 # Go(oogle) Language
 export GOROOT=`brew --cellar`/go/HEAD
@@ -55,8 +53,3 @@ export LOCAL_BIN=~/.local/bin:~/.bin
 #
 export PATH=$LOCAL_BIN:$BREW_PATH:$PYTHONBIN:$MACPORTS_PATH:$PATH:$DEPOT_TOOLS
 export MANPATH=/opt/local/share/man:$MANPATH
-
-# Setup screen output
-if [ $TERM == "screen" ]; then
-      echo -ne "\ek${HOSTNAME}\e\\";
-fi  
