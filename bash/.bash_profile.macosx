@@ -12,10 +12,6 @@ if [ -a ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
-# Setup screen output
-if [ $TERM == "screen" ]; then
-      echo -ne "\ek${HOSTNAME}\e\\";
-fi  
 
 # Bash Completion
 if [ -f /usr/local/etc/bash_completion ]; then
@@ -59,3 +55,8 @@ export LOCAL_BIN=~/.local/bin:~/.bin
 #
 export PATH=$LOCAL_BIN:$BREW_PATH:$PYTHONBIN:$MACPORTS_PATH:$PATH:$DEPOT_TOOLS
 export MANPATH=/opt/local/share/man:$MANPATH
+
+# Setup screen output
+if [ $TERM == "screen" ]; then
+      echo -ne "\ek${HOSTNAME}\e\\";
+fi  
