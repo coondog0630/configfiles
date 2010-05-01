@@ -1,8 +1,6 @@
 ;;
 ; Load Path
 ;;
-(progn (cd "~/.emacs.d/plugins") (normal-top-level-add-subdirs-to-load-path))
-
 (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
     (let* ((my-lisp-dir "~/.emacs.d/plugins/")
 	   (default-directory my-lisp-dir))
@@ -30,6 +28,10 @@
 (windmove-default-keybindings)  ; winmove default keybindings enabled
 (defalias 'yes-or-no-p 'y-or-n-p) ; make an alias for yes-or-no -> y-or-n
 (show-paren-mode 1) ; paren matching
+
+;; Add color to a shell running in emacs 'M-x shell'
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ; remove toolbar
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
