@@ -1,0 +1,15 @@
+[user]
+  name  = "Sahil R Cooner"
+  email = "sahil.cooner@gmail.com"
+[color]
+  ui = auto
+
+[branch "dev/scooner"]
+  remote = dev/scooner
+  merge  = master
+
+#[remote "<nickname>"]
+  #url = <url>
+  #fetch = <refspec>
+[diff]
+	external = meld
