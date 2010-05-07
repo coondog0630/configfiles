@@ -1,4 +1,4 @@
-defshell -bash
+deflogin on
 startup_message off
 defscrollback 5000
 
