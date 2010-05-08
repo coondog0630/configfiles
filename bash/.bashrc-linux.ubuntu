@@ -107,4 +107,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# set my locale since bash on ubuntu complains about it.
+export LC_ALL="en_US"
 export GITEDITOR="vim"
