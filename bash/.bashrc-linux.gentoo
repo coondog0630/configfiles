@@ -9,10 +9,11 @@ alias qwerty="xmodmap ~/.qwerty"
 alias dvorak="xmodmap ~/.dvorak"
 alias grepi="grep -i"
 alias nautilus="nautilus --no-desktop"
+alias 32bit="linux32 chroot /mnt/gentoo32 /bin/bash"
 
 alias apt-get="sudo apt-get"
 
 # Setup screen output
-if [ $TERM == "screen.rxvt" ]; then
+if [ $TERM == "screen" ]; then
       echo -ne "\ek${HOSTNAME}\e\\";
 fi  
