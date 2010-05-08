@@ -1,0 +1,12 @@
+[user]
+  name  = "Sahil R Cooner"
+  email = "sahil.cooner@gmail.com"
+
+[color]
+  ui = auto
+  branch = auto
+  status = auto
+  diff = auto
+
+[diff]
+  external = meld
