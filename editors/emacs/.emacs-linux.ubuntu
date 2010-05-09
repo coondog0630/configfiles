@@ -1,8 +1,6 @@
 ;;
 ; Load Path
 ;;
-(progn (cd "~/.emacs.d/plugins") (normal-top-level-add-subdirs-to-load-path))
-
 (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
     (let* ((my-lisp-dir "~/.emacs.d/plugins/")
 	   (default-directory my-lisp-dir))
@@ -19,6 +17,7 @@
 (setq line-number-mode t) ; line numbers
 (setq column-number-mode t) ; column numbers
 (setq transient-mark-mode t) ; transient mark mode
+(setq show-paren-mode t) ; show parenthesis matching
 
 ;;
 ;; Emacs L&F 
@@ -75,5 +74,4 @@
 (add-to-list 'backup-directory-alist
 	     (cons "." "~/.emacs.d/saves/"))
 (setq tramp-backup-directory-alist backup-directory-alist)
-
 
