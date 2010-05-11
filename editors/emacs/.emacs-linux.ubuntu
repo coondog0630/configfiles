@@ -10,7 +10,7 @@
 ;;
 ; Emacs Defaults
 ;;
-(set-default-font "-*-drift-*-*-*-*-9-*-*-*-*-*-*-*") ; Default Font
+(set-default-font "-*-lime-*-*-*-*-*-*-*-*-*-*-*-*")
 (setq visible-bell 1) ; Visible Bell
 (global-font-lock-mode t) ; Turn on font font locking
 (setq use-file-dialog nil) ; don't use file dialogs
