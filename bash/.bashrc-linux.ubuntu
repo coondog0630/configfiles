@@ -108,5 +108,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # set my locale since bash on ubuntu complains about it.
-export LC_ALL="en_US"
 export GITEDITOR="vim"
+
+# Setup screen output
+if [ $TERM == "screen" ]; then
+      echo -ne "\ek${HOSTNAME}\e\\";
+fi  
+
