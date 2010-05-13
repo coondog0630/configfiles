@@ -17,7 +17,7 @@
 (setq line-number-mode t) ; line numbers
 (setq column-number-mode t) ; column numbers
 (setq transient-mark-mode t) ; transient mark mode
-(setq show-paren-mode t) ; show parenthesis matching
+(show-parent-mode 1) ; show parenthesis matching
 
 ;;
 ;; Emacs L&F 
