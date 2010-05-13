@@ -47,6 +47,9 @@
 ;; Programming Related
 ;;
 
+; Git Revision Control
+(require 'git)
+
 ; Yasnippet
 (require 'yasnippet) 
 (yas/initialize)
