@@ -26,8 +26,8 @@
 (windmove-default-keybindings)  ; winmove default keybindings enabled
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; ; remove toolbar
-;; (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+; remove toolbar
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
 ; key bindings
 (global-set-key (kbd "<f1>") 'comment-region)
