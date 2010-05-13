@@ -32,7 +32,7 @@ uppercase no
 use_spacer yes
 use_xft yes
 xftalpha 0.8
-xftfont  anorexia:size=10
+xftfont  lime:size=10
 
 TEXT
 ${color #0077ff}$nodename     ${alignc}$sysname $kernel ${alignr}$color${time %l:%M:%p}
