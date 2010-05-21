@@ -109,6 +109,7 @@ fi
 
 # set my locale since bash on ubuntu complains about it.
 export GITEDITOR="vim"
+export PATH="/opt/ruby-enterprise-current/bin:$PATH"
 
 # Setup screen output
 if [ $TERM == "screen" ]; then
