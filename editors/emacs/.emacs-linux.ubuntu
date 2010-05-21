@@ -10,14 +10,14 @@
 ;;
 ; Emacs Defaults
 ;;
-(set-default-font "-*-drift-*-*-*-*-9-*-*-*-*-*-*-*") ; Default Font
+(set-default-font "-*-lime-*-*-*-*-*-*-*-*-*-*-*-*")
 (setq visible-bell 1) ; Visible Bell
 (global-font-lock-mode t) ; Turn on font font locking
 (setq use-file-dialog nil) ; don't use file dialogs
 (setq line-number-mode t) ; line numbers
 (setq column-number-mode t) ; column numbers
 (setq transient-mark-mode t) ; transient mark mode
-(setq show-paren-mode t) ; show parenthesis matching
+(show-paren-mode 1) ; show parenthesis matching
 
 ;;
 ;; Emacs L&F 
@@ -26,8 +26,8 @@
 (windmove-default-keybindings)  ; winmove default keybindings enabled
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; ; remove toolbar
-;; (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+; remove toolbar
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
 ; key bindings
 (global-set-key (kbd "<f1>") 'comment-region)
@@ -46,6 +46,9 @@
 ;;
 ;; Programming Related
 ;;
+
+; Git Revision Control
+(require 'git)
 
 ; Yasnippet
 (require 'yasnippet) 

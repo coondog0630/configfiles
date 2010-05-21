@@ -1,9 +1,0 @@
-[user]
-	name = Sahil Cooner
-	email = sahil.cooner@gmail.com
-
-[color]
-  branch = auto
-  status = auto
-  diff = auto
-  ui = auto
