@@ -53,3 +53,12 @@ export LOCAL_BIN=~/.local/bin:~/.bin
 #
 export PATH=$LOCAL_BIN:$BREW_PATH:$PYTHONBIN:$MACPORTS_PATH:$PATH:$DEPOT_TOOLS
 export MANPATH=/opt/local/share/man:$MANPATH
+
+##
+# Your previous /Users/sahilcooner/.bash_profile file was backed up as /Users/sahilcooner/.bash_profile.macports-saved_2010-05-05_at_20:21:09
+##
+
+# MacPorts Installer addition on 2010-05-05_at_20:21:09: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
