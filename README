@@ -1,12 +1,17 @@
 This README contains the dir tree with the appropriate configuration files and their content.
 
 .
-|-- bash
-|-- conky
-|-- editors
-|   |-- emacs
-|   `-- vim
-|-- screen
-`-- xmodmap
+├── README
+├── bash
+│   └── bash_prompt.sh
+├── conky
+├── editors
+│   ├── emacs
+│   │   └── README
+│   └── vim
+├── git
+├── screen
+├── synergy
+└── xmodmap
 
-7 directories
+9 directories, 3 files
