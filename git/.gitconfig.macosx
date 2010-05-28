@@ -7,3 +7,5 @@
   branch = auto
   status = auto
   diff = auto
+[core]
+	excludesfile = /Users/sahilcooner/.gitignore
