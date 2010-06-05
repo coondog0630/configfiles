@@ -4,7 +4,9 @@
 
 # Bash 
 alias l="ls -G"
+alias ll="ls -l"
 alias ls="ls -G"
+alias lal="ls -al"
 alias rm="rm -f"
 alias grepi="grep -i"
 
