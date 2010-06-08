@@ -9,6 +9,7 @@ alias ls="ls -G"
 alias lal="ls -al"
 alias rm="rm -f"
 alias grepi="grep -i"
+alias ovim="open -a /Applications/MacVim.app $1"
 
 # Dir shortcuts
 alias gh="cd ~/programming/github"
