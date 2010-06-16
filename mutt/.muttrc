@@ -1,0 +1,5 @@
+# Maildir setup for mutt
+set mbox_type=Maildir
+set folder=$HOME/Maildir
+set spoolfile=+/INBOX # spool file is INBOX, since we're using Maildir format from postfix
+set header_cache=~/.hcache # cache dirs for faster load times
