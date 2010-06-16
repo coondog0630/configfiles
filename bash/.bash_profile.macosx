@@ -47,11 +47,11 @@ export GIT_EDITOR=vim
 # Local BIN
 export LOCAL_BIN=~/.local/bin:~/.bin
 
+# REE bin
+export REEBIN="/usr/local/Cellar/ruby-enterprise-edition/2010.02/bin"
+
 #
 # PATH
 #
-export PATH=$LOCAL_BIN:$BREW_PATH:$PYTHONBIN:$MACPORTS_PATH:$PATH:$DEPOT_TOOLS
+export PATH=$LOCAL_BIN:$BREW_PATH:$MACPORTS_PATH:$REEBIN:$DEPOT_TOOLS:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-
-
