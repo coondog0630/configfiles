@@ -1,0 +1,7 @@
+# Maildir setup for mutt
+set mbox_type=Maildir
+set spoolfile="~/Maildir/"
+set folder="~/Maildir/"
+set mask="!^\\.[^.]"
+set record="+.Sent"
+set postponed="+.Drafts"
