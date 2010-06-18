@@ -53,5 +53,5 @@ export REEBIN="/usr/local/Cellar/ruby-enterprise-edition/2010.02/bin"
 #
 # PATH
 #
-export PATH=$LOCAL_BIN:$BREW_PATH:$MACPORTS_PATH:$REEBIN:$DEPOT_TOOLS:$PATH
+export PATH=$LOCAL_BIN:$REEBIN:$BREW_PATH:$MACPORTS_PATH:$DEPOT_TOOLS:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
