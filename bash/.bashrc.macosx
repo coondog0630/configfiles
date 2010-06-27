@@ -20,9 +20,6 @@ alias port="sudo port"
 # Editors
 alias ec="emacsclient"
 
-# Git Stuff
-alias git_log="git log --graph --pretty=oneline --abbrev-commit"
-
 ##########
 # Colors #
 ##########
