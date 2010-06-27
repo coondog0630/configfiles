@@ -9,3 +9,13 @@
   diff = auto
 [core]
 	excludesfile = /Users/sahilcooner/.gitignore
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+
