@@ -9,6 +9,7 @@
   diff = auto
 [core]
 	excludesfile = /Users/sahilcooner/.gitignore
+  sharedRepository = group
 [alias]
   st = status
   ci = commit
