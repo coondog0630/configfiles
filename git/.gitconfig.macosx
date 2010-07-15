@@ -20,5 +20,6 @@
   pl = pull
   lg = log -p
   mg = merge
+  sh = stash
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
