@@ -11,6 +11,19 @@ alias rm="rm -f"
 alias grepi="grep -i"
 alias ovim="open -a /Applications/MacVim.app $1"
 
+# Git shortcuts
+alias gco="git co"
+alias gpl="git pl"
+alias gpu="git pu"
+alias gbr="git br"
+alias gci="git ci"
+alias glg="git lg"
+alias gme="git mg"
+alias gsh="git sh"
+alias gst="git st"
+alias glol="git lol"
+alias glola="git lola"
+
 # Dir shortcuts
 alias gh="cd ~/programming/github"
 alias yt="cd ~/programming/yammer" # yammer time
