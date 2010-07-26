@@ -21,5 +21,6 @@
   lg = log -p
   mg = merge
   sh = stash
+  cp = cherry-pick
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
