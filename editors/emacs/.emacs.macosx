@@ -7,7 +7,7 @@
 
 ;; MAC FONTS
 (setq mac-allow-anti-aliasing nil)
-(set-default-font "-*-ProggyTiny-normal-*-*-*-11-*-*-*-*-*-*-*")
+(set-default-font "-*-Envy_Code_R-normal-*-*-*-11-*-*-*-*-*-*-*")
 
 ;; Emacs Path
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
