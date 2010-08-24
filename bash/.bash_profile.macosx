@@ -41,8 +41,8 @@ export MACPORTS_PATH="/opt/local/bin:/opt/local/sbin"
 export BREW_PATH="/usr/local/bin:/usr/local/sbin"
 export DEPOT_TOOLS="~/build/google/depot_tools"
 
-# Python Path & Bin
-#export PYTHONBIN=`brew --cellar`/python/2.6.5/bin
+# Google Android SDK
+export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/r6
 
 # Go(oogle) Language
 export GOROOT=`brew --cellar`/go/HEAD
