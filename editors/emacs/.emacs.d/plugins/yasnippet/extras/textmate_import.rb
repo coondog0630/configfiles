@@ -17,8 +17,8 @@
 require 'rubygems'
 require 'plist'
 require 'choice'
-require 'FileUtils'
-require 'Shellwords' # String#shellescape
+require 'fileutils'
+require 'shellwords' # String#shellescape
 require 'ruby-debug' if $DEBUG
 
 Choice.options do
@@ -36,6 +36,7 @@ Choice.options do
     short '-o'
     long '--output-dir=PATH'
     desc 'What directory to write the new YASnippets to'
+    default './textmate_import'
   end
 
   option :snippet do
@@ -196,7 +197,7 @@ class TmSnippet
     "binding"   => {},
     "type"      => {}
   }
-
+  
   def self.extra_substitutions; @@extra_substitutions; end
   @@extra_substitutions = {
     "content"   => {},
@@ -359,10 +360,12 @@ class TmSnippet
         # Sort merged substitutions by length (bigger ones first,
         # regexps last), and apply them to the value gotten for plist.
         #
-        merged.sort_by do |what, with|
+        allsubs = merged.sort_by do |what, with|
           if what.respond_to? :length then -what.length else 0 end
-        end.each do |sub|
+        end
+        allsubs.each do |sub|
           if val.gsub!(sub[0],sub[1])
+            # puts "SUBBED #{sub[0]} for #{sub[1]}"
             return "# #{yas_directive}: "+ val + "\n" unless val.empty?
           end
         end
@@ -379,7 +382,7 @@ class TmSnippet
 end
 
 
-if $0 == __FILE__
+if __FILE__ == $PROGRAM_NAME
   # Read the the bundle's info.plist if can find it/guess it
   #
   info_plist_file = Choice.choices.info_plist || File.join(Choice.choices.bundle_dir,"info.plist")
@@ -514,3 +517,4 @@ if $0 == __FILE__
     end
   end
 end
+# ~> -:200: undefined method `length' for /shit/:Regexp (NoMethodError)

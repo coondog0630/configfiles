@@ -85,9 +85,9 @@
 (add-hook 'scala-mode-hook 'me-turn-off-indent-tabs-mode)
 
 ;;
-;; File Types for different modes
+;; Rails
 ;;
-;(add-to-list 'auto-mode-alist '(""\\.scala\\'" . scala-mode))
+(require 'rails-autoload)
 
 ;;
 ;; Org-Mode
