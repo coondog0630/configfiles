@@ -1,6 +1,5 @@
 " Turn on syntax highlighting
 syntax on
-
 " Turn on line numbering
 "set number
 " Highlight search patterns
@@ -44,7 +43,11 @@ let g:NERDCreateDefaultMappings = 0
 let g:NERDSpaceDelims = 1
 let g:NERDShutUp = 1
 let g:NERDTreeHijackNetrw = 0
-
+let g:NERDChristmasTree = 1
+"let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
+let g:NERDTreeCaseSensitiveSort = 1
+let g:NERDTreeIgnore = ['\.vim$', '\-$','\.git']
 
 " ~/.vimrc
 " vim:set ft=vim et tw=78 sw=2:
