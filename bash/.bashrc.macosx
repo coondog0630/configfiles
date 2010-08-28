@@ -38,6 +38,8 @@ alias port="sudo port"
 # Editors
 alias ec="emacsclient"
 
+alias pgsql_start="postgres -D /usr/local/pgsql/data"
+
 ##########
 # Colors #
 ##########
