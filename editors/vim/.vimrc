@@ -1,5 +1,8 @@
 " Turn on syntax highlighting
 syntax on
+
+set t_Co=256
+
 " Turn on line numbering
 "set number
 " Highlight search patterns
@@ -30,10 +33,10 @@ let g:rubycomplete_rails = 1
 "
 " Set the GUI Font
 if has("gui")
-  set guifont=ProFontX:h10
+  set guifont=ProFontX:h9
   colorscheme deveiate
 else
-  colorscheme elflord
+  colorscheme slate
 endif
 
 "           
