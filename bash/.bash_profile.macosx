@@ -50,7 +50,7 @@ export GOARCH=amd64
 export GOOS=darwin
 
 # Google Web Toolkit
-export GWT_HOME="~/build/google/gwt/2.0.3/"
+export GWT_HOME="~/build/google/gwt/2.0.4/"
 
 # Editor Vars
 export EDITOR=vim
@@ -65,5 +65,5 @@ export REEBIN="/usr/local/Cellar/ruby-enterprise-edition/2010.02/bin"
 #
 # PATH
 #
-export PATH=$LOCAL_BIN:$BREW_PATH:$REEBIN:$MACPORTS_PATH:$DEPOT_TOOLS:$PATH
+export PATH=$LOCAL_BIN:$BREW_PATH:$REEBIN:$MACPORTS_PATH:$GWT_HOME:$DEPOT_TOOLS:$PATH
 export MANPATH=/opt/local/share/man:$MANPATH
