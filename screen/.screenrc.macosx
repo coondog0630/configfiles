@@ -10,5 +10,10 @@ logfile ~/.screen-logs/screen.log
 #
 # Hard Status
 #
+#hardstatus alwayslastline
+#hardstatus string "%-w%{= BW}%50>%n %t%{-}%+w%<"
+
 hardstatus alwayslastline
-hardstatus string "%-w%{= BW}%50>%n %t%{-}%+w%<"
+#what is displayed
+hardstatus string '%{= kG}[ %{G}%H %{g}][%=%{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}]'
+  
