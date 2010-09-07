@@ -31,6 +31,7 @@ alias glola="git lola"
 # Dir shortcuts
 alias gh="cd ~/programming/github"
 alias yt="cd ~/programming/yammer" # yammer time
+alias cr="cd ~/programming/yammer/chef-repo" # chef-repo
 
 # Ports
 alias port="sudo port"
