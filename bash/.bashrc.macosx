@@ -10,6 +10,7 @@ alias lal="ls -al"
 alias rm="rm -f"
 alias grepi="grep -i"
 alias ovim="open -a /Applications/MacVim.app $1"
+alias h="history" 
 
 # Git shortcuts
 alias gad="git add"
