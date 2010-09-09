@@ -33,7 +33,7 @@ let g:rubycomplete_rails = 1
 "
 " Set the GUI Font
 if has("gui")
-  set guifont=ProFontX:h9
+  set guifont=Terminus:h12
   colorscheme deveiate
 else
   colorscheme slate
