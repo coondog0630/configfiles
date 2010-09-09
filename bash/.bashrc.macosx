@@ -8,9 +8,10 @@ alias ll="ls -l"
 alias ls="ls -G"
 alias lal="ls -al"
 alias rm="rm -f"
+alias h="history" 
 alias grepi="grep -i"
 alias ovim="open -a /Applications/MacVim.app $1"
-alias h="history" 
+alias dns_cache_purge="sudo dscacheutil -flushcache"
 
 # Git shortcuts
 alias gad="git add"
@@ -34,8 +35,6 @@ alias gh="cd ~/programming/github"
 alias yt="cd ~/programming/yammer" # yammer time
 alias cr="cd ~/programming/yammer/chef-repo" # chef-repo
 
-# Ports
-alias port="sudo port"
 
 # Editors
 alias ec="emacsclient"
