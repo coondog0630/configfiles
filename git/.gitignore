@@ -1,0 +1,7 @@
+**/*/*.pyc
+yamtest.py
+settings.py
+tmtags
+*.swp
+*.svn
+*.DS_Store
