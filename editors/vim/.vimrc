@@ -1,7 +1,7 @@
 " Turn on syntax highlighting
 syntax on
 
-set t_Co=256
+"set t_Co=256
 
 " Turn on line numbering
 "set number
@@ -47,10 +47,23 @@ let g:NERDSpaceDelims = 1
 let g:NERDShutUp = 1
 let g:NERDTreeHijackNetrw = 0
 let g:NERDChristmasTree = 1
-"let g:NERDTreeWinPos = "right"
-let g:NERDTreeWinPos = "left"
+let g:NERDTreeWinPos = "right"
+"let g:NERDTreeWinPos = "left"
 let g:NERDTreeCaseSensitiveSort = 1
 let g:NERDTreeIgnore = ['\.vim$', '\-$','\.git']
+
+" Key Mappings
+map <C-j> <C-W><Down>
+map <C-k> <C-W><Up>
+map <C-h> <C-W><Left>
+map <C-l> <C-W><Right>
+
+" Folding
+set foldenable
+set foldmethod=syntax
+
+" Window Splitting
+set splitbelow
 
 " ~/.vimrc
 " vim:set ft=vim et tw=78 sw=2:
@@ -131,10 +144,6 @@ let g:NERDTreeIgnore = ['\.vim$', '\-$','\.git']
 "inoremap <C-A> <Home>
 "inoremap <C-E> <End>
 "
-map <C-j> <C-W><Down>
-map <C-k> <C-W><Up>
-map <C-h> <C-W><Left>
-map <C-l> <C-W><Right>
 "
 "function! s:align()
 "  let p = '^\s*|\s.*\s|\s*$'
