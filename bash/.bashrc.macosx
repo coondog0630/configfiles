@@ -35,6 +35,9 @@ alias gh="cd ~/programming/github"
 alias yt="cd ~/programming/yammer" # yammer time
 alias cr="cd ~/programming/yammer/chef-repo" # chef-repo
 
+# EC2 aliases
+alias ec2-node1="ssh -i /Users/sahilcooner/.ec2/scooner.pem ubuntu@ec2-174-129-121-109.compute-1.amazonaws.com"
+alias ec2-rabbitmq="ssh -i /Users/sahilcooner/.ec2/scooner.pem ubuntu@ec-2-184-73-1-179.compute-1.amazonaws.com"
 
 # Editors
 alias ec="emacsclient"
@@ -69,3 +72,4 @@ export LSCOLORS="dxfxcxdxbxegedabagacad" # yellow
 if [ $TERM == "screen" ]; then
   echo -ne "\033]2;${HOSTNAME}\033\\"
 fi  
+source ~/.cinderella.profile
