@@ -57,6 +57,18 @@
 (setq ido-enable-flex-matching t) ;; enable fuzzy matching
 
 ;;
+;; Ruby on Rails stuff
+;; 
+(require 'rinari)
+
+;;
+;; rhtml-mode
+;;
+(require 'rhtml-mode)
+(add-hook 'rhtml-mode-hook
+     	  (lambda () (rinari-launch)))
+
+;;
 ;; JSON
 ;;
 (require 'json)
