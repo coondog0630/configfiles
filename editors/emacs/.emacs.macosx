@@ -61,6 +61,36 @@
 ;; 
 (require 'rinari)
 
+;; nxml (HTML ERB template support)
+;; (setq
+;;  nxhtml-global-minor-mode t
+;;  mumamo-chunk-coloring 'submode-colored
+;;  nxhtml-skip-welcome t
+;;  indent-region-mode t
+;;  rng-nxml-auto-validate-flag nil
+;;  nxml-degraded t)
+;; (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo))
+
+;;
+;; Ri-Ruby
+;;
+(autoload 'ri "/Users/sahilcooner/.emacs.d/plugins/ri-emacs/ri-ruby.el" nil t)
+;;
+;;  You may want to bind the ri command to a key.
+;;  For example to bind it to F1 in ruby-mode:
+;;  Method/class completion is also available.
+;;
+;; (add-hook 'ruby-mode-hook (lambda ()
+;; 			    (local-set-key 'f1 'ri)
+;; 			    (local-set-key "\M-\C-i" 'ri-ruby-complete-symbol)
+;; 			    (local-set-key 'f4 'ri-ruby-show-args)
+;; 			    ))
+
+;;
+;; Rails
+;;
+(require 'rails-autoload)
+
 ;;
 ;; rhtml-mode
 ;;
@@ -103,10 +133,7 @@
   (setq indent-tabs-mode nil))
 (add-hook 'scala-mode-hook 'me-turn-off-indent-tabs-mode)
 
-;;
-;; Rails
-;;
-(require 'rails-autoload)
+
 
 ;;
 ;; Org-Mode
@@ -116,20 +143,6 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-;;
-;; Ri-Ruby
-;;
-(autoload 'ri "/Users/sahilcooner/.emacs.d/plugins/ri-emacs/ri-ruby.el" nil t)
-;;
-;;  You may want to bind the ri command to a key.
-;;  For example to bind it to F1 in ruby-mode:
-;;  Method/class completion is also available.
-;;
-;; (add-hook 'ruby-mode-hook (lambda ()
-;; 			    (local-set-key 'f1 'ri)
-;; 			    (local-set-key "\M-\C-i" 'ri-ruby-complete-symbol)
-;; 			    (local-set-key 'f4 'ri-ruby-show-args)
-;; 			    ))
 
 ;;
 ;; TRAMP Plugin
