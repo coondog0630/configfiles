@@ -6,3 +6,4 @@ tmtags
 *.svn
 *.DS_Store
 *.netrwhist
+*.#*
