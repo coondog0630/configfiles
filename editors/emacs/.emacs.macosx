@@ -59,8 +59,6 @@
 ;;
 ;; Ruby on Rails stuff
 ;; 
-(require 'rinari)
-
 ;; nxml (HTML ERB template support)
 ;; (setq
 ;;  nxhtml-global-minor-mode t
@@ -171,3 +169,5 @@
 (add-to-list 'backup-directory-alist
 	     (cons "." "~/.emacs.d/saves/"))
 (setq tramp-backup-directory-alist backup-directory-alist)
+
+
