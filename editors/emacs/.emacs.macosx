@@ -21,7 +21,7 @@
 
 ;; Programming in C
 (setq c-set-style 'bsd)
-(setq c-basic-offset 4)
+(setq c-basic-offset 2)
 
 ;; NEW
 (global-font-lock-mode t)
@@ -55,6 +55,11 @@
 (require 'ido)
 (ido-mode t)
 (setq ido-enable-flex-matching t) ;; enable fuzzy matching
+
+;;
+;; GoLang
+;;
+(require 'go-mode)
 
 ;;
 ;; Ruby on Rails stuff
