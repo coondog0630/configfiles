@@ -58,6 +58,7 @@ export BREW_HOME="/usr/local/bin:/usr/local/sbin"
 export GWT_HOME="~/build/google/gwt/2.0.4/"
 
 # Editor Vars
+export VISUAL="mate -w"
 export EDITOR=vim
 export GIT_EDITOR=vim
 
