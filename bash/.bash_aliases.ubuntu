@@ -7,7 +7,6 @@
 # Bash 
 alias l='ls -CF'
 alias ll="ls -l"
-alias ls="ls -G"
 alias lal="ls -al"
 alias lsa="ls -a"
 alias rm="rm -f"
