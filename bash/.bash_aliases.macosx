@@ -1,0 +1,49 @@
+###########
+# ALIASES #
+###########
+
+# Bash 
+alias l="ls -G"
+alias ll="ls -l"
+alias ls="ls -G"
+alias lal="ls -al"
+alias rm="rm -f"
+alias h="history" 
+alias grepi="grep -i"
+alias ovim="open -a /Applications/MacVim.app $1"
+alias dns_cache_purge="sudo dscacheutil -flushcache"
+
+# Git shortcuts
+alias gad="git add"
+alias grm="git rm"
+alias gdi="git diff"
+alias gco="git co"
+alias gcl="git clone"
+alias gcp="git cp"
+alias gpl="git pl"
+alias gpu="git pu"
+alias gbr="git br"
+alias gci="git ci"
+alias glo="git lg"
+alias gme="git mg"
+alias gsh="git sh"
+alias gst="git st"
+alias glol="git lol"
+alias glola="git lola"
+
+# Dir shortcuts
+alias gh="cd ~/programming/github"
+alias yt="cd ~/programming/yammer" # yammer time
+alias cr="cd ~/programming/yammer/chef-repo" # chef-repo
+alias cpr="cd ~/programming/yammer/chef-platform-repo" # chef-platform
+
+# Editors
+alias ec="emacsclient"
+
+# Postgresql
+alias pg_initdb="initdb /usr/local/var/postgres"
+alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+alias pg_initdb="initdb /usr/local/var/postgres"
+alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"

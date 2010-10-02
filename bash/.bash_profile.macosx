@@ -17,6 +17,11 @@ if [ -f /usr/local/etc/bash_completion ]; then
   . /usr/local/etc/bash_completion
 fi
 
+# Bash aliases
+if [ -e ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
+
 # PS1 Variable setup
 NONE="\[\033[0m\]"
 WHITE="\[\033[1;37m\]"
