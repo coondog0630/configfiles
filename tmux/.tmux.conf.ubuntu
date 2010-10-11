@@ -30,8 +30,9 @@ setw -g monitor-activity on
 #
 #bind e previous-window
 #bind f next-window
-#bind j up-pane
-#bind k down-pane
+bind j up-pane
+bind k down-pane
+bind s kill-pane
 #
 #set-option -g status-utf8 on
 ## set-option -g status-justify centre
