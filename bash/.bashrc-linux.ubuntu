@@ -99,6 +99,7 @@ fi
 
 # set my locale since bash on ubuntu complains about it.
 export GITEDITOR="vim"
+export EDITOR="vim"
 export PATH="/opt/ruby-enterprise/bin:$PATH"
 
 # Setup screen output
