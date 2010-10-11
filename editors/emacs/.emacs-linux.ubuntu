@@ -10,7 +10,8 @@
 ;;
 ; Emacs Defaults
 ;;
-(set-default-font "-*-lime-*-*-*-*-*-*-*-*-*-*-*-*")
+;(set-default-font "-*-lime-*-*-*-*-*-*-*-*-*-*-*-*")
+(set-default-font "-*-drift-*-*-*-*-*-*-*-*-*-*-*-*")
 (setq visible-bell 1) ; Visible Bell
 (global-font-lock-mode t) ; Turn on font font locking
 (setq use-file-dialog nil) ; don't use file dialogs
@@ -41,7 +42,14 @@
 ;;
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-taming-mr-arneson)
+;(color-theme-dark-laptop)
+;(color-theme-taming-mr-arneson)
+(color-theme-comidia)
+;(color-theme-dark-blue2)
+;(color-theme-hober)
+;(color-theme-midnight)
+;(color-theme-tty-dark)
+;(color-theme-tty-taylor)
 
 ;;
 ;; ISwitch buffer
