@@ -8,5 +8,5 @@
   status = auto
   diff = auto
 
-[diff]
-  external = meld
+#[diff]
+  #external = meld
