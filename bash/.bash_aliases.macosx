@@ -10,8 +10,10 @@ alias lal="ls -al"
 alias rm="rm -f"
 alias h="history" 
 alias grepi="grep -i"
-alias ovim="open -a /Applications/MacVim.app $1"
+
+# Tools
 alias dns_cache_purge="sudo dscacheutil -flushcache"
+alias ducks='du -cks * |sort -rn |head -11'
 
 # Git shortcuts
 alias gad="git add"
@@ -39,6 +41,7 @@ alias cpr="cd ~/programming/yammer/chef-platform-repo" # chef-platform
 
 # Editors
 alias ec="emacsclient"
+alias ovim="open -a /Applications/MacVim.app $1"
 
 # Postgresql
 alias pg_initdb="initdb /usr/local/var/postgres"
