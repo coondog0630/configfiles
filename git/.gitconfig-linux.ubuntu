@@ -1,12 +1,26 @@
 [user]
-  name  = "Sahil R Cooner"
-  email = "sahil.cooner@gmail.com"
+	name = Sahil R Cooner
+	email = sahil.cooner@gmail.com
 
 [color]
-  ui = auto
+	ui = auto
   branch = auto
   status = auto
   diff = auto
-
-#[diff]
-  #external = meld
+[core]
+	excludesfile = /Users/sahilcooner/.gitignore
+  sharedRepository = group
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  pu = push
+  pl = pull
+  lg = log -p
+  mg = merge
+  sh = stash
+  cp = cherry-pick -x
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
