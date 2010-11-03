@@ -10,8 +10,9 @@
 ;;
 ; Emacs Defaults
 ;;
+(set-default-font "-*-cure-*-*-*-*-*-*-*-*-*-*-*-*") ;; default for netbook
 ;(set-default-font "-*-lime-*-*-*-*-*-*-*-*-*-*-*-*")
-(set-default-font "-*-drift-*-*-*-*-*-*-*-*-*-*-*-*")
+;(set-default-font "-*-drift-*-*-*-*-*-*-*-*-*-*-*-*")
 (setq visible-bell 1) ; Visible Bell
 (global-font-lock-mode t) ; Turn on font font locking
 (setq use-file-dialog nil) ; don't use file dialogs
@@ -42,14 +43,34 @@
 ;;
 (require 'color-theme)
 (color-theme-initialize)
-;(color-theme-dark-laptop)
-;(color-theme-taming-mr-arneson)
-(color-theme-comidia)
-;(color-theme-dark-blue2)
-;(color-theme-hober)
-;(color-theme-midnight)
-;(color-theme-tty-dark)
-;(color-theme-tty-taylor)
+
+;; list of themes I like
+(setq my-color-themes (list 'color-theme-comidia 'color-theme-dark-blue2
+			 'color-theme-dark-laptop 'color-theme-taming-mr-arneson
+			 'color-theme-hober' color-theme-midnight
+			 'color-theme-tty-dark 'color-theme-tty-taylor))
+
+(defun my-theme-set-default () ; Set the first row
+  (interactive)
+  (setq theme-current my-color-themes)
+  (funcall (car theme-current)))
+     
+(defun my-describe-theme () ; Show the current theme
+  (interactive)
+  (message "%s" (car theme-current)))
+     
+(defun my-theme-cycle ()		
+  (interactive)
+  (setq theme-current (cdr theme-current))
+      (if (null theme-current)
+	  (setq theme-current my-color-themes))
+      (funcall (car theme-current))
+      (message "%S" (car theme-current)))
+    
+(setq theme-current my-color-themes)
+(setq color-theme-is-global nil) ; Initialization
+(my-theme-set-default)
+(global-set-key [f6] 'my-theme-cycle)
 
 ;;
 ;; ISwitch buffer
