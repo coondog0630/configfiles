@@ -27,7 +27,7 @@ NONE="\[\033[0m\]"
 WHITE="\[\033[1;37m\]"
 RED="\[\033[0;31m\]" 
 HC="\[\033[0;32m\]"
-YELLOW="\033[1;33m\]"
+YELLOW="\[\033[1;33m\]"
 GITBRANCH="\`ruby -e \"print (%x{git branch 2> /dev/null}.grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1)')\"\`"
 
 # set PS1
