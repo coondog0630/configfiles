@@ -10,9 +10,7 @@
 ;;
 ; Emacs Defaults
 ;;
-(set-default-font "-*-cure-*-*-*-*-*-*-*-*-*-*-*-*") ;; default for netbook
-;(set-default-font "-*-lime-*-*-*-*-*-*-*-*-*-*-*-*")
-;(set-default-font "-*-drift-*-*-*-*-*-*-*-*-*-*-*-*")
+(set-default-font "-*-drift-*-*-*-*-*-*-*-*-*-*-*-*")
 (setq visible-bell 1) ; Visible Bell
 (global-font-lock-mode t) ; Turn on font font locking
 (setq use-file-dialog nil) ; don't use file dialogs
