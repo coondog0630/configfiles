@@ -36,7 +36,7 @@ if has("gui")
   set guifont=Terminus:h12
   colorscheme deveiate
 else
-  colorscheme slate
+  colorscheme elflord
 endif
 
 "           
