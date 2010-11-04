@@ -33,6 +33,9 @@ alias gst="git st"
 alias glol="git lol"
 alias glola="git lola"
 
+# Apt
+alias agi="sudo apt-get -y install"
+
 # Dir shortcuts
 alias gh="cd ~/programming/github"
 alias cr="cd ~/programming/yammer/chef-repo" # chef-repo
