@@ -23,7 +23,12 @@ COLOR_DEFAULT='\033[0m'
 # Directory Colors for BSD
 export LSCOLORS="dxfxcxdxbxegedabagacad" # yellow
 
+
 # Setup screen output
 if [ $TERM == "screen" ]; then
   echo -ne "\033]2;${HOSTNAME}\033\\"
 fi  
+
+##
+## FUNCTIONS
+## 

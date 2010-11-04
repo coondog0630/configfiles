@@ -26,19 +26,19 @@ fi
 NONE="$(tput setaf 9)"
 WHITE="$(tput setaf 7)"
 RED="$(tput setaf 1)"
-HC="$(tput setaf 3)"
-YELLOW="$(tput setaf 9)"
-GITBRANCH="\`ruby -e \"print (%x{git branch 2> /dev/null}.grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1)')\"\`"
+HC="$(tput setaf 5)"
+YELLOW="$(tput setaf 3)"
+
+# Functions
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
 
 # set PS1
-export PS1="$RED[$WHITE\u$RED][$HC\h$RED][$WHITE\t$RED]\n[:$WHITE\w$RED:]$YELLOW$GITBRANCH$WHITE\n:]$NONE"
+export PS1="$RED[$WHITE\u$RED][$HC\h$RED][$WHITE\t$RED]\n[:$WHITE\w$RED:]$YELLOW\$(parse_git_branch)$WHITE\n:]$NONE\[\e[0;0m\]"
 
 # System Programming paths
 export DEPOT_TOOLS="~/build/google/depot_tools"
-
-#
-# EC2 Example Configuration variables.
-#
 export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
 
 # Google Android SDK
@@ -53,7 +53,5 @@ export VISUAL="mate -w"
 export EDITOR=vim
 export GIT_EDITOR=vim
 export LOCAL_BIN=~/.local/bin:~/.bin
-export REE_BIN="/usr/local/Cellar/ruby-enterprise-edition/2010.02/bin"
-#PATH
-export PATH=$LOCAL_BIN:$BREW_HOME:$REE_BIN:$GWT_HOME:$DEPOT_TOOLS:$PATH
-
+export RUBY_BIN="/usr/local/Cellar/ruby/1.9.2-p0/bin"
+export PATH=$LOCAL_BIN:$BREW_HOME:$RUBY_BIN:$GWT_HOME:$DEPOT_TOOLS:$PATH
