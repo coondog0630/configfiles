@@ -57,11 +57,9 @@ setw -g window-status-current-fg green
 #setw -g window-status-alert-fg yellow
 
 set -g status-left '#[fg=red]#H#[fg=green]:#[fg=white]#S #[fg=green]][#[default]'
-
-set -g status-right '#[fg=green]][#[fg=white] #T #[fg=green]][ #[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[default]'
 set -g status-right '#[fg=green]][ #[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[default]'
-
 set -g history-limit 4096
+#set -g status-right '#[fg=green]][#[fg=white] #T #[fg=green]][ #[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[default]'
 
 # `+r reloads the configuration, handy
 bind r source-file ~/.tmux.conf
