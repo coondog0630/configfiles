@@ -102,12 +102,8 @@ fi
 # set my locale since bash on ubuntu complains about it.
 export GITEDITOR="vim"
 export EDITOR="vim"
-export PATH="/opt/ruby-enterprise/bin:$PATH"
 
 # Setup screen output
 if [ $TERM == "screen" ]; then
       echo -ne "\ek${HOSTNAME}\e\\";
 fi  
-
-# PS1
-export PS1="$RED[$WHITE\u$RED][$HC\h$RED][$WHITE\t$RED]\n[:$WHITE\w$RED:]$YELLOW$GITBRANCH$WHITE\n:]$NONE"
