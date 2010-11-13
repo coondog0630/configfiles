@@ -82,9 +82,11 @@ fi
 # set my locale since bash on ubuntu complains about it.
 export GITEDITOR="vim"
 export EDITOR="vim"
+export REE_HOME="/opt/ruby-enterprise/bin"
+export RVM_HOME="$HOME/.rvm/bin"
 
 # set PATH envorinment variable
-export PATH="~/.rvm/bin:$PATH"
+export PATH="$RVM_HOME:$REE_HOME:$PATH"
 
 # Setup screen output
 if [ $TERM == "screen" ]; then
