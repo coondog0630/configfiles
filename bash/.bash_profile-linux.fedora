@@ -1,0 +1,31 @@
+# Setup screen output
+if [ $TERM == "screen" ]; then
+      echo -ne "\ek${HOSTNAME}\e\\";
+fi  
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# Load Aliases
+if [ -e ~/.bash_aliases ]; then
+    . $HOME/.bash_aliases
+fi
+
+# Bash Completion
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+
+# Ruby RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+##
+# $PATH
+##
+export REE_HOME="/opt/ruby-enterprise/bin"
+export RVM_HOME="$HOME/.rvm/bin"
+
+export PATH="$RVM_HOME:$REE_HOME:$HOME/bin:$PATH"
