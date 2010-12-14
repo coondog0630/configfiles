@@ -18,7 +18,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-
 # Ruby RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
@@ -27,5 +26,4 @@ fi
 ##
 export REE_HOME="/opt/ruby-enterprise/bin"
 export RVM_HOME="$HOME/.rvm/bin"
-
 export PATH="$RVM_HOME:$REE_HOME:$HOME/bin:$PATH"
