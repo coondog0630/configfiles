@@ -21,9 +21,7 @@ fi
 ##
 # $PATH
 ##
-export REE_HOME="/opt/ruby-enterprise/bin"
-export RVM_HOME="$HOME/.rvm/bin"
-export PATH="$RVM_HOME:$REE_HOME:$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.bin:$PATH"
 
 # Ruby RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
