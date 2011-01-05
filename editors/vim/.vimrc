@@ -47,8 +47,8 @@ let g:NERDSpaceDelims = 1
 let g:NERDShutUp = 1
 let g:NERDTreeHijackNetrw = 0
 let g:NERDChristmasTree = 1
-let g:NERDTreeWinPos = "right"
-"let g:NERDTreeWinPos = "left"
+"let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 let g:NERDTreeCaseSensitiveSort = 1
 let g:NERDTreeIgnore = ['\.vim$', '\-$','\.git']
 
@@ -59,8 +59,9 @@ map <C-h> <C-W><Left>
 map <C-l> <C-W><Right>
 
 " Folding
-set foldenable
+set nofoldenable
 set foldmethod=syntax
+"set foldmethod=indent
 
 " Window Splitting
 set splitbelow
