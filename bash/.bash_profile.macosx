@@ -12,14 +12,14 @@ if [ -a ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
-# Bash Completion
-if [ -f /usr/local/etc/bash_completion ]; then
-  . /usr/local/etc/bash_completion
-fi
-
 # Bash aliases
 if [ -e ~/.bash_aliases ]; then
   . ~/.bash_aliases
+fi
+
+# Brew Bash Completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
 fi
 
 # PS1 Variable setup
@@ -35,7 +35,7 @@ function parse_git_branch() {
 }
 
 # set PS1
-export PS1="$RED[$WHITE\u$RED][$HC\h$RED][$WHITE\t$RED]\n[:$WHITE\w$RED:]$YELLOW\$(parse_git_branch)$WHITE\n:]$NONE"
+export PS1="\[$RED\][\[$WHITE\]\u\[$RED\]][\[$HC\]\h\[$RED\]][\[$WHITE\]\t\[$RED\]]\n[:\[$WHITE\]\w\[$RED:\]]\[$YELLOW\]\$(parse_git_branch)\[$WHITE\]\n:]\[$NONE\]"
 
 # System Programming paths
 export DEPOT_TOOLS="~/build/google/depot_tools"
@@ -55,3 +55,6 @@ export GIT_EDITOR=vim
 export LOCAL_BIN=~/.local/bin:~/.bin
 export RUBY_BIN="/usr/local/Cellar/ruby/1.9.2-p0/bin"
 export PATH=$LOCAL_BIN:$BREW_HOME:$RUBY_BIN:$GWT_HOME:$DEPOT_TOOLS:$PATH
+
+# This loads RVM into a shell session.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  
