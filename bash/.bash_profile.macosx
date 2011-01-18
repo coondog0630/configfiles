@@ -56,5 +56,9 @@ export LOCAL_BIN=~/.local/bin:~/.bin
 export RUBY_BIN="/usr/local/Cellar/ruby/1.9.2-p0/bin"
 export PATH=$LOCAL_BIN:$BREW_HOME:$RUBY_BIN:$GWT_HOME:$DEPOT_TOOLS:$PATH
 
+ssh-add
+
 # This loads RVM into a shell session.
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  
+# set default to ruby-enterprise-edition
+rvm use ree
