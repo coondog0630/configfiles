@@ -35,9 +35,7 @@ alias glola="git lola"
 
 # Dir shortcuts
 alias gh="cd ~/programming/github"
-alias yt="cd ~/programming/yammer" # yammer time
-alias cr="cd ~/programming/yammer/chef-repo" # chef-repo
-alias cpr="cd ~/programming/yammer/chef-platform-repo" # chef-platform
+alias pt="cd ~/programming/posterous"
 
 # Editors
 alias ec="emacsclient"
