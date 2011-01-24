@@ -46,10 +46,12 @@ alias pg_initdb="initdb /usr/local/var/postgres"
 alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/log/postgresql/pgsql.log start"
 alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 
+# Mongo
+alias mongo_start="mongod run --config /usr/local/Cellar/mongodb/1.6.5-x86_64/mongod.conf"
+
 # MySQL
-alias load_mysqld="launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
-alias unload_mysqld="launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
+alias mysqld_load="launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
+alias mysqld_unload="launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
 
 # SSH aliases
 alias admin11="ssh admin11.posterous.com"
-alias admin02="ssh admin02.posterous.com"
