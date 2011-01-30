@@ -7,7 +7,7 @@
 
 ;; MAC FONTS
 (setq mac-allow-anti-aliasing nil)
-(set-default-font "-*-Envy_Code_R-normal-*-*-*-11-*-*-*-*-*-*-*")
+(set-default-font "-*-drift-normal-*-*-*-12-*-*-*-*-*-*-*")
 
 ;; Emacs Path
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
@@ -60,6 +60,21 @@
 ;; GoLang
 ;;
 (require 'go-mode)
+
+;;
+;; Ruby
+;;
+;;; Define Ruby Mode Hook
+(defun my-ruby-mode-hook ()
+  (progn
+    (setq comint-process-echoes t)
+    (turn-on-font-lock)
+    (auto-fill-mode)
+    (yas/minor-mode)
+    (inf-ruby-keys)))
+
+;;; Register Ruby Mode Hook
+(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
 
 ;;
 ;; Ruby on Rails stuff

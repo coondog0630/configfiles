@@ -33,12 +33,28 @@ let g:rubycomplete_rails = 1
 "
 " Set the GUI Font
 if has("gui")
-  set guifont=Terminus:h12
-  colorscheme deveiate
+  set guifont=ProggyTiny:h11
+  colorscheme vividchalk
 else
-  colorscheme elflord
+  colorscheme vividchalk
 endif
 
+" Cscope settings
+if has ("cscope")
+  set cscopetag cscopeverbose
+  if has ("quickfix")
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+  endif
+
+  cnoreabbrev csa cs  add
+  cnoreabbrev csf cs  find
+  cnoreabbrev csk cs  kill
+  cnoreabbrev csr cs  reset
+  cnoreabbrev css cs  show
+  cnoreabbrev csh cs  help
+
+  "command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMRC/src
+endif
 "           
 "Nerd Core
 "            
@@ -47,8 +63,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDShutUp = 1
 let g:NERDTreeHijackNetrw = 0
 let g:NERDChristmasTree = 1
-let g:NERDTreeWinPos = "right"
-"let g:NERDTreeWinPos = "left"
+let g:NERDTreeWinPos = "left"
 let g:NERDTreeCaseSensitiveSort = 1
 let g:NERDTreeIgnore = ['\.vim$', '\-$','\.git']
 
@@ -59,8 +74,9 @@ map <C-h> <C-W><Left>
 map <C-l> <C-W><Right>
 
 " Folding
-set foldenable
+set nofoldenable
 set foldmethod=syntax
+"set foldmethod=indent
 
 " Window Splitting
 set splitbelow

@@ -35,9 +35,7 @@ alias glola="git lola"
 
 # Dir shortcuts
 alias gh="cd ~/programming/github"
-alias yt="cd ~/programming/yammer" # yammer time
-alias cr="cd ~/programming/yammer/chef-repo" # chef-repo
-alias cpr="cd ~/programming/yammer/chef-platform-repo" # chef-platform
+alias pt="cd ~/programming/posterous"
 
 # Editors
 alias ec="emacsclient"
@@ -47,3 +45,13 @@ alias ovim="open -a /Applications/MacVim.app $1"
 alias pg_initdb="initdb /usr/local/var/postgres"
 alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/log/postgresql/pgsql.log start"
 alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+
+# Mongo
+alias mongo_start="mongod run --config /usr/local/Cellar/mongodb/1.6.5-x86_64/mongod.conf"
+
+# MySQL
+alias mysqld_load="launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
+alias mysqld_unload="launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
+
+# SSH aliases
+alias admin11="ssh admin11.posterous.com"
