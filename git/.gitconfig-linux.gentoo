@@ -11,5 +11,5 @@
 #[remote "<nickname>"]
   #url = <url>
   #fetch = <refspec>
-[diff]
-	external = meld
+#[diff]
+  #external = meld
