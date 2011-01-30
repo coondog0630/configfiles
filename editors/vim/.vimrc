@@ -34,9 +34,9 @@ let g:rubycomplete_rails = 1
 " Set the GUI Font
 if has("gui")
   set guifont=ProggyTiny:h11
-  colorscheme deveiate
+  colorscheme vividchalk
 else
-  colorscheme elflord
+  colorscheme vividchalk
 endif
 
 " Cscope settings
