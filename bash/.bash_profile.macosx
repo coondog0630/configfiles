@@ -47,11 +47,6 @@ export LOCAL_BIN=~/.local/bin:~/.bin
 export RUBY_BIN="/usr/local/Cellar/ruby/1.9.2-p0/bin"
 export PATH=$LOCAL_BIN:$BREW_HOME:$RUBY_BIN:$GWT_HOME:$DEPOT_TOOLS:$PATH
 
-# Amazon 
-export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.3-62308/jars"
-export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)" 
-export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)" 
-
 # This loads RVM into a shell session.
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  
 
