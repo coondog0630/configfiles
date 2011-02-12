@@ -7,7 +7,8 @@
 
 ;; MAC FONTS
 (setq mac-allow-anti-aliasing nil)
-(set-default-font "-*-atari-*-*-*-*-8-*-*-*-*-*-*-*")
+;(set-default-font "-*-atari-*-*-*-*-8-*-*-*-*-*-*-*")
+(set-default-font "-*-Deka-*-*-*-*-10-*-*-*-*-*-*-*")
 
 ;; Emacs Path
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
