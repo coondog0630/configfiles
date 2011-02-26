@@ -50,4 +50,3 @@ alias mysqld_load="launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.pli
 alias mysqld_unload="launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
 
 # SSH aliases
-alias admin11="ssh admin11.posterous.com"
