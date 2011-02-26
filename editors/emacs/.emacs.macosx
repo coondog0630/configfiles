@@ -1,14 +1,16 @@
 ;; Emacs Load Path
 (progn (cd "~/.emacs.d/plugins") (normal-top-level-add-subdirs-to-load-path))
 
+;; NXHTML
+(load-file "~/.emacs.d/plugins/nxhtml/autostart.el")
+
 ;; This option is for macs to have the meta key from command
 (setq mac-option-modifier 'meta)
 (setq mac-command-notifier 'hyper)
 
 ;; MAC FONTS
 (setq mac-allow-anti-aliasing nil)
-;(set-default-font "-*-atari-*-*-*-*-8-*-*-*-*-*-*-*")
-(set-default-font "-*-Deka-*-*-*-*-10-*-*-*-*-*-*-*")
+(set-default-font "-*-atari-*-*-*-*-8-*-*-*-*-*-*-*")
 
 ;; Emacs Path
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
@@ -81,41 +83,14 @@
 ;; Ruby on Rails stuff
 ;; 
 ;; nxml (HTML ERB template support)
-;; (setq
-;;  nxhtml-global-minor-mode t
-;;  mumamo-chunk-coloring 'submode-colored
-;;  nxhtml-skip-welcome t
-;;  indent-region-mode t
-;;  rng-nxml-auto-validate-flag nil
-;;  nxml-degraded t)
-;; (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo))
-
-;;
-;; Ri-Ruby
-;;
-(autoload 'ri "/Users/sahilcooner/.emacs.d/plugins/ri-emacs/ri-ruby.el" nil t)
-;;
-;;  You may want to bind the ri command to a key.
-;;  For example to bind it to F1 in ruby-mode:
-;;  Method/class completion is also available.
-;;
-;; (add-hook 'ruby-mode-hook (lambda ()
-;; 			    (local-set-key 'f1 'ri)
-;; 			    (local-set-key "\M-\C-i" 'ri-ruby-complete-symbol)
-;; 			    (local-set-key 'f4 'ri-ruby-show-args)
-;; 			    ))
-
-;;
-;; Rails
-;;
-(require 'rails-autoload)
-
-;;
-;; rhtml-mode
-;;
-(require 'rhtml-mode)
-(add-hook 'rhtml-mode-hook
-     	  (lambda () (rinari-launch)))
+(setq
+ nxhtml-global-minor-mode t
+ mumamo-chunk-coloring 'submode-colored
+ nxhtml-skip-welcome t
+ indent-region-mode t
+ rng-nxml-auto-validate-flag nil
+ nxml-degraded t)
+(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo))
 
 ;;
 ;; JSON
@@ -160,7 +135,6 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-
 ;;
 ;; TRAMP Plugin
 ;;
@@ -190,5 +164,4 @@
 (add-to-list 'backup-directory-alist
 	     (cons "." "~/.emacs.d/saves/"))
 (setq tramp-backup-directory-alist backup-directory-alist)
-
 
