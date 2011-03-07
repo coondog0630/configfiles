@@ -10,23 +10,13 @@
 
 ;; MAC FONTS
 (setq mac-allow-anti-aliasing nil)
-(set-default-font "-*-atari-*-*-*-*-8-*-*-*-*-*-*-*")
+(set-default-font "-*-Pix11-*-r-normal-*-11-*-*-*-*-*-*-*")
 
 ;; Emacs Path
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
-;; Visible Bell
-(setq visible-bell 1)
-
-;; Parenthesis Matching
-(show-paren-mode 1)
-
-;; Programming in C
-(setq c-set-style 'bsd)
-(setq c-basic-offset 2)
-
-;; NEW
+;; General Settings
 (global-font-lock-mode t)
 (windmove-default-keybindings)
 (setq use-file-dialog nil)
@@ -34,6 +24,14 @@
 (setq transient-mark-mode t)
 (setq line-number-mode t)
 (setq column-number-mode t)
+;; Visible Bell
+(setq visible-bell 1)
+;; Parenthesis Matching
+(show-paren-mode 1)
+
+;; Programming in C
+(setq c-set-style 'bsd)
+(setq c-basic-offset 2)
 
 ;; Remove GUI stuff
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -55,6 +53,11 @@
 ;;
 ;; ISwitch buffer
 ;;
+(iswitchb-mode 1)
+
+;;
+;; Ido
+;;
 (require 'ido)
 ;(ido-mode t)
 (setq ido-enable-flex-matching t) ;; enable fuzzy matching
@@ -64,33 +67,7 @@
 ;;
 (require 'go-mode)
 
-;;
-;; Ruby
-;;
-;;; Define Ruby Mode Hook
-(defun my-ruby-mode-hook ()
-  (progn
-    (setq comint-process-echoes t)
-    (turn-on-font-lock)
-    (auto-fill-mode)
-    (yas/minor-mode)
-    (inf-ruby-keys)))
 
-;;; Register Ruby Mode Hook
-(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
-
-;;
-;; Ruby on Rails stuff
-;; 
-;; nxml (HTML ERB template support)
-(setq
- nxhtml-global-minor-mode t
- mumamo-chunk-coloring 'submode-colored
- nxhtml-skip-welcome t
- indent-region-mode t
- rng-nxml-auto-validate-flag nil
- nxml-degraded t)
-(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo))
 
 ;;
 ;; JSON
@@ -140,6 +117,34 @@
 ;;
 (require 'tramp)
 (setq tramp-default-method "ssh")
+
+;;
+;; Ruby on Rails stuff
+;; 
+
+;;; Define Ruby Mode Hook
+(defun my-ruby-mode-hook ()
+  (progn
+    (setq comint-process-echoes t)
+    (turn-on-font-lock)
+    (auto-fill-mode)
+    (yas/minor-mode)
+    (inf-ruby-keys)))
+
+;;; Register Ruby Mode Hook
+(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+;; Rake files go to ruby-mode
+(setq auto-mode-alist `(("\\.rake$" . ruby-mode) ,@auto-mode-alist))
+
+;; nxml (HTML ERB template support)
+(setq
+ nxhtml-global-minor-mode t
+ mumamo-chunk-coloring 'submode-colored
+ nxhtml-skip-welcome t
+ indent-region-mode t
+ rng-nxml-auto-validate-flag nil
+ nxml-degraded t)
+(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo))
 
 ;;
 ;; Backups
