@@ -3,18 +3,7 @@
 
 ;; NXHTML
 (load-file "~/.emacs.d/plugins/nxhtml/autostart.el")
-
-;; This option is for macs to have the meta key from command
-(setq mac-option-modifier 'meta)
-(setq mac-command-notifier 'hyper)
-
-;; MAC FONTS
-(setq mac-allow-anti-aliasing nil)
-(set-default-font "-*-Pix11-*-r-normal-*-11-*-*-*-*-*-*-*")
-
-;; Emacs Path
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-(setq exec-path (append exec-path '("/usr/local/bin")))
+(load-file "~/.emacs.d/plugins/yaml-mode/yaml-mode.elc")
 
 ;; General Settings
 (global-font-lock-mode t)
@@ -28,15 +17,29 @@
 (setq visible-bell 1)
 ;; Parenthesis Matching
 (show-paren-mode 1)
+;; ISwitch buffer
+(iswitchb-mode 1)
 
-;; Programming in C
-(setq c-set-style 'bsd)
-(setq c-basic-offset 2)
+;; This option is for macs to have the meta key from command
+(setq mac-option-modifier 'meta)
+(setq mac-command-notifier 'hyper)
+
+;; MAC FONTS
+(setq mac-allow-anti-aliasing nil)
+(set-default-font "-*-Pix11-*-r-normal-*-11-*-*-*-*-*-*-*")
+
+;; Emacs Path
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 
 ;; Remove GUI stuff
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode 1))
+
+;; Programming in C
+(setq c-set-style 'bsd)
+(setq c-basic-offset 2)
 
 ;;
 ;; Key bindings
@@ -51,23 +54,16 @@
 (global-set-key (kbd "C-_") 'fit-frame)
 
 ;;
-;; ISwitch buffer
-;;
-(iswitchb-mode 1)
-
-;;
 ;; Ido
 ;;
 (require 'ido)
-;(ido-mode t)
+(ido-mode 1) ;; enable ido-mode
 (setq ido-enable-flex-matching t) ;; enable fuzzy matching
 
 ;;
 ;; GoLang
 ;;
 (require 'go-mode)
-
-
 
 ;;
 ;; JSON
@@ -92,7 +88,10 @@
 ;;
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-taming-mr-arneson)
+(color-theme-taylor)
+;(color-theme-ld-dark)
+;(color-theme-taming-mr-arneson)
+;(color-theme-taming-hober)
 
 ;;
 ;; Scala
@@ -122,17 +121,6 @@
 ;; Ruby on Rails stuff
 ;; 
 
-;;; Define Ruby Mode Hook
-(defun my-ruby-mode-hook ()
-  (progn
-    (setq comint-process-echoes t)
-    (turn-on-font-lock)
-    (auto-fill-mode)
-    (yas/minor-mode)
-    (inf-ruby-keys)))
-
-;;; Register Ruby Mode Hook
-(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
 ;; Rake files go to ruby-mode
 (setq auto-mode-alist `(("\\.rake$" . ruby-mode) ,@auto-mode-alist))
 
