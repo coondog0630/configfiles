@@ -50,3 +50,8 @@ alias mysqld_load="launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.pli
 alias mysqld_unload="launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
 
 # SSH aliases
+
+# Mixbook aliases
+alias mb="cd ~/programming/mixbook"
+alias mbchef="cd ~/programming/mixbook/chef-repo"
+alias mbcom="cd ~/programming/mixbook/mixbook_com"
