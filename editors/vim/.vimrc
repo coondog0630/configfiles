@@ -16,6 +16,7 @@ set splitbelow          " Window Splitting
 set hlsearch
 set history=1000        " Remember more histor
 set selectmode=mouse    " Mouse Select Mode
+set mouse=a             " command line mouse-fu
 "
 set wildmenu            " List Long for tab completion
 set wildmode=list:longest,full
