@@ -39,6 +39,8 @@ map <C-j> <C-W><Down>
 map <C-k> <C-W><Up>
 map <C-h> <C-W><Left>
 map <C-l> <C-W><Right>
+map <C-x><C-n> :NERDTree<CR>
+map <C-x><C-t> :NERDTreeToggle<CR>
 
 " preserves window when deleting buffer.
 nnoremap <C-x><C-k> :enew \| bd #<CR>
