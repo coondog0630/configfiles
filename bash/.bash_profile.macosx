@@ -28,27 +28,38 @@ function parse_git_branch() {
 # set PS1
 export PS1="\[$RED\][\[$WHITE\]\u\[$RED\]][\[$HC\]\h\[$RED\]][\[$WHITE\]\t\[$RED\]]\n[:\[$WHITE\]\w\[$RED:\]]\[$YELLOW\]\$(parse_git_branch)\[$WHITE\]\n:]\[$NONE\]"
 
-# System Programming paths
+# editor vars
+export VISUAL="mate -w"
+export EDITOR=vim
+export GIT_EDITOR=vim
+
+############################
+# System Programming paths #
+############################
+
+# java
 export DEPOT_TOOLS="~/build/google/depot_tools"
 export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
 
-# Google Android SDK
+# Python
+export PYTHON_STUFF="/Library/Frameworks/Python.framework/Versions/2.7/bin"
+export PYSTUFF="/usr/local/share/python"
+
+# Google
 export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/r6
 export GOROOT=`brew --cellar`/go/HEAD
 export GOBIN=/usr/local/bin
 export GOARCH=amd64
 export GOOS=darwin
-export BREW_HOME="/usr/local/bin:/usr/local/sbin"
 export GWT_HOME="~/build/google/gwt/2.0.4/"
-export VISUAL="mate -w"
-export EDITOR=vim
-export GIT_EDITOR=vim
+
+# homebrew and paths
+export BREW_HOME="/usr/local/bin:/usr/local/sbin"
 export LOCAL_BIN=~/.local/bin:~/.bin
-export RUBY_BIN="/usr/local/Cellar/ruby/1.9.2-p0/bin"
-export PATH=$LOCAL_BIN:$BREW_HOME:$RUBY_BIN:$GWT_HOME:$DEPOT_TOOLS:$PATH
+export RUBY_BIN="/usr/local/Cellar/ruby/1.9.2-p180/bin"
+export PATH=$LOCAL_BIN:$BREW_HOME:$RUBY_BIN:$GWT_HOME:$DEPOT_TOOLS:$PYTHON_STUFF:$PATH
 
 # This loads RVM into a shell session.
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  
-
-# default use ruby 1.9 for rails 3 support
 rvm use 1.9.2
+rvm reload
