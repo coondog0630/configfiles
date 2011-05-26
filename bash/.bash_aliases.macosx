@@ -30,28 +30,22 @@ alias glo="git lg"
 alias gme="git mg"
 alias gsh="git sh"
 alias gst="git st"
+alias gfe="git fe"
 alias glol="git lol"
 alias glola="git lola"
 
 # Dir shortcuts
 alias gh="cd ~/programming/github"
+alias mb="cd ~/programming/mixbook"
+alias mbcom="cd ~/programming/mixbook/mixbook_com"
+alias mbchef="cd ~/programming/mixbook/chef-repo"
 
 # Editors
 alias ec="emacsclient"
-alias ovim="open -a /Applications/MacVim.app $1"
-
-# Postgresql
-alias pg_initdb="initdb /usr/local/var/postgres"
-alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/log/postgresql/pgsql.log start"
-alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+alias ovim="open -a ~/Applications/MacVim.app $1"
 
 # MySQL
 alias mysqld_load="launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
 alias mysqld_unload="launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
 
-# SSH aliases
-
-# Mixbook aliases
-alias mb="cd ~/programming/mixbook"
-alias mbchef="cd ~/programming/mixbook/chef-repo"
-alias mbcom="cd ~/programming/mixbook/mixbook_com"
+# SSH Aliases
