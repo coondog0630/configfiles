@@ -15,8 +15,11 @@ set foldmethod=syntax
 set splitbelow          " Window Splitting
 set hlsearch
 set history=1000        " Remember more histor
-set selectmode=mouse    " Mouse Select Mode
-set mouse=a             " command line mouse-fu
+if has ("mouse")
+  set mouse=a             " command line mouse-fu
+  set mousehide
+  set selectmode=mouse    " Mouse Select Mode
+endif
 "
 set wildmenu            " List Long for tab completion
 set wildmode=list:longest,full
@@ -27,7 +30,7 @@ set noswapfile          " no swap files
 
 " Set the GUI Font
 if has("gui")
-  set guifont=ProggyTiny:h11
+  set guifont=Terminus:h12
   colorscheme vividchalk
 else
   colorscheme vividchalk
