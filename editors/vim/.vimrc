@@ -30,7 +30,8 @@ set noswapfile          " no swap files
 
 " Set the GUI Font
 if has("gui")
-  set guifont=Terminus:h12
+  "set guifont=Terminus:h12
+  set guifont=ProggyOptiS:h11
   colorscheme vividchalk
 else
   colorscheme vividchalk
@@ -45,6 +46,8 @@ map <C-h> <C-W><Left>
 map <C-l> <C-W><Right>
 map <C-x><C-n> :NERDTree<CR>
 map <C-x><C-t> :NERDTreeToggle<CR>
+map <C-b><C-n> :bn<CR>
+map <C-b><C-p> :bp<CR>
 
 " preserves window when deleting buffer.
 nnoremap <C-x><C-k> :enew \| bd #<CR>

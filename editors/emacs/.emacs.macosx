@@ -28,6 +28,16 @@
 (setq mac-allow-anti-aliasing nil)
 (set-default-font "-*-Pix11-*-r-normal-*-11-*-*-*-*-*-*-*")
 
+;; mac terminal mouse stuff
+(unless window-system
+  (xterm-mouse-mode 1)
+  (global-set-key [mouse-4] '(lambda ()
+                               (interactive)
+                               (scroll-down 1)))
+  (global-set-key [mouse-5] '(lambda ()
+                               (interactive)
+                               (scroll-up 1))))
+
 ;; Emacs Path
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
