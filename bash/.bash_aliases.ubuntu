@@ -44,5 +44,10 @@ alias cpr="cd ~/programming/yammer/chef-platform-repo" # chef-platform
 # Editors
 alias ec="emacsclient"
 
+# Databases
 alias pgsql_start="postgres -D /usr/local/pgsql/data"
 
+# Mixbook
+alias mb="cd ~/programming/mixbook"
+alias mbcom="cd ~/programming/mixbook/mixbook_com"
+alias mbchef="cd ~/programming/mixbook/chef-repo"
