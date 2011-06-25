@@ -2,19 +2,24 @@
 set-option -g lock-server off
 set-option -g status-bg blue
 
-# Set the prefix Ctrl-A
-#unbind-key C-b
-#set -g prefix ^A
-#bind a send-prefix
+# Key Bindings
+bind-key C-p kill-pane            # kill a  pane
+bind-key C-w kill-window          # kill a window
+bind r source-file ~/.tmux.conf   # `+r reloads the configuration, handy
 
-# Set the prefix Ctrl-B
-#unbind-key C-a
-set -g prefix ^B
-bind a send-prefix
+# Copy mode
+unbind [
+ind Escape copy-mode
+unbind ]
+bind y paste-buffer
 
-#bind-key C-a last-window
-#bind-key ` last-window
-#bind-key a send-prefix
+# Panes
+bind k resize-pane -U 10
+bind j resize-pane -D 10
+bind h resize-pane -L 10
+bind l resize-pane -R 10
+bind tab next-layout
+bind space select-pane -t:.+
 
 # set-option -g default-terminal "screen-256color"
 set-option -g mouse-select-pane on
@@ -27,13 +32,6 @@ set-option -g visual-bell on
 setw -g mode-keys vi
 setw -g mode-mouse on
 setw -g monitor-activity on
-#
-#bind e previous-window
-#bind f next-window
-#bind j up-pane
-#bind k down-pane
-bind s kill-pane
-#
 #set-option -g status-utf8 on
 ## set-option -g status-justify centre
 #set-option -g status-justify left
@@ -58,8 +56,6 @@ setw -g window-status-current-fg green
 
 set -g status-left '#[fg=red]#H#[fg=green]:#[fg=white]#S #[fg=green]][#[default]'
 set -g status-right '#[fg=green]][ #[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[default]'
-set -g history-limit 4096
+set -g history-limit 16384
 #set -g status-right '#[fg=green]][#[fg=white] #T #[fg=green]][ #[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[default]'
 
-# `+r reloads the configuration, handy
-bind r source-file ~/.tmux.conf
