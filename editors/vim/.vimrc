@@ -3,7 +3,7 @@
 " ------------------
 syntax on               " Turn on syntax highlighting
 
-set t_Co=256
+"set t_Co=256            " playing it safe and not going crazy with the colors
 set number              " Turn on line numbering
 set nocompatible        " this is vim, not vi: set this first
 set autoread            " detect changes outside of vim
@@ -30,8 +30,8 @@ set noswapfile          " no swap files
 
 " Set the GUI Font
 if has("gui")
-  "set guifont=Terminus:h12
-  set guifont=ProggyOptiS:h11
+  "set guifont=GraphicPixel:h10
+  set guifont=Anonymous\ Pro:h10
   colorscheme vividchalk
 else
   colorscheme vividchalk
@@ -67,7 +67,6 @@ filetype plugin indent on           " Enable filetype-specific indenting on plug
 " | Plugins |
 " -----------
 let g:rubycomplete_rails = 1        " Omni Complete
-
 
 let g:NERDCreateDefaultMappings = 0 " NERDTree
 let g:NERDSpaceDelims = 1
