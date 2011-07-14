@@ -4,6 +4,7 @@
 syntax on               " Turn on syntax highlighting
 
 "set t_Co=256            " playing it safe and not going crazy with the colors
+set ruler               " set the ruler
 set number              " Turn on line numbering
 set nocompatible        " this is vim, not vi: set this first
 set autoread            " detect changes outside of vim
