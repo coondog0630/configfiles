@@ -75,9 +75,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
 # set my locale since bash on ubuntu complains about it.
 export GITEDITOR="vim"
 export EDITOR="vim"
@@ -91,3 +88,7 @@ export PATH="$RVM_HOME:$REE_HOME:$PATH"
 if [ $TERM == "screen" ]; then
       echo -ne "\ek${HOSTNAME}\e\\";
 fi  
+
+# RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
