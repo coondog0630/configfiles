@@ -19,14 +19,24 @@ WHITE="$(tput setaf 7)"
 RED="$(tput setaf 1)"
 HC="$(tput setaf 5)"
 YELLOW="$(tput setaf 3)"
+GREEN="$(tput setaf 2)"
 
 # Functions
+function get_exit_status() {
+  es=$?
+  if [ $es -eq 0 ]
+  then
+    echo -e "\[$GREEN\]${es}\[$NONE\]"
+  else
+    echo -e "\[$RED\]${es}\[$NONE\]"
+  fi
+}
 function parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
 # set PS1
-export PS1="\[$RED\][\[$WHITE\]\u\[$RED\]][\[$HC\]\h\[$RED\]][\[$WHITE\]\t\[$RED\]]\n[:\[$WHITE\]\w\[$RED:\]]\[$YELLOW\]\$(parse_git_branch)\[$WHITE\]\n:]\[$NONE\]"
+export PS1="\[$RED\][\[$WHITE\]\u\[$RED\]][\[$HC\]\h\[$RED\]][\[$WHITE\]\t\[$RED\]][\[$WHITE\]$(get_exit_status)\[$RED\]]\n[:\[$WHITE\]\w\[$RED:\]]\[$RED\][:\[$GREEN\]\$(~/.rvm/bin/rvm-prompt)\[$RED\]:]\[$YELLOW\]\$(parse_git_branch)\[$WHITE\]\n:]\[$NONE\]"
 
 # editor vars
 export VISUAL="mate -w"
@@ -67,5 +77,5 @@ export PATH=$LOCAL_BIN:$BREW_HOME:$RUBY_BIN:$EC2_HOME/bin:$GWT_HOME:$DEPOT_TOOLS
 
 # This loads RVM into a shell session.
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  
-rvm use 1.9.2
-rvm reload
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+rvm use ruby-1.9.2-p180@global
