@@ -49,3 +49,4 @@ alias mysqld_load="launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.pli
 alias mysqld_unload="launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
 
 # SSH Aliases
+alias synergy_home_server="/usr/bin/synergys --config ~/.synergy-home.conf --log ~/.synergy-home.log --restart --daemon"
