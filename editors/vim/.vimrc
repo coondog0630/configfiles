@@ -1,6 +1,7 @@
 " ------------------
 " |Default Options |
 " ------------------
+call pathogen#infect()  " Pathogen load
 syntax on               " Turn on syntax highlighting
 
 "set t_Co=256            " playing it safe and not going crazy with the colors
@@ -93,3 +94,5 @@ if has ("cscope")
   cnoreabbrev csh cs  help
 endif
 
+" Set the status line info
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
