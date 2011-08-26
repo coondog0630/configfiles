@@ -71,7 +71,7 @@ export BREW_HOME="/usr/local/bin:/usr/local/sbin"
 export LOCAL_BIN=~/.local/bin:~/.bin
 
 # PATH
-export PATH=$LOCAL_BIN:$BREW_HOME:$EC2_HOME/bin:$DEPOT_TOOLS:$PYSTUFF:$PATH
+export PATH="$LOCAL_BIN:$PYSTUFF:$BREW_HOME:$EC2_HOME/bin:$PATH"
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  
