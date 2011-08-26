@@ -26,7 +26,7 @@
 
 ;; MAC FONTS
 (setq mac-allow-anti-aliasing nil)
-(set-default-font "-*-Pix11-*-r-normal-*-11-*-*-*-*-*-*-*")
+(set-default-font "-*-Anonymous Pro-*-r-normal-*-10-*-*-*-*-*-*-*")
 
 ;; mac terminal mouse stuff
 (unless window-system
