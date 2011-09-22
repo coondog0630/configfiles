@@ -70,19 +70,13 @@
 (ido-mode 1) ;; enable ido-mode
 (setq ido-enable-flex-matching t) ;; enable fuzzy matching
 
-;;
 ;; GoLang
-;;
 (require 'go-mode)
 
-;;
 ;; JSON
-;;
 (require 'json)
 
-;;
 ;; GIT
-;;
 (require 'git)
 
 ;;
