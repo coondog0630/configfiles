@@ -2,12 +2,12 @@
 	name = Sahil Cooner
 	email = sahil.cooner@gmail.com
 [color]
-  ui = auto
+	ui = auto
   branch = auto
   status = auto
   diff = auto
 [core]
-  excludesfile = /Users/sahilcooner/.gitignore
+	excludesfile = /Users/sahilcooner/.gitignore
   sharedRepository = group
 [alias]
   st = status
@@ -17,6 +17,7 @@
   df = diff
   pu = push
   pl = pull
+  fe = fetch
   lg = log -p
   mg = merge
   sh = stash

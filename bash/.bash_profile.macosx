@@ -13,36 +13,37 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
 
+# Editors
+export VISUAL="mate -w"
+export EDITOR=vim
+export GIT_EDITOR=vim
+
 # PS1 Variable setup
-NONE="$(tput sgr0)"
+NONE="$(tput setaf 9)"
 WHITE="$(tput setaf 7)"
 RED="$(tput setaf 1)"
 HC="$(tput setaf 5)"
 YELLOW="$(tput setaf 3)"
 GREEN="$(tput setaf 2)"
-CYAN="$(tput setaf 6)"
 
-# Functions
+# return status code
 function get_exit_status() {
-    es=$?
-    if [ $es -eq 0 ]
-    then
-	echo -e "\[$GREEN\]${es}\[$NONE\]"
-    else
-	echo -e "\[$RED\]${es}\[$NONE\]"
-    fi
+	es=$?
+	if [ $es -eq 0 ]
+	then
+		echo -e "\[$GREEN\]${es}\[$NONE\]"
+	else
+		echo -e "\[$RED\]${es}\[$NONE\]"
+	fi
 }
+
+# Git branch in PS1, cross platform version
 function parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
 # set PS1
-export PS1="\[$RED\][\[$WHITE\]\u\[$RED\]][\[$HC\]\h\[$RED\]][\[$WHITE\]\t\[$RED\]][\[$WHITE\]$(get_exit_status)\[$RED\]]\n[:\[$WHITE\]\w\[$RED:\]]\[$RED\][:\[$CYAN\]\$(~/.rvm/bin/rvm-prompt)\[$RED\]:]\[$YELLOW\]\$(parse_git_branch)\[$WHITE\]\n:]\[$NONE\]"
-
-# editor vars
-export VISUAL="mate -w"
-export EDITOR=vim
-export GIT_EDITOR=vim
+export PS1="\[$RED\][\[$WHITE\]\u\[$RED\]][\[$HC\]\h\[$RED\]][\[$WHITE\]\t\[$RED\]][\[$WHITE\]$(get_exit_status)\[$RED\]]\n[:\[$WHITE\]\w\[$RED:\]][:\[$GREEN\]\$(~/.rvm/bin/rvm-prompt)\[$RED\]:]\[$YELLOW\]\$(parse_git_branch)\[$WHITE\]\n:]"
 
 #######################
 # System Programming paths #
@@ -56,13 +57,6 @@ export PDSH_RCMD_TYPE="ssh"
 export DEPOT_TOOLS="~/build/google/depot_tools"
 export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
 
-# Amazon EC2
-export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
-export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
-export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
-export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.4.2.2/jars"
-ssh-add ~/.ec2/keypair.pem
-
 # Python
 export PYSTUFF="/usr/local/share/python"
 
@@ -70,10 +64,27 @@ export PYSTUFF="/usr/local/share/python"
 export BREW_HOME="/usr/local/bin:/usr/local/sbin"
 export LOCAL_BIN=~/.local/bin:~/.bin
 
+# append to history
+shopt -s histappend
+
+# Java 
+export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
+
 # PATH
-export PATH="$LOCAL_BIN:$PYSTUFF:$BREW_HOME:$EC2_HOME/bin:$PATH"
+export BREW_HOME="/usr/local/bin:/usr/local/sbin"
+export LOCAL_BIN=~/.local/bin:~/.bin
+export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
+export PATH=$LOCAL_BIN:$PYTHONPATH:$BREW_HOME:$JAVA_HOME:$PATH
+
+# OpenCV
+export PKG_CONFIG_PATH=/usr/local/lib/pkgocnfig
+export LD_LIBRARY=/usr
+
+# GCC compiler
+export CC=gcc-4.2
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  
+# RVM bash completion
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
-rvm default
+rvm use default

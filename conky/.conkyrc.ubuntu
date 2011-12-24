@@ -1,4 +1,4 @@
-alignment bottom_left
+alignment top_right
 background yes
 border_width 1
 cpu_avg_samples 2
@@ -20,7 +20,6 @@ minimum_size 330 10
 net_avg_samples 2
 no_buffers yes
 out_to_console no
-wm_class_name Conky
 own_window_colour black
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 own_window_transparent yes
@@ -29,7 +28,7 @@ own_window yes
 stippled_borders 2
 update_interval 2
 uppercase no
-use_spacer yes
+use_spacer right
 use_xft yes
 xftalpha 0.8
 xftfont  lime:size=10
@@ -48,10 +47,6 @@ ${color #0077ff}Net Down:$color ${downspeed eth0} k/s      ${color #0077ff}Net U
 ${color #0077ff}${downspeedgraph eth0 32,155 104E8B 0077ff} $alignr${color #0077ff}${upspeedgraph eth0 32,155 104E8B 0077ff}
 ${color #0077ff}File systems:
  ${color #0077ff}/          $color${fs_used /}/${fs_size /}${alignr}${color #0077ff}${fs_bar 5,120 /}
- ${color #0077ff}/home      $color${fs_used /home}/${fs_size /home}${alignr}${color #0077ff}${fs_bar 5,120 /home}
- ${color #0077ff}/mnt/sd1   $color${fs_used /mnt/sd1}/${fs_size /mnt/sd1}${alignr}${color #0077ff}${fs_bar 5,120 /mnt/sd1}
- ${color #0077ff}/mnt/sd2   $color${fs_used /mnt/sd2}/${fs_size /mnt/sd2}${alignr}${color #0077ff}${fs_bar 5,120 /mnt/sd2}
- ${color #0077ff}/mnt/win   $color${fs_used /mnt/win}/${fs_size /mnt/win}${alignr}${color #0077ff}${fs_bar 5,120 /mnt/win}
 
 ${color #0077ff}Top Processes:
 ${color #0077ff}Name              PID     CPU%   MEM%

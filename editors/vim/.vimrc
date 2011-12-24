@@ -51,49 +51,17 @@ map <C-x><C-t> :NERDTreeToggle<CR>
 map <C-b><C-n> :bn<CR>
 map <C-b><C-p> :bp<CR>
 
-" preserves window when deleting buffer.
-nnoremap <C-x><C-k> :enew \| bd #<CR>
-
-" -----------------
-" |Coding Options |
-" -----------------
-set tabstop=2           
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set smarttab
-
-filetype plugin indent on           " Enable filetype-specific indenting on plugins
-
-" -----------
-" | Plugins |
-" -----------
-let g:rubycomplete_rails = 1        " Omni Complete
-
-let g:NERDCreateDefaultMappings = 0 " NERDTree
+"set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_fugitive')?fugitive#statusline():''}%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
+"           
+"Nerd Core
+"            
+let g:NERDCreateDefaultMappings = 0
 let g:NERDSpaceDelims = 1
 let g:NERDShutUp = 1
 let g:NERDTreeHijackNetrw = 0
 let g:NERDChristmasTree = 1
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 let g:NERDTreeCaseSensitiveSort = 1
 let g:NERDTreeIgnore = ['\.vim$', '\-$','\.git']
 
-" Cscope settings
-if has ("cscope")
-  set cscopetag cscopeverbose
-  if has ("quickfix")
-    set cscopequickfix=s-,c-,d-,i-,t-,e-
-  endif
-
-  cnoreabbrev csa cs  add
-  cnoreabbrev csf cs  find
-  cnoreabbrev csk cs  kill
-  cnoreabbrev csr cs  reset
-  cnoreabbrev css cs  show
-  cnoreabbrev csh cs  help
-endif
-
-" Set the status line info
-"set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_fugitive')?fugitive#statusline():''}%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P

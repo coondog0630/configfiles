@@ -1,17 +1,7 @@
 This README contains the dir tree with the appropriate configuration files and their content.
 
-.
-├── README
-├── bash
-│   └── bash_prompt.sh
-├── conky
-├── editors
-│   ├── emacs
-│   │   └── README
-│   └── vim
-├── git
-├── screen
-├── synergy
-└── xmodmap
-
-9 directories, 3 files
+======================
+- Steps to get setup -
+======================
+1) Run the symbolic link creator script, create_symlinks.sh, to get a set of vim/bash/git and related configurations in place.
+2) Run the setup.sh script to setup your environment for developing.

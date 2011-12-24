@@ -42,4 +42,7 @@ alias yum="sudo yum"
 
 # Dir shortcuts
 alias gh="cd ~/programming/github"
+alias mb="cd ~/programming/mixbook"
+alias mbcom="cd ~/programming/mixbook/mixbook_com"
+alias mbchef="cd ~/programming/mixbook/chef-repo"
 
