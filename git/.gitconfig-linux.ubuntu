@@ -24,3 +24,10 @@
   cp = cherry-pick -x
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 445x271+0+49
+	main-window-view = HistoryView
+	file-view-hpane-position = 375
+	history-view-vpane-position = 502
+	file-view-vpane-position = 548

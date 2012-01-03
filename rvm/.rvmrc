@@ -1,4 +1,4 @@
-export rvm_path="/Users/sahilcooner/.rvm"
+export rvm_path="~/.rvm"
 export rvm_pretty_print_flag=1
 export rvm_install_on_use_flag=1
 export rvm_make_flags="-j 3"

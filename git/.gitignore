@@ -1,9 +1,9 @@
 **/*/*.pyc
-yamtest.py
 settings.py
-tmtags
 *.swp
 *.svn
 *.DS_Store
 *.netrwhist
 *.#*
+**/*/database.yml
+**/*/tmtags

@@ -37,8 +37,9 @@ alias glola="git lola"
 # Dir shortcuts
 alias gh="cd ~/programming/github"
 alias mb="cd ~/programming/mixbook"
-alias mbcom="cd ~/programming/mixbook/mixbook_com"
+alias mbcom="cd ~/programming/mixbook/mixbook_com; rvm gemset use mixbook_com"
 alias mbchef="cd ~/programming/mixbook/chef-repo"
+alias mbops="cd ~/programming/mixbook/opscripts"
 
 # Editors
 alias ec="emacsclient"
@@ -48,5 +49,5 @@ alias ovim="open -a ~/Applications/MacVim.app $1"
 alias mysqld_load="launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
 alias mysqld_unload="launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
 
-# SSH Aliases
+# Synergy
 alias synergy_home_server="/usr/bin/synergys --config ~/.synergy-home.conf --log ~/.synergy-home.log --restart --daemon"

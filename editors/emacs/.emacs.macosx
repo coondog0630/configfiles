@@ -3,7 +3,18 @@
 
 ;; NXHTML
 (load-file "~/.emacs.d/plugins/nxhtml/autostart.el")
-(load-file "~/.emacs.d/plugins/yaml-mode/yaml-mode.elc")
+
+;; This option is for macs to have the meta key from command
+(setq mac-option-modifier 'meta)
+(setq mac-command-notifier 'hyper)
+
+;; MAC FONTS
+(setq mac-allow-anti-aliasing nil)
+(set-default-font "-oem*-Pix11-*-r-normal-*-11-*-*-*-*-*-*-*")
+
+;; Emacs Path
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 
 ;; General Settings
 (global-font-lock-mode t)
@@ -17,18 +28,6 @@
 (setq visible-bell 1)
 ;; Parenthesis Matching
 (show-paren-mode 1)
-;; ISwitch buffer
-(iswitchb-mode 1)
-
-;; This option is for macs to have the meta key from command
-(setq mac-option-modifier 'meta)
-(setq mac-command-notifier 'hyper)
-
-;; MAC FONTS
-(setq mac-allow-anti-aliasing nil)
-(set-default-font "-*-Anonymous Pro-*-r-normal-*-10-*-*-*-*-*-*-*")
-
-;; mac terminal mouse stuff
 (unless window-system
   (xterm-mouse-mode 1)
   (global-set-key [mouse-4] '(lambda ()
@@ -38,18 +37,10 @@
                                (interactive)
                                (scroll-up 1))))
 
-;; Emacs Path
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-(setq exec-path (append exec-path '("/usr/local/bin")))
-
 ;; Remove GUI stuff
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode 1))
-
-;; Programming in C
-(setq c-set-style 'bsd)
-(setq c-basic-offset 2)
 
 ;;
 ;; Key bindings
@@ -67,17 +58,92 @@
 ;; Ido
 ;;
 (require 'ido)
-(ido-mode 1) ;; enable ido-mode
+(ido-mode t)
 (setq ido-enable-flex-matching t) ;; enable fuzzy matching
 
+<<<<<<< Updated upstream
 ;; GoLang
 (require 'go-mode)
 
 ;; JSON
 (require 'json)
 
+=======
+;;
+;; Programming
+;;
+
+;; Code Browsing
+;; (require 'tabbar)
+;; (require 'ide-skel)
+
+;; ;; optional, but useful - see Emacs Manual
+;; (partial-completion-mode)
+;; (Icomplete-mode)
+
+;; ;; for convenience
+;; (global-set-key [f4] 'ide-skel-proj-find-files-by-regexp)
+;; (global-set-key [f5] 'ide-skel-proj-grep-files-by-regexp)
+;; (global-set-key [f10] 'ide-skel-toggle-left-view-window)
+;; (global-set-key [f11] 'ide-skel-toggle-bottom-view-window)
+;; (global-set-key [f12] 'ide-skel-toggle-right-view-window)
+;; (global-set-key [C-next] 'tabbar-backward)
+;; (global-set-key [C-prior]  'tabbar-forward) 
+
+;; C
+(setq c-set-style 'bsd)
+(setq c-basic-offset 2)
+;; GoLang
+(require 'go-mode)
+;; JSON
+(require 'json)
+>>>>>>> Stashed changes
 ;; GIT
 (require 'git)
+
+;; Scala
+(require 'scala-mode-auto)
+; Scala Mode hooks
+(defun me-turn-off-indent-tabs-mode ()
+  (setq indent-tabs-mode nil))
+(add-hook 'scala-mode-hook 'me-turn-off-indent-tabs-mode)
+
+;;
+;; Ruby on Rails stuff
+;; 
+(require 'rinari)
+
+;;; Define Ruby Mode Hook
+(defun my-ruby-mode-hook ()
+  (progn
+    (setq comint-process-echoes t)
+    (turn-on-font-lock)
+    (auto-fill-mode)
+    (yas/minor-mode)
+    (inf-ruby-keys)))
+
+;;; Register Ruby Mode Hook
+(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+;; Rake files go to ruby-mode
+(setq auto-mode-alist `(("\\.rake$" . ruby-mode) ,@auto-mode-alist))
+
+;; nxml (HTML ERB template support)
+(setq
+ nxhtml-global-minor-mode t
+ mumamo-chunk-coloring 'submode-colored
+ nxhtml-skip-welcome t
+ indent-region-mode t
+ rng-nxml-auto-validate-flag nil
+ nxml-degraded t)
+(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo))
+
+;;
+;; Org-Mode
+;;
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
 
 ;;
 ;; YASNIPPET
@@ -92,51 +158,14 @@
 ;;
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-taylor)
-;(color-theme-ld-dark)
 ;(color-theme-taming-mr-arneson)
-;(color-theme-taming-hober)
-
-;;
-;; Scala
-;;
-(require 'scala-mode-auto)
-
-; Scala Mode hooks
-(defun me-turn-off-indent-tabs-mode ()
-  (setq indent-tabs-mode nil))
-(add-hook 'scala-mode-hook 'me-turn-off-indent-tabs-mode)
-
-;;
-;; Org-Mode
-;;
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
+(color-theme-taylor)
 
 ;;
 ;; TRAMP Plugin
 ;;
 (require 'tramp)
 (setq tramp-default-method "ssh")
-
-;;
-;; Ruby on Rails stuff
-;; 
-
-;; Rake files go to ruby-mode
-(setq auto-mode-alist `(("\\.rake$" . ruby-mode) ,@auto-mode-alist))
-
-;; nxml (HTML ERB template support)
-(setq
- nxhtml-global-minor-mode t
- mumamo-chunk-coloring 'submode-colored
- nxhtml-skip-welcome t
- indent-region-mode t
- rng-nxml-auto-validate-flag nil
- nxml-degraded t)
-(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo))
 
 ;;
 ;; Backups

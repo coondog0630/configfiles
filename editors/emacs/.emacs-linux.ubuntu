@@ -1,5 +1,5 @@
 ;;
-; Load Path
+;; Load Path
 ;;
 (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
     (let* ((my-lisp-dir "~/.emacs.d/plugins/")
@@ -8,8 +8,9 @@
       (normal-top-level-add-subdirs-to-load-path)))
 
 ;;
-; Emacs Defaults
+;; Emacs Defaults
 ;;
+;(set-default-font "-*-lime-*-*-*-*-*-*-*-*-*-*-*-*")
 (set-default-font "-*-drift-*-*-*-*-*-*-*-*-*-*-*-*")
 (setq visible-bell 1) ; Visible Bell
 (global-font-lock-mode t) ; Turn on font font locking
@@ -26,45 +27,67 @@
 (windmove-default-keybindings)  ; winmove default keybindings enabled
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-; remove toolbar
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-
-; key bindings
-(global-set-key (kbd "<f1>") 'comment-region)
-(global-set-key (kbd "<f2>") 'uncomment-region)
-(global-set-key (kbd "<f5>") 'search-forward)
-(global-set-key (kbd "<f11>") 'compile)
-(global-set-key (kbd "<f12>") 'goto-line)
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1)) ; remove toolbar
 
 ;;
-; Colors
+;; Key bindings
+;;
+(global-set-key (kbd "C-c c") 'comment-region)
+(global-set-key (kbd "C-c u") 'uncomment-region)
+
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+
+;;
+;; Fit Frames
+;;
+(require 'fit-frame)
+(global-set-key (kbd "C-_") 'fit-frame)
+
+;;
+;; Org-Mode
+;;
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+
+;;
+;; Colors
 ;;
 (require 'color-theme)
 (color-theme-initialize)
 
 ;; list of themes I like
-(setq my-color-themes (list 'color-theme-comidia 'color-theme-dark-blue2
-			 'color-theme-dark-laptop 'color-theme-taming-mr-arneson
-			 'color-theme-hober' color-theme-midnight
-			 'color-theme-tty-dark 'color-theme-tty-taylor))
+(setq my-color-themes (list 'color-theme-taming-mr-arneson
+			    'color-theme-comidia 'color-theme-dark-blue2
+			    'color-theme-dark-laptop 'color-theme-clarity
+			    'color-theme-hober' color-theme-midnight
+			    'color-theme-tty-dark 'color-theme-tty-taylor
+			    'color-theme-dark-laptop 'color-theme-deep-blue
+			    'color-theme-hober 'color-theme-late-night
+			    'color-theme-midnight 'color-theme-renegade
+			    'color-theme-taylor 'color-theme-euphoria))
 
 (defun my-theme-set-default () ; Set the first row
   (interactive)
   (setq theme-current my-color-themes)
   (funcall (car theme-current)))
-     
+
 (defun my-describe-theme () ; Show the current theme
   (interactive)
   (message "%s" (car theme-current)))
-     
+
 (defun my-theme-cycle ()		
   (interactive)
   (setq theme-current (cdr theme-current))
-      (if (null theme-current)
-	  (setq theme-current my-color-themes))
-      (funcall (car theme-current))
-      (message "%S" (car theme-current)))
-    
+  (if (null theme-current)
+      (setq theme-current my-color-themes))
+  (funcall (car theme-current))
+  (message "%S" (car theme-current)))
+
 (setq theme-current my-color-themes)
 (setq color-theme-is-global nil) ; Initialization
 (my-theme-set-default)
@@ -81,21 +104,156 @@
 ;; Programming Related
 ;;
 
-; Git Revision Control
-(require 'git)
+(setq path-to-ctags "/usr/bin/ctags") 
 
-; Yasnippet
-(require 'yasnippet) 
+(defun create-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (shell-command
+   (format "%s -f %s/TAGS -e -R %s" path-to-ctags dir-name (directory-file-name dir-name)))
+  )
+
+;;
+;; sr-speedbar
+;;
+(require 'sr-speedbar)
+(global-set-key (kbd "M-s s") 'sr-speedbar-toggle)
+(setq speedbar-frame-parameters
+      '((minibuffer)
+	(width . 40)
+	(border-width . 0)
+	(menu-bar-lines . 0)
+n	(tool-bar-lines . 0)
+	(unsplittable . t)
+	(left-fringe . 0)))
+(setq speedbar-hide-button-brackets-flag t)
+(setq speedbar-show-unknown-files t)
+(setq speedbar-smart-directory-expand-flag t)
+(setq speedbar-use-images nil)
+(setq sr-speedbar-auto-refresh nil)
+(setq sr-speedbar-max-width 70)
+(setq sr-speedbar-right-side nil)
+(setq sr-speedbar-width-console 40)
+
+(when window-system
+  (defadvice sr-speedbar-open (after sr-speedbar-open-resize-frame activate)
+    (set-frame-width (selected-frame)
+                     (+ (frame-width) sr-speedbar-width)))
+  (ad-enable-advice 'sr-speedbar-open 'after 'sr-speedbar-open-resize-frame)
+
+  (defadvice sr-speedbar-close (after sr-speedbar-close-resize-frame activate)
+    (sr-speedbar-recalculate-width)
+    (set-frame-width (selected-frame)
+                     (- (frame-width) sr-speedbar-width)))
+  (ad-enable-advice 'sr-speedbar-close 'after 'sr-speedbar-close-resize-frame))
+
+(require 'git) ; Git Revision Control
+
+(require 'yasnippet) ; Yasnippet
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
 
-; C programming style
-(setq c-set-style 'ellemtel)
+(setq c-set-style 'ellemtel) ; C programming style
 
-; Python Mode
-(autoload 'python-mode "python-mode.el" "Python mode." t)
+(autoload 'python-mode "python-mode.el" "Python mode." t) ; Python Mode
 (setq auto-mode-alist
       (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
+
+;; GoLang
+(require 'go-mode)
+;; JSON
+(require 'json)
+
+;; Scala
+(require 'scala-mode-auto)
+					
+(defun me-turn-off-indent-tabs-mode () ; Scala Mode hooks
+  (setq indent-tabs-mode nil))
+(add-hook 'scala-mode-hook 'me-turn-off-indent-tabs-mode)
+
+(require 'flymake) ; Flymake
+
+;; I don't like the default colors :)
+(set-face-background 'flymake-errline "red4")
+(set-face-background 'flymake-warnline "dark slate blue")
+
+;; ruby flymake
+;; Invoke ruby with '-c' to get syntax checking
+(defun flymake-ruby-init ()
+  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+	 (local-file  (file-relative-name
+                       temp-file
+                       (file-name-directory buffer-file-name))))
+    (list "ruby" (list "-c" local-file))))
+
+(push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+
+(push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)
+
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+	     
+	     ;; Don't want flymake mode for ruby regions in rhtml files and also on read only files
+	     (if (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
+		 (flymake-mode))
+	     ))
+
+;; Flymake for ERB template files
+(defun flymake-erb-init ()
+  (let* ((check-buffer (current-buffer))
+         (temp-file (flymake-create-temp-inplace (buffer-file-name) "flymake"))
+         (local-file (file-relative-name
+                      temp-file
+                      (file-name-directory buffer-file-name))))
+    (save-excursion
+      (save-restriction
+        (widen)
+        (with-temp-file temp-file 
+          (let ((temp-buffer (current-buffer)))
+            (set-buffer check-buffer)
+            (call-process-region (point-min) (point-max) "erb" nil temp-buffer nil "-x"))))
+      (setq flymake-temp-source-file-name temp-file)
+      (list "ruby" (list "-c" local-file)))))
+
+(eval-after-load "flymake"
+  '(progn
+     (push '(".+\\.\\(rhtml\\|erb\\)$" flymake-erb-init) flymake-allowed-file-name-masks)
+     (push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)))
+
+(defun turn-on-flymake-for-erb-files ()
+  (when (string-match "\.erb$" (buffer-file-name))
+    (flymake-mode 1)))
+(add-hook 'find-file-hook 'turn-on-flymake-for-erb-files)
+
+
+;;
+;; Ruby on Rails stuff
+;; 
+
+;;; Define Ruby Mode Hook
+(defun my-ruby-mode-hook ()
+  (progn
+    (setq comint-process-echoes t)
+    (turn-on-font-lock)
+    (auto-fill-mode)
+    (yas/minor-mode)
+    (inf-ruby-keys)))
+
+;;; Register Ruby Mode Hook
+(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+;; Rake files go to ruby-mode
+(setq auto-mode-alist `(("\\.rake$" . ruby-mode) ,@auto-mode-alist))
+;; nxml (HTML ERB template support)
+(setq
+ nxhtml-global-minor-mode t
+ mumamo-chunk-coloring 'submode-colored
+ nxhtml-skip-welcome t
+ indent-region-mode t
+ rng-nxml-auto-validate-flag nil
+ nxml-degraded t)
+(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-nxhtml-mumamo))
 
 ;;
 ;; Backups
@@ -107,8 +265,8 @@
       backup-directory-alist
       '(("." . "~/.emacs.d/saves"))) ; wipe butt in ~/.emacs.d/saves folder instead of file systems
 
-; Tramp compatibility for emacs terds
-(add-to-list 'backup-directory-alist
+(setq auto-save-default nil) ; Autosave disabled
+(add-to-list 'backup-directory-alist ; Tramp compatibility for emacs terds
 	     (cons "." "~/.emacs.d/saves/"))
 (setq tramp-backup-directory-alist backup-directory-alist)
 
