@@ -84,7 +84,7 @@ export LD_LIBRARY=/usr
 export CC=gcc-4.2
 
 # RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  
-# RVM bash completion
-[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
-rvm use default
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  
+## RVM bash completion
+#[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+#rvm use default

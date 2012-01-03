@@ -36,10 +36,7 @@ alias glola="git lola"
 
 # Dir shortcuts
 alias gh="cd ~/programming/github"
-alias mb="cd ~/programming/mixbook"
-alias mbcom="cd ~/programming/mixbook/mixbook_com; rvm gemset use mixbook_com"
-alias mbchef="cd ~/programming/mixbook/chef-repo"
-alias mbops="cd ~/programming/mixbook/opscripts"
+alias tlbn="cd ~/programming/tlbninjas"
 
 # Editors
 alias ec="emacsclient"
