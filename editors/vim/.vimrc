@@ -1,58 +1,70 @@
-" ------------------
-" |Default Options |
-" ------------------
-call pathogen#infect()  " Pathogen load
-syntax on               " Turn on syntax highlighting
+" Turn on syntax highlighting
+syntax on
 
-"set t_Co=256            " playing it safe and not going crazy with the colors
-set ruler               " set the ruler
-set number              " Turn on line numbering
-set nocompatible        " this is vim, not vi: set this first
-set autoread            " detect changes outside of vim
-set visualbell         " flash instead of beep
-
-set nofoldenable        " Folding
-set foldmethod=syntax   
-
-set splitbelow          " Window Splitting
+" default directory for .swp files
+set dir=~/.vim/swap
+" Turn on line numbering
+set number
+" Highlight search patterns
 set hlsearch
-set history=1000        " Remember more histor
-if has ("mouse")
-  set mouse=a             " command line mouse-fu
-  set mousehide
-  set selectmode=mouse    " Mouse Select Mode
-endif
-"
-set wildmenu            " List Long for tab completion
+" Remember more history
+set history=1000
+" Mouse Select Mode
+set selectmode=mouse
+" Enable filetype-specific indenting on plugins
+filetype plugin indent on
+
+" Tabbing and Spaces for coding
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set smarttab
+
+" List Long for tab completion
+set wildmenu
 set wildmode=list:longest,full
 
-set nobackup            " no backup files
-set nowritebackup       " only in case you don't want a backup file while editing
-set noswapfile          " no swap files
+" Mouse hotness in console
+if has("mouse")
+  set mouse=a
+endif
+
+" Omni Complete
+let g:rubycomplete_rails = 1
 
 " Set the GUI Font
 if has("gui")
-  "set guifont=GraphicPixel:h10
-  set guifont=Anonymous\ Pro:h10
-  colorscheme vividchalk
+  set t_Co=256 " many pretty colors
+  if has("unix") || has("linux")
+    set guifont=lime\ 9
+    colorscheme vividchalk
+  endif
+  if has("mac")
+    set guifont=ProggyOptiS:h11
+    colorscheme vividchalk
+  endif
 else
-  colorscheme vividchalk
+  colorscheme elflord
 endif
 
-" --------------
-" |Key Mappings|
-" --------------
-map <C-j> <C-W><Down>
-map <C-k> <C-W><Up>
-map <C-h> <C-W><Left>
-map <C-l> <C-W><Right>
-map <C-x><C-n> :NERDTree<CR>
-map <C-x><C-t> :NERDTreeToggle<CR>
-map <C-b><C-n> :bn<CR>
-map <C-b><C-p> :bp<CR>
+" Cscope settings
+if has ("cscope")
+  set cscopetag cscopeverbose
+  if has ("quickfix")
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+  endif
 
-"set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{exists('g:loaded_fugitive')?fugitive#statusline():''}%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
+  cnoreabbrev csa cs  add
+  cnoreabbrev csf cs  find
+  cnoreabbrev csk cs  kill
+  cnoreabbrev csr cs  reset
+  cnoreabbrev css cs  show
+  cnoreabbrev csh cs  help
+
+  "command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMRC/src
+endif
+
 "           
 "Nerd Core
 "            
@@ -64,4 +76,23 @@ let g:NERDChristmasTree = 1
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeCaseSensitiveSort = 1
 let g:NERDTreeIgnore = ['\.vim$', '\-$','\.git']
+
+" Key Mappings
+map <C-j> <C-W><Down>
+map <C-k> <C-W><Up>
+map <C-h> <C-W><Left>
+map <C-l> <C-W><Right>
+map <C-b><C-n> :bn<CR>
+map <C-b><C-p> :bp<CR>
+
+map <C-x><C-k> :enew<bar>bd #<CR>
+map <C-x><C-n> :NERDTree<CR>
+map <C-x><C-t> :NERDTreeToggle<CR>
+
+" Folding
+set nofoldenable
+set foldmethod=syntax
+
+" Window Splitting
+set splitbelow
 

@@ -3,125 +3,90 @@
 # for examples
 
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-#if [ -z "$PS1" ]; then
+# [ -z "$PS1" ] && return
+if [[ -n "$PS1" ]] ; then
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
-HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoreboth
+  # don't put duplicate lines in the history. See bash(1) for more options
+  # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
+  HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+  # ... or force ignoredups and ignorespace
+  HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
-shopt -s histappend
+  # append to the history file, don't overwrite it
+  shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+  # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+  # check the window size after each command and, if necessary,
+  # update the values of LINES and COLUMNS.
+  shopt -s checkwinsize
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+  # make less more friendly for non-text input files, see lesspipe(1)
+  [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-  debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-  xterm-color) color_prompt=yes;;
-esac
-
-# PS1 Variable setup
-NONE="$(tput setaf 9)"
-WHITE="$(tput setaf 7)"
-RED="$(tput setaf 1)"
-HC="$(tput setaf 6)"
-YELLOW="$(tput setaf 3)"
-GREEN="$(tput setaf 2)"
-
-# Functions
-function parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
-function get_exit_status() {
-  es=$?
-  if [ $es -eq 0 ]
-  then
-    echo -e "\[$GREEN\]${es}\[$NONE\]"
-  else
-    echo -e "\[$RED\]${es}\[$NONE\]"
+  # set variable identifying the chroot you work in (used in the prompt below)
+  if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
   fi
-}
 
-# set PS1
-export PS1="\[$RED\][\[$WHITE\]\u\[$RED\]][\[$HC\]\h\[$RED\]][\[$WHITE\]\t\[$RED\]][\[$WHITE\]$(get_exit_status)\[$RED\]]\n[:\[$WHITE\]\w\[$RED:\]]\[$RED\][:\[$GREEN\]\$(~/.rvm/bin/rvm-prompt)\[$RED\]:]\[$YELLOW\]\$(parse_git_branch)\[$WHITE\]\n:]\[$NONE\]"
+  # set a fancy prompt (non-color, unless we know we "want" color)
+  case "$TERM" in
+    xterm-color) color_prompt=yes;;
+  esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  alias dir='dir --color=auto'
-  alias vdir='vdir --color=auto' 
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-fi
+  # enable color support of ls and also add handy aliases
+  if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto' 
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+  fi
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+  # Alias definitions.
+  # You may want to put all your additions into a separate file like
+  # ~/.bash_aliases, instead of adding them here directly.
+  # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -e ~/.bash_aliases ]; then
-  . $HOME/.bash_aliases
-fi
+  if [ -e ~/.bash_aliases ]; then
+    . $HOME/.bash_aliases
+  fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-  . /etc/bash_completion
-fi
+  # enable programmable completion features (you don't need to enable
+  # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+  # sources /etc/bash.bashrc).
+  if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+  fi
 
-# set my locale since bash on ubuntu complains about it.
+  # set my locale since bash on ubuntu complains about it.
 
-#
-# PDSH
-#
-export PDSH_RCMD_TYPE="ssh"
-export PDSH_SSH_ARGS_APPEND="-l neuro"
+  # PDSH
+  export PDSH_RCMD_TYPE="ssh"
+  export PDSH_SSH_ARGS_APPEND="-l neuro"
 
-# Editor
-export GITEDITOR="vim"
-export EDITOR="vim"
+  # Editors
+  export GITEDITOR="vim"
+  export EDITOR="vim"
 
-# GoLang
-export GOROOT="$HOME/build/google/go"
-export GOBIN="$GOROOT/bin"
-export GOROOT_FINAL="$HOME/bin"
-export GOARCH=amd64
-export GOOS=linux
+  # Path
+  export PATH="$GOBIN:~/bin:$PATH"
 
-# Fortune before prompt
-if [ -e "/usr/games/fortune" ]; then
-  fortune -a # short (-n) and from all dicts(-a)
-fi
+  #
+  # Programming
+  #
 
-#
-# PATH
-#
-export PATH="$GOBIN:$PATH"
+  # Go Lang
+  export GOROOT="$HOME/build/google/go"
+  export GOARCH="amd64"
+  export GOOS="linux"
+  export GOBIN="$GOROOT/bin"
+fi # end of if then block
 
 # Setup screen output
 if [ $TERM == "screen" ]; then
   echo -ne "\ek${HOSTNAME}\e\\";
 fi  
-
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-rvm use default
 

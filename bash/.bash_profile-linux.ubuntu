@@ -1,3 +1,34 @@
 if [ -e $HOME/.bashrc ]; then
 	. $HOME/.bashrc
 fi
+
+# define colors
+NONE="$(tput setaf 9)"
+WHITE="$(tput setaf 7)"
+RED="$(tput setaf 1)"
+HC="$(tput setaf 6)"
+YELLOW="$(tput setaf 3)"
+GREEN="$(tput setaf 2)"
+
+# Functions
+function parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+function get_exit_status() {
+  es=$?
+  if [ $es -eq 0 ]
+  then
+    echo -e "\[$GREEN\]${es}\[$NONE\]"
+  else
+    echo -e "\[$RED\]${es}\[$NONE\]"
+  fi
+}
+
+# PS1 Variable setup
+export PS1="\[$RED\][\[$WHITE\]\u\[$RED\]][\[$HC\]\h\[$RED\]][\[$WHITE\]\t\[$RED\]][\[$WHITE\]$(get_exit_status)\[$RED\]]\n[:\[$WHITE\]\w\[$RED:\]]\[$RED\][:\[$GREEN\]\$(~/.rvm/bin/rvm-prompt)\[$RED\]:]\[$YELLOW\]\$(parse_git_branch)\[$WHITE\]\n:]\[$NONE\]"
+
+# RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+rvm use default
+

@@ -46,5 +46,8 @@ alias ovim="open -a ~/Applications/MacVim.app $1"
 alias mysqld_load="launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
 alias mysqld_unload="launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
 
+# Mixbook
+alias mixbook_deploy="pdsh -w app[1-6].mixbook.com -l neuro \"sudo service chef-client restart && tail -f /var/log/chef/client.log\""
+
 # Synergy
-alias synergy_home_server="/usr/bin/synergys --config ~/.synergy-home.conf --log ~/.synergy-home.log --restart --daemon"
+alias synergys_server="/usr/bin/synergys --config ~/.synergy.conf --daemon --log ~/.synergy.log --restart"
