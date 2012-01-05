@@ -29,6 +29,9 @@ alias gst="git st"
 alias glol="git lol"
 alias glola="git lola"
 
+# Twidge
+alias tweetsn="twidge lsrecent -su"
+
 # Apt
 alias agi="sudo apt-get -y install"
 

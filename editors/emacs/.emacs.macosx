@@ -28,6 +28,7 @@
 (setq visible-bell 1)
 ;; Parenthesis Matching
 (show-paren-mode 1)
+; Mouse Scrolling
 (unless window-system
   (xterm-mouse-mode 1)
   (global-set-key [mouse-4] '(lambda ()
@@ -61,14 +62,6 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t) ;; enable fuzzy matching
 
-<<<<<<< Updated upstream
-;; GoLang
-(require 'go-mode)
-
-;; JSON
-(require 'json)
-
-=======
 ;;
 ;; Programming
 ;;
@@ -97,7 +90,6 @@
 (require 'go-mode)
 ;; JSON
 (require 'json)
->>>>>>> Stashed changes
 ;; GIT
 (require 'git)
 

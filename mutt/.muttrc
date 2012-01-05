@@ -16,6 +16,9 @@ set message_cachedir =~/.mutt/cache/bodies
 set certificate_file =~/.mutt/certificates
 
 bind editor <space> noop
+bind editor <Tab> complete-query
+bind editor ^T complete
+
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
