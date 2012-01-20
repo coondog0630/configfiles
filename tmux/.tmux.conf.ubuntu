@@ -3,7 +3,7 @@ set-option -g lock-server off
 set-option -g status-bg blue
 
 # set-option -g default-terminal "screen-256color"
-set-option -g mouse-select-pane on
+#set-option -g mouse-select-pane on
 set-option -g status-keys vi
 #set-option -g bell-action any
 set-option -g set-titles on
