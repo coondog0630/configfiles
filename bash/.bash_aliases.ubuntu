@@ -29,6 +29,8 @@ alias gst="git st"
 alias glol="git lol"
 alias glola="git lola"
 
+# Firefox Development
+alias ffdev="firefox -P dev -no-remote -purgecaches"
 # Twidge
 alias tweetsn="twidge lsrecent -su"
 
