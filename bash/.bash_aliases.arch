@@ -1,0 +1,43 @@
+###########
+# ALIASES #
+###########
+
+# Bash 
+alias ls='ls --color=auto'
+alias l='ls -CF'
+alias ll="ls -l"
+alias lal="ls -al"
+alias lsa="ls -a"
+alias rm="rm -f"
+alias h="history" 
+alias grepi="grep -i"
+
+# Git shortcuts
+alias gad="git add"
+alias grm="git rm"
+alias gdi="git diff"
+alias gco="git co"
+alias gcl="git clone"
+alias gcp="git cp"
+alias gpl="git pl"
+alias gpu="git pu"
+alias gbr="git br"
+alias gci="git ci"
+alias glo="git lg"
+alias gme="git mg"
+alias gsh="git sh"
+alias gst="git st"
+alias glol="git lol"
+alias glola="git lola"     
+
+# Directory aliases
+alias tlb="cd ~/programming/tlbninjas"
+alias tlbc="cd ~/programming/tlbninjas/chef-repo"
+
+# Twidge
+alias tweetsn="twidge lsrecent -su"
+
+# Arch Linux
+alias pmu="sudo pacman-color -Syu"
+alias pmi="sudo pacman-color -Sy $1"
+alias pms="pacman-color -Ss $1"
