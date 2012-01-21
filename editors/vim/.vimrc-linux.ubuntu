@@ -28,6 +28,7 @@ set wildmode=list:longest,full
 " Mouse hotness in console
 if has("mouse")
   set mouse=a
+  set nomousehide
 endif
 
 " Omni Complete
