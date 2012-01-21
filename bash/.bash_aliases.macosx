@@ -36,18 +36,11 @@ alias glola="git lola"
 
 # Dir shortcuts
 alias gh="cd ~/programming/github"
-alias tlbn="cd ~/programming/tlbninjas"
+alias tlb="cd ~/programming/tlbninjas"
 
 # Editors
 alias ec="emacsclient"
 alias ovim="open -a ~/Applications/MacVim.app $1"
-
-# MySQL
-alias mysqld_load="launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
-alias mysqld_unload="launchctl unload -w ~/Library/LaunchAgents/com.mysql.mysqld.plist"
-
-# Mixbook
-alias mixbook_deploy="pdsh -w app[1-6].mixbook.com -l neuro \"sudo service chef-client restart && tail -f /var/log/chef/client.log\""
 
 # Synergy
 alias synergys_server="/usr/bin/synergys --config ~/.synergy.conf --daemon --log ~/.synergy.log --restart"

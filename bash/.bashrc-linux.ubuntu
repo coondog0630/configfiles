@@ -90,3 +90,5 @@ if [ $TERM == "screen" ]; then
   echo -ne "\ek${HOSTNAME}\e\\";
 fi  
 
+
+[[ -s "/home/neuro/.rvm/scripts/rvm" ]] && source "/home/neuro/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

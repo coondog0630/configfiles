@@ -27,7 +27,7 @@ if [ $system_type == "Darwin" ]; then
 
     # Emacs
     ln -snf $PWD/editors/emacs/.emacs.$system_type ~/.emacs
-    ln -snf $PWD/editors/emacs/.emacs.d/plugins ~/.emacs.d/plugins
+    mkdir ~/.emacs.d; ln -snf $PWD/editors/emacs/.emacs.d/plugins ~/.emacs.d/plugins
 
     # Tmux
     ln -snf $PWD/tmux/.tmux.conf.$system_type ~/.tmux.conf

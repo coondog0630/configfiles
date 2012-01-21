@@ -29,6 +29,8 @@ alias gst="git st"
 alias glol="git lol"
 alias glola="git lola"
 
+# Firefox Development
+alias ffdev="firefox -P dev -no-remote -purgecaches"
 # Twidge
 alias tweetsn="twidge lsrecent -su"
 
@@ -37,10 +39,7 @@ alias agi="sudo apt-get -y install"
 
 # Dir shortcuts
 alias gh="cd ~/programming/github"
-# Mixbook 
-alias mb="cd ~/programming/mixbook"
-alias mbchef="cd ~/programming/mixbook/chef-repo; rvm gemset use chefdev"
-alias mbcom="cd ~/programming/mixbook/mixbook_com; rvm gemset use mixbook_com"
+alias tlb="cd ~/programming/tlbninjas"
 
 # Editors
 alias ec="emacsclient"
