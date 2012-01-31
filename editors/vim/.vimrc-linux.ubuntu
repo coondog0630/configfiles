@@ -38,7 +38,16 @@ let g:rubycomplete_rails = 1
 if has("gui")
   set guifont=lime\ 11 
   set t_Co=256 " many pretty colors
-  colorscheme vividchalk
+  colorscheme dante
+  "colorscheme vividchalk
+  "colorscheme deveiate
+  "colorscheme brookstream
+  "colorscheme candycode
+  "colorscheme charon
+  "colorscheme colorfull256
+  "colorscheme contrasty
+  "colorscheme darkdevel
+  "colorscheme darkocean
 else
   colorscheme elflord
 endif
