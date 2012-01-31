@@ -20,6 +20,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set smarttab
+set nocursorline
 
 " List Long for tab completion
 set wildmenu
