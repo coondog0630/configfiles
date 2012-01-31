@@ -47,6 +47,7 @@ ${color #0077ff}Net Down:$color ${downspeed eth0} k/s      ${color #0077ff}Net U
 ${color #0077ff}${downspeedgraph eth0 32,155 104E8B 0077ff} $alignr${color #0077ff}${upspeedgraph eth0 32,155 104E8B 0077ff}
 ${color #0077ff}File systems:
  ${color #0077ff}/          $color${fs_used /}/${fs_size /}${alignr}${color #0077ff}${fs_bar 5,120 /}
+ ${color #0077ff}/          $color${fs_used /mnt/sd1}/${fs_size /mnt/sd1}${alignr}${color #0077ff}${fs_bar 5,120 /mnt/sd1}
 
 ${color #0077ff}Top Processes:
 ${color #0077ff}Name              PID     CPU%   MEM%
