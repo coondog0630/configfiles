@@ -56,8 +56,8 @@ set-option -g message-bg green
 
 setw -g window-status-bg black
 setw -g window-status-current-fg green
-setw -g window-status-alert-attr default
-setw -g window-status-alert-fg yellow
+#setw -g window-status-alert-attr default
+#setw -g window-status-alert-fg yellow
 
 set -g status-left '#[fg=red]#H#[fg=green]:#[fg=white]#S #[fg=green]][#[default]'
 set -g status-right '#[fg=green]][#[fg=white] #T #[fg=green]][ #[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[default]'
