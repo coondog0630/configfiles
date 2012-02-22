@@ -61,8 +61,14 @@ export PATH=$LOCAL_BIN:$PYTHONPATH:$BREW_HOME:$JAVA_HOME:$PATH
 export PKG_CONFIG_PATH=/usr/local/lib/pkgocnfig
 export LD_LIBRARY=/usr
 
-# GCC compiler
-export CC=gcc-4.2
+# Go Lang
+export GOROOT=$HOME/build/go
+export GOARCH=x86_64
+export GOOS=darwin
+
+# Pdsh
+export PDSH_SSH_ARGS_APPEND="-l neuro"
+export PDSH_RCMD_TYPE="ssh"
 
 # Go Lang
 export GOROOT=$HOME/build/go
