@@ -11,6 +11,8 @@ set hlsearch
 set history=1000
 " Mouse Select Mode
 set selectmode=mouse
+" no cursor lines EVER!
+set nocursorline
 " Enable filetype-specific indenting on plugins
 filetype plugin indent on
 
@@ -28,6 +30,7 @@ set wildmode=list:longest,full
 " Mouse hotness in console
 if has("mouse")
   set mouse=a
+  set nomousehide
 endif
 
 " Omni Complete
@@ -35,9 +38,15 @@ let g:rubycomplete_rails = 1
 
 " Set the GUI Font
 if has("gui")
-  set guifont=lime\ 9
-  set t_Co=256 " many pretty colors
-  colorscheme vividchalk
+  set guifont=lime\ 11 
+  " set t_Co=256 " many pretty colors
+  colorscheme darkdevel
+  "colorscheme vividchalk
+  "colorscheme vj
+  "colorscheme skittles_dark
+  "colorscheme contrasty
+  "colorscheme colorfull256
+  "colorscheme darkocean
 else
   colorscheme elflord
 endif

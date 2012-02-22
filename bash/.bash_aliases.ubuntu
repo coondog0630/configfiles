@@ -29,14 +29,19 @@ alias gst="git st"
 alias glol="git lol"
 alias glola="git lola"
 
+# Firefox Development
+alias ffdev="firefox -P dev -no-remote -purgecaches"
+
 # Twidge
 alias tweetsn="twidge lsrecent -su"
 
 # Apt
 alias agi="sudo apt-get -y install"
+alias acs="sudo apt-cache search $1"
 
 # Dir shortcuts
 alias gh="cd ~/programming/github"
+alias tlb="cd ~/programming/tlbninjas"
 
 # Editors
 alias ec="emacsclient"
