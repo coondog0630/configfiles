@@ -40,11 +40,10 @@ let g:rubycomplete_rails = 1
 if has("gui")
   set guifont=lime\ 11 
   " set t_Co=256 " many pretty colors
-  colorscheme darkdevel
+  colorscheme oceanblack
   "colorscheme vividchalk
   "colorscheme vj
-  "colorscheme skittles_dark
-  "colorscheme contrasty
+  "colorscheme darkdevel
   "colorscheme colorfull256
   "colorscheme darkocean
 else
@@ -76,8 +75,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDShutUp = 1
 let g:NERDTreeHijackNetrw = 0
 let g:NERDChristmasTree = 1
-"let g:NERDTreeWinPos = "left"
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 let g:NERDTreeCaseSensitiveSort = 1
 let g:NERDTreeIgnore = ['\.vim$', '\-$','\.git']
 

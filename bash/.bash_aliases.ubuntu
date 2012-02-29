@@ -42,6 +42,7 @@ alias acs="sudo apt-cache search $1"
 # Dir shortcuts
 alias gh="cd ~/programming/github"
 alias tlb="cd ~/programming/tlbninjas"
+alias zerigo="cd ~/programming/tlbninjas/zerigo"
 
 # Editors
 alias ec="emacsclient"
