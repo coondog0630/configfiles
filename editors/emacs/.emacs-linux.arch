@@ -47,6 +47,13 @@
 (color-theme-taming-mr-arneson)
 
 ;;
+;; ISwitch buffer
+;;
+(require 'ido)
+(ido-mode t)
+(setq ido-enable-flex-matching t) ;; enable fuzzy matching
+
+;;
 ;; Programming Related
 ;;
 
@@ -62,6 +69,9 @@
 (autoload 'python-mode "python-mode.el" "Python mode." t)
 (setq auto-mode-alist
       (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
+
+; GoLang
+(require 'go-mode)
 
 ;;
 ;; Backups

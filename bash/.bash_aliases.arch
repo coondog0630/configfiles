@@ -33,6 +33,7 @@ alias glola="git lola"
 # Directory aliases
 alias tlb="cd ~/programming/tlbninjas"
 alias tlbc="cd ~/programming/tlbninjas/chef-repo"
+alias zerigo="cd ~/programming/tlbninjas/zerigo"
 
 # Twidge
 alias tweetsn="twidge lsrecent -su"
