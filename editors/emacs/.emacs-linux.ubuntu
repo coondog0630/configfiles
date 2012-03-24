@@ -10,7 +10,6 @@
 ;;
 ;; Emacs Defaults
 ;;
-;(set-default-font "-*-lime-*-*-*-*-*-*-*-*-*-*-*-*")
 (set-default-font "-*-drift-*-*-*-*-*-*-*-*-*-*-*-*")
 (setq visible-bell 1) ; Visible Bell
 (global-font-lock-mode t) ; Turn on font font locking
@@ -23,6 +22,7 @@
 ;;
 ;; Emacs L&F 
 ;;
+(setq default-tab-width '4)     ; defautl indentation tab width
 (setq inhibit-startup-screen t) ; disable startup screen
 (windmove-default-keybindings)  ; winmove default keybindings enabled
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -123,7 +123,7 @@
 	(width . 40)
 	(border-width . 0)
 	(menu-bar-lines . 0)
-n	(tool-bar-lines . 0)
+	(tool-bar-lines . 0)
 	(unsplittable . t)
 	(left-fringe . 0)))
 (setq speedbar-hide-button-brackets-flag t)
