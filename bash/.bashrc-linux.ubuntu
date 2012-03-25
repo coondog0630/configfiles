@@ -83,6 +83,7 @@ if [[ -n "$PS1" ]] ; then
   export GOARCH="amd64"
   export GOOS="linux"
   export GOBIN="$GOROOT/bin"
+  export GOPATH="~/build/google/golang"
 fi # end of if then block
 
 # Setup screen output
