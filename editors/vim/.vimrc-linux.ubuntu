@@ -1,3 +1,5 @@
+" Turn on syntax highlighting
+syntax on
 
 " default directory for .swp files
 set dir=~/.vim/swap
@@ -11,12 +13,8 @@ set history=1000
 set selectmode=mouse
 " no cursor lines EVER!
 set nocursorline
-" golang
-set rtp+=$GOROOT/misc/vim
 " Enable filetype-specific indenting on plugins
 filetype plugin indent on
-" Turn on syntax highlighting
-syntax on
 
 " Tabbing and Spaces for coding
 set tabstop=2
