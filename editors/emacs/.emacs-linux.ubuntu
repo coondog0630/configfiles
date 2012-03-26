@@ -20,16 +20,6 @@
 (show-paren-mode 1) ; show parenthesis matching
 
 ;;
-;; Emacs L&F 
-;;
-(setq default-tab-width '4)     ; defautl indentation tab width
-(setq inhibit-startup-screen t) ; disable startup screen
-(windmove-default-keybindings)  ; winmove default keybindings enabled
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1)) ; remove toolbar
-
-;;
 ;; Key bindings
 ;;
 (global-set-key (kbd "C-c c") 'comment-region)
@@ -39,6 +29,20 @@
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
+; function key mappings
+(global-set-key [f12] 'goto-line)
+(global-set-key [f11] 'compile)
+(global-set-key [f10] 'create-tags)
+
+;;
+;; Emacs L&F 
+;;
+(setq default-tab-width '4)     ; defautl indentation tab width
+(setq inhibit-startup-screen t) ; disable startup screen
+(windmove-default-keybindings)  ; winmove default keybindings enabled
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1)) ; remove toolbar
 
 ;;
 ;; Fit Frames
@@ -101,26 +105,13 @@
 (setq ido-enable-flex-matching t) ;; enable fuzzy matching
 
 ;;
-;; Programming Related
-;;
-
-(setq path-to-ctags "/usr/bin/ctags") 
-
-(defun create-tags (dir-name)
-  "Create tags file."
-  (interactive "DDirectory: ")
-  (shell-command
-   (format "%s -f %s/TAGS -e -R %s" path-to-ctags dir-name (directory-file-name dir-name)))
-  )
-
-;;
 ;; sr-speedbar
 ;;
 (require 'sr-speedbar)
 (global-set-key (kbd "M-s s") 'sr-speedbar-toggle)
 (setq speedbar-frame-parameters
       '((minibuffer)
-	(width . 40)
+	(width . 30)
 	(border-width . 0)
 	(menu-bar-lines . 0)
 	(tool-bar-lines . 0)
@@ -158,6 +149,18 @@
 (autoload 'python-mode "python-mode.el" "Python mode." t) ; Python Mode
 (setq auto-mode-alist
       (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
+
+;;
+;; Programming Related
+;;
+
+(setq path-to-ctags "/usr/bin/ctags") 
+(defun create-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (shell-command
+   (format "%s -f %s/TAGS -e -R %s" path-to-ctags dir-name (directory-file-name dir-name)))
+  )
 
 ;; GoLang
 (require 'go-mode)

@@ -18,7 +18,7 @@
 "     Highlights white space around the communications operator that don't follow
 "     the standard style.
 "   - go_highlight_extra_types
-"     Highlights commonly used library types (os.Error, etc.).
+"     Highlights commonly used library types (io.Reader, etc.).
 "   - go_highlight_space_tab_error
 "     Highlights instances of tabs following spaces.
 "   - go_highlight_trailing_whitespace_error
@@ -67,11 +67,11 @@ hi def link     goLabel             Label
 hi def link     goRepeat            Repeat
 
 " Predefined types
-syn keyword     goType              chan map bool string
-syn keyword     goSignedInts        int int8 int16 int32 int64
+syn keyword     goType              chan map bool string error
+syn keyword     goSignedInts        int int8 int16 int32 int64 rune
 syn keyword     goUnsignedInts      byte uint uint8 uint16 uint32 uint64 uintptr
-syn keyword     goFloats            float float32 float64
-syn keyword     goComplexes         complex complex64 complex128
+syn keyword     goFloats            float32 float64
+syn keyword     goComplexes         complex64 complex128
 
 hi def link     goType              Type
 hi def link     goSignedInts        Type
@@ -85,8 +85,8 @@ syn match       goType              /\<func\>/
 syn match       goDeclaration       /^func\>/
 
 " Predefined functions and values
-syn keyword     goBuiltins          cap close closed cmplx copy imag len make
-syn keyword     goBuiltins          new panic panicln print println real
+syn keyword     goBuiltins          append cap close complex copy delete imag len
+syn keyword     goBuiltins          make new panic print println real recover
 syn keyword     goConstants         iota true false nil
 
 hi def link     goBuiltins          Keyword
@@ -180,8 +180,7 @@ endif
 if go_highlight_extra_types != 0
   syn match goExtraType /\<bytes\.\(Buffer\)\>/
   syn match goExtraType /\<io\.\(Reader\|Writer\|ReadWriter\|ReadWriteCloser\)\>/
-  syn match goExtraType /\<\(os\.Error\)\>/
-  syn match goExtraType /\<reflect\.\w*\(Type\|Value\)\>/
+  syn match goExtraType /\<reflect\.\(Kind\|Type\|Value\)\>/
   syn match goExtraType /\<unsafe\.Pointer\>/
 endif
 
@@ -197,5 +196,12 @@ endif
 
 hi def link     goExtraType         Type
 hi def link     goSpaceError        Error
+
+" Search backwards for a global declaration to start processing the syntax.
+"syn sync match goSync grouphere NONE /^\(const\|var\|type\|func\)\>/
+
+" There's a bug in the implementation of grouphere. For now, use the
+" following as a more expensive/less precise workaround.
+syn sync minlines=500
 
 let b:current_syntax = "go"
