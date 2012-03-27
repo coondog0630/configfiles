@@ -141,10 +141,46 @@
   (shell-command
    (format "%s -f %s/TAGS -e -R %s" path-to-ctags dir-name (directory-file-name dir-name)))
   )
+;; C 
+(setq c-set-style 'ellemtel) ; C programming style
+;; Python
+(autoload 'python-mode "python-mode.el" "Python mode." t) ; Python Mode
+(setq auto-mode-alist
+      (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
 
-;;
+;; GoLang
+(require 'go-mode)
+;; JSON
+(require 'json)
+
+;; Scala
+(require 'scala-mode-auto)
+(defun me-turn-off-indent-tabs-mode () ; Scala Mode hooks
+  (setq indent-tabs-mode nil))
+(add-hook 'scala-mode-hook 'me-turn-off-indent-tabs-mode)
+
+;; Git
+(require 'git) ; Git Revision Control
+
+;; Yasnippet
+(add-to-list 'load-path
+			 "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas/global-mode 1)
+;; org-mode conflicts, resolving yasnippet being snubbed
+(defun yas/org-very-safe-expand ()
+  (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+
+(add-hook 'org-mode-hook
+		  (lambda ()
+			(make-variable-buffer-local 'yas/trigger-key)
+			(setq yas/trigger-key [tab])
+			(add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+			(define-key yas/keymap [tab] 'yas/next-field)))
+
+
+
 ;; sr-speedbar
-;;
 (require 'sr-speedbar)
 (global-set-key (kbd "M-s s") 'sr-speedbar-toggle)
 (setq speedbar-frame-parameters
@@ -176,36 +212,11 @@
                      (- (frame-width) sr-speedbar-width)))
   (ad-enable-advice 'sr-speedbar-close 'after 'sr-speedbar-close-resize-frame))
 
-(require 'git) ; Git Revision Control
-
-(require 'yasnippet) ; Yasnippet
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
-
-(setq c-set-style 'ellemtel) ; C programming style
-
-(autoload 'python-mode "python-mode.el" "Python mode." t) ; Python Mode
-(setq auto-mode-alist
-      (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
-
-;; GoLang
-(require 'go-mode)
-;; JSON
-(require 'json)
-
-;; Scala
-(require 'scala-mode-auto)
-					
-(defun me-turn-off-indent-tabs-mode () ; Scala Mode hooks
-  (setq indent-tabs-mode nil))
-(add-hook 'scala-mode-hook 'me-turn-off-indent-tabs-mode)
 
 (require 'flymake) ; Flymake
-
 ;; I don't like the default colors :)
 (set-face-background 'flymake-errline "red4")
 (set-face-background 'flymake-warnline "dark slate blue")
-
 ;; ruby flymake
 ;; Invoke ruby with '-c' to get syntax checking
 (defun flymake-ruby-init ()
