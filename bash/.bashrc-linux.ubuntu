@@ -92,3 +92,5 @@ if [ $TERM == "screen" ]; then
   echo -ne "\ek${HOSTNAME}\e\\";
 fi  
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
