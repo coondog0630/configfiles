@@ -1,6 +1,6 @@
 ! Mouse settings
 ! mac style scrolling
-pointer = 3 2 1 5 4 6 7 8 9 10 11 12 13 14 
+pointer = 1 2 3 5 4 6 7 8 9 10 11 12 13 14 
 
 ! Make caps lock left control
 remove Lock = Caps_Lock

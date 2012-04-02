@@ -1,18 +1,12 @@
 # ~/.tmux.conf
 set-option -g lock-server off
 set-option -g status-bg blue
-
-# set-option -g default-terminal "screen-256color"
-#set-option -g mouse-select-pane on
+set-option -g default-terminal "screen-256color"
+set-option -g mouse-select-pane on
 set-option -g status-keys vi
-#set-option -g bell-action any
 set-option -g set-titles on
 set-option -g set-titles-string '#H:#S.#I.#P #W #T' # window number,program name,active (or not)
 set-option -g visual-bell on
-#
-setw -g mode-keys vi
-setw -g mode-mouse on
-setw -g monitor-activity on
 
 # Panes
 bind k resize-pane -U 10
@@ -33,7 +27,7 @@ bind C-w kill-window
 bind C-x kill-pane
 bind C-l last-window
 
-#
+# Options
 set-option -g status-utf8 on
 set-option -g status-bg black
 set-option -g status-fg white
@@ -42,12 +36,15 @@ set-option -g status-left-length 40
 set-option -g message-fg black
 set-option -g message-bg green
 
+# Functionality and Behaviour
+setw -g mode-keys vi
+setw -g mode-mouse on
+setw -g monitor-activity on
 setw -g mode-bg black
-
 setw -g window-status-bg black
 setw -g window-status-current-fg green
 
 set -g status-left '#[fg=red]#H#[fg=green]:#[fg=white]#S #[fg=green]][#[default]'
 set -g status-right '#[fg=green]][ #[fg=blue]%Y-%m-%d #[fg=white]%H:%M#[default]'
-set -g history-limit 4096
+set -g history-limit 8192
 

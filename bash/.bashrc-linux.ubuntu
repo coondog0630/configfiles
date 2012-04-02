@@ -67,22 +67,24 @@ if [[ -n "$PS1" ]] ; then
   export PDSH_RCMD_TYPE="ssh"
   export PDSH_SSH_ARGS_APPEND="-l neuro"
 
-  # Editors
-  export GITEDITOR="vim"
-  export EDITOR="vim"
-
-  # Path
-  export PATH="$GOBIN:~/bin:$PATH"
-
   #
   # Programming
   #
+
+  # Editors
+  export GITEDITOR="vim"
+  export EDITOR="vim"
 
   # Go Lang
   export GOROOT="$HOME/build/google/go"
   export GOARCH="amd64"
   export GOOS="linux"
   export GOBIN="$GOROOT/bin"
+  export GOPATH="$HOME/build/google/golang"
+
+  # Path
+  export PATH="$GOBIN:~/bin:$PATH"
+
 fi # end of if then block
 
 # Setup screen output
@@ -91,4 +93,4 @@ if [ $TERM == "screen" ]; then
 fi  
 
 
-[[ -s "/home/neuro/.rvm/scripts/rvm" ]] && source "/home/neuro/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

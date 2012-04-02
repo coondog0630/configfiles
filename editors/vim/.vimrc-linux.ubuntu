@@ -1,6 +1,9 @@
+" golang include 
+set rtp+=$GOROOT/misc/vim
 " Turn on syntax highlighting
 syntax on
-
+" Enable filetype-specific indenting on plugins
+filetype plugin indent on
 " default directory for .swp files
 set dir=~/.vim/swap
 " Turn on line numbering
@@ -13,8 +16,6 @@ set history=1000
 set selectmode=mouse
 " no cursor lines EVER!
 set nocursorline
-" Enable filetype-specific indenting on plugins
-filetype plugin indent on
 
 " Tabbing and Spaces for coding
 set tabstop=2
@@ -75,7 +76,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDShutUp = 1
 let g:NERDTreeHijackNetrw = 0
 let g:NERDChristmasTree = 1
-let g:NERDTreeWinPos = "left"
+let g:NERDTreeWinPos = "right"
 let g:NERDTreeCaseSensitiveSort = 1
 let g:NERDTreeIgnore = ['\.vim$', '\-$','\.git']
 
