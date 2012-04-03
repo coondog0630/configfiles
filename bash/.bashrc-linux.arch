@@ -21,6 +21,16 @@ fi
 # EDITOR settings
 export EDITOR=vim
 
+# GoLang 
+export GOARCH="amd64"
+export GOOS="linux"
+export GOROOT="$HOME/build/google/go"
+export GOBIN="$GOROOT/bin"
+export GOPATH="$HOME/build/google/golang"
+
+#PATH
+export PATH="$PATH:$GOBIN:${GOPATH//://bin:}/bin"
+
 # Setup screen output
 if [ $TERM == "screen" ]; then
     echo -ne "\ek${HOSTNAME}\e\\";

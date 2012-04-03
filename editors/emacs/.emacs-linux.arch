@@ -56,6 +56,7 @@
 ;;
 ;; Programming Related
 ;;
+(setq default-tab-width '4)
 
 ; Yasnippet
 (require 'yasnippet) 
