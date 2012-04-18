@@ -2,6 +2,9 @@ if [ -e $HOME/.bashrc ]; then
 	. $HOME/.bashrc
 fi
 
+# ls colors
+export LS_COLORS='di=93:fi=0:ln=36:pi=33:so=104:bd=100:cd=5:or=31:mi=0:ex=32'
+
 # define colors
 NONE="$(tput setaf 9)"
 WHITE="$(tput setaf 7)"
