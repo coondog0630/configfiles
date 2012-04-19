@@ -10,9 +10,8 @@
       (normal-top-level-add-subdirs-to-load-path)))
 
 ;;
-;; Emacs Defaults
+;; Emacs L&F 
 ;;
-;(set-default-font "-*-lime-*-*-*-*-*-*-*-*-*-*-*-*")
 (set-default-font "-*-drift-*-*-*-*-*-*-*-*-*-*-*-*")
 (setq visible-bell 1) ; Visible Bell
 (global-font-lock-mode t) ; Turn on font font locking
@@ -21,37 +20,100 @@
 (setq column-number-mode t) ; column numbers
 (setq transient-mark-mode t) ; transient mark mode
 (show-paren-mode 1) ; show parenthesis matching
-
-;;
-;; Emacs L&F 
-;;
 (setq inhibit-startup-screen t) ; disable startup screen
 (windmove-default-keybindings)  ; winmove default keybindings enabled
-(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'yes-or-no-p 'y-or-n-p) ; default all yes-or-no to y-or-n 
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1)) ; remove toolbar
 
-; remove toolbar
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-
-; key bindings
+;; key bindings
 (global-set-key (kbd "<f1>") 'comment-region)
 (global-set-key (kbd "<f2>") 'uncomment-region)
 (global-set-key (kbd "<f5>") 'search-forward)
 (global-set-key (kbd "<f11>") 'compile)
 (global-set-key (kbd "<f12>") 'goto-line)
 
-;;
-; Colors
-;;
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+
+;; Colors
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-taming-mr-arneson)
 
-;;
+;; list of themes I like
+(setq my-color-themes (list 'color-theme-taming-mr-arneson
+			    'color-theme-comidia 'color-theme-dark-blue2
+			    'color-theme-dark-laptop 'color-theme-clarity
+			    'color-theme-hober' color-theme-midnight
+			    'color-theme-tty-dark 'color-theme-tty-taylor
+			    'color-theme-dark-laptop 'color-theme-deep-blue
+			    'color-theme-hober 'color-theme-late-night
+			    'color-theme-midnight 'color-theme-renegade
+			    'color-theme-taylor 'color-theme-euphoria))
+
+(defun my-theme-set-default () ; Set the first row
+  (interactive)
+  (setq theme-current my-color-themes)
+  (funcall (car theme-current)))
+
+(defun my-describe-theme () ; Show the current theme
+  (interactive)
+  (message "%s" (car theme-current)))
+
+(defun my-theme-cycle ()		
+  (interactive)
+  (setq theme-current (cdr theme-current))
+  (if (null theme-current)
+      (setq theme-current my-color-themes))
+  (funcall (car theme-current))
+  (message "%S" (car theme-current)))
+
+(setq theme-current my-color-themes)
+(setq color-theme-is-global nil) ; Initialization
+(my-theme-set-default)
+(global-set-key [f6] 'my-theme-cycle)
+
 ;; ISwitch buffer
-;;
 (require 'ido)
 (ido-mode t)
 (setq ido-enable-flex-matching t) ;; enable fuzzy matching
+
+;; Fit-frame
+(require 'fit-frame)
+(global-set-key (kbd "C-_") 'fit-frame)
+
+;; sr-speedbar
+(require 'sr-speedbar)
+(global-set-key (kbd "M-s s") 'sr-speedbar-toggle)
+(setq speedbar-frame-parameters
+      '((minibuffer)
+	(width . 40)
+	(border-width . 0)
+	(menu-bar-lines . 0)
+	(tool-bar-lines . 0)
+	(unsplittable . t)
+	(left-fringe . 0)))
+(setq speedbar-hide-button-brackets-flag t)
+(setq speedbar-show-unknown-files t)
+(setq speedbar-smart-directory-expand-flag t)
+(setq speedbar-use-images nil)
+(setq sr-speedbar-auto-refresh nil)
+(setq sr-speedbar-max-width 70)
+(setq sr-speedbar-right-side nil)
+(setq sr-speedbar-width-console 40)
+
+(when window-system
+  (defadvice sr-speedbar-open (after sr-speedbar-open-resize-frame activate)
+    (set-frame-width (selected-frame)
+                     (+ (frame-width) sr-speedbar-width)))
+  (ad-enable-advice 'sr-speedbar-open 'after 'sr-speedbar-open-resize-frame)
+
+  (defadvice sr-speedbar-close (after sr-speedbar-close-resize-frame activate)
+    (sr-speedbar-recalculate-width)
+    (set-frame-width (selected-frame)
+                     (- (frame-width) sr-speedbar-width)))
+  (ad-enable-advice 'sr-speedbar-close 'after 'sr-speedbar-close-resize-frame))
 
 ;;
 ;; Programming Related
@@ -59,9 +121,20 @@
 (setq default-tab-width '4)
 
 ; Yasnippet
-(require 'yasnippet) 
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
+(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas/global-mode 1)
+; org-mode conflict resolutions
+;; define a new function for newer versions of yasnippet
+(defun yas/org-very-safe-expand ()
+  (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+;; tell org-mode what to do with that method
+(add-hook 'org-mode-hook
+		  (lambda ()
+			(make-variable-buffer-local 'yas/trigger-key)
+			(setq yas/trigger-key [tab])
+			(add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+			(define-key yas/keymap [tab] 'yas/next-field)))
 
 ; C programming style
 (setq c-set-style 'ellemtel)
@@ -73,10 +146,45 @@
 
 ; GoLang
 (require 'go-mode)
+; Git
+(require 'git)
 
-;;
+;; Org-Mode
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+;; logging/tracking progress
+(setq org-log-done 'time)
+(setq org-log-done 'note)
+;; clocking work time
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+;; TODO workflow
+(setq org-todo-keywords
+	  '((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d)")
+		(sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+		(sequence "|" "CANCELED(c)")))
+; let's color these words some
+(setq org-todo-keyword-faces
+	  '(("TODO" . org-warning) 
+		("STARTED" . "green")
+		("CANCELED" . (:foreground "blue" :weight bold))
+		("DONE" . "purple")
+		("REPORT" . "pink")
+		("BUG" . "yellow")
+		("FIXED" . (:foreground "green" :weight bold))
+		("KNOWNCAUSE" . "blue")))
+;; Timestamp and record a note regarding why the state changed from TODO
+(setq org-log-done 'time)
+(setq org-log-done 'note)
+;; resolving org-mode conflict with windmove
+(add-hook 'org-shiftup-final-hook 'windmove-up)
+(add-hook 'org-shiftleft-final-hook 'windmove-left)
+(add-hook 'org-shiftdown-final-hook 'windmove-down)
+(add-hook 'org-shiftright-final-hook 'windmove-right)
+
 ;; Backups
-;;
 (setq version-control t
       kept-new-versions 16
       kept-old-versions 10

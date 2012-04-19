@@ -31,9 +31,11 @@ alias glol="git lol"
 alias glola="git lola"     
 
 # Directory aliases
+alias gh="cd ~/programming/github"
 alias tlb="cd ~/programming/tlbninjas"
 alias tlbc="cd ~/programming/tlbninjas/chef-repo"
 alias zerigo="cd ~/programming/tlbninjas/zerigo"
+alias db="cd ~/Dropbox" # because I hate typing cap letters and a sym link causes issues with dropbox bug
 
 # Twidge
 alias tweetsn="twidge lsrecent -su"
@@ -42,3 +44,4 @@ alias tweetsn="twidge lsrecent -su"
 alias pmu="sudo pacman-color -Syu"
 alias pmi="sudo pacman-color -Sy $1"
 alias pms="pacman-color -Ss $1"
+

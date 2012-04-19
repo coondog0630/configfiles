@@ -14,7 +14,7 @@ if [[ -n "$PS1" ]]; then
     shopt -s checkwinsize
 
   # Turn off terminal bell
-  #  setterm -blength 0
+  # setterm -blength 0
   #  xset -b
 fi
 
