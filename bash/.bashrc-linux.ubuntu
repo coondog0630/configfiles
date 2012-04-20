@@ -82,8 +82,13 @@ if [[ -n "$PS1" ]] ; then
   export GOBIN="$GOROOT/bin"
   export GOPATH="$HOME/build/google/golang"
 
+  # Python
+  PYTHONPATH="/home/neuro/programming/Aarna_health/aarnahealth/:/usr/local/lib/python2.7/site-packages/":"${PYTHONPATH}"
+  export PYTHONPATH
+  export DJANGO_SETTINGS_MODULE="settings" 
+
   # Path
-  export PATH="$GOBIN:~/bin:$PATH"
+  export PATH="$GOBIN:~/bin:$PATH:$PYTHONPATH"
 
 fi # end of if then block
 
