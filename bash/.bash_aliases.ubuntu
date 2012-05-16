@@ -28,6 +28,7 @@ alias gsh="git sh"
 alias gst="git st"
 alias glol="git lol"
 alias glola="git lola"
+alias gfa="git fetch -a"
 
 # Firefox Development
 alias ffdev="firefox -P dev -no-remote -purgecaches"
