@@ -29,6 +29,7 @@ alias gsh="git sh"
 alias gst="git st"
 alias glol="git lol"
 alias glola="git lola"     
+alias gfa="git fetch -a"
 
 # Directory aliases
 alias gh="cd ~/programming/github"
@@ -36,6 +37,8 @@ alias tlb="cd ~/programming/tlbninjas"
 alias tlbc="cd ~/programming/tlbninjas/chef-repo"
 alias zerigo="cd ~/programming/tlbninjas/zerigo"
 alias db="cd ~/Dropbox" # because I hate typing cap letters and a sym link causes issues with dropbox bug
+# hotel tonight
+alias ht="cd ~/programming/ht"
 
 # Twidge
 alias tweetsn="twidge lsrecent -su"

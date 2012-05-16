@@ -37,7 +37,7 @@ let g:rubycomplete_rails = 1
 if has("gui")
   set t_Co=256 " many pretty colors
   if has("unix") || has("linux")
-    set guifont=lime\ 9
+    set guifont=drift
     colorscheme vividchalk
   endif
   if has("mac")
