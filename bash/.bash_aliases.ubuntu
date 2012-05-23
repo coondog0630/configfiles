@@ -46,6 +46,7 @@ alias tlb="cd ~/programming/tlbninjas"
 alias zerigo="cd ~/programming/tlbninjas/zerigo"
 alias ht="cd ~/programming/ht"
 alias htchef="cd ~/programming/ht/ht-chef-repo"
+alias htrails="cd ~/programming/ht/hotelstonight"
 
 # Editors
 alias ec="emacsclient"
