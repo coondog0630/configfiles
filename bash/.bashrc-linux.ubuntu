@@ -83,9 +83,7 @@ if [[ -n "$PS1" ]] ; then
   export GOPATH="$HOME/build/google/golang"
 
   # Python
-  PYTHONPATH="/home/neuro/programming/Aarna_health/aarnahealth/:/usr/local/lib/python2.7/site-packages/":"${PYTHONPATH}"
-  export PYTHONPATH
-  export DJANGO_SETTINGS_MODULE="settings" 
+  export PYTHONPATH="/usr/local/lib/python2.7/site-packages/:${PYTHONPATH}"
 
   # Path
   export PATH="$GOBIN:~/bin:$PATH:$PYTHONPATH"
