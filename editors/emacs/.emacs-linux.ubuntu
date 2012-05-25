@@ -84,7 +84,7 @@
 (setq my-color-themes (list 'color-theme-taming-mr-arneson
 			    'color-theme-comidia 'color-theme-dark-blue2
 			    'color-theme-dark-laptop 'color-theme-clarity
-			    'color-theme-hober' color-theme-midnight
+			    'color-theme-hober' 'color-theme-midnight
 			    'color-theme-tty-dark 'color-theme-tty-taylor
 			    'color-theme-dark-laptop 'color-theme-deep-blue
 			    'color-theme-hober 'color-theme-late-night
@@ -111,7 +111,7 @@
 (setq theme-current my-color-themes)
 (setq color-theme-is-global nil) ; Initialization
 (my-theme-set-default)
-(global-set-key [f6] 'my-theme-cycle)
+(global-set-key [f8] 'my-theme-cycle)
 
 ;;
 ;; ISwitch buffer
@@ -208,63 +208,6 @@
     (set-frame-width (selected-frame)
                      (- (frame-width) sr-speedbar-width)))
   (ad-enable-advice 'sr-speedbar-close 'after 'sr-speedbar-close-resize-frame))
-
-
-(require 'flymake) ; Flymake
-;; I don't like the default colors :)
-(set-face-background 'flymake-errline "red4")
-(set-face-background 'flymake-warnline "dark slate blue")
-;; ruby flymake
-;; Invoke ruby with '-c' to get syntax checking
-(defun flymake-ruby-init ()
-  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-	 (local-file  (file-relative-name
-                       temp-file
-                       (file-name-directory buffer-file-name))))
-    (list "ruby" (list "-c" local-file))))
-
-(push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-
-(push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)
-
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-	     
-	     ;; Don't want flymake mode for ruby regions in rhtml files and also on read only files
-	     (if (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
-		 (flymake-mode))
-	     ))
-
-;; Flymake for ERB template files
-(defun flymake-erb-init ()
-  (let* ((check-buffer (current-buffer))
-         (temp-file (flymake-create-temp-inplace (buffer-file-name) "flymake"))
-         (local-file (file-relative-name
-                      temp-file
-                      (file-name-directory buffer-file-name))))
-    (save-excursion
-      (save-restriction
-        (widen)
-        (with-temp-file temp-file 
-          (let ((temp-buffer (current-buffer)))
-            (set-buffer check-buffer)
-            (call-process-region (point-min) (point-max) "erb" nil temp-buffer nil "-x"))))
-      (setq flymake-temp-source-file-name temp-file)
-      (list "ruby" (list "-c" local-file)))))
-
-(eval-after-load "flymake"
-  '(progn
-     (push '(".+\\.\\(rhtml\\|erb\\)$" flymake-erb-init) flymake-allowed-file-name-masks)
-     (push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)))
-
-(defun turn-on-flymake-for-erb-files ()
-  (when (string-match "\.erb$" (buffer-file-name))
-    (flymake-mode 1)))
-(add-hook 'find-file-hook 'turn-on-flymake-for-erb-files)
-
-
 
 ;;
 ;; Backups
