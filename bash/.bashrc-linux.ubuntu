@@ -88,8 +88,11 @@ if [[ -n "$PS1" ]] ; then
   # Android SDK
   export DROID_SDK="~/build/google/android-sdk-linux/tools"
 
+  # Git scripts
+  export GITSCRIPTS="~/programming/ht/git-scripts"
+
   # Path
-  export PATH="$GOBIN:$DROID_SDK:~/bin:$PYTHONPATH:$PATH"
+  export PATH="$GOBIN:$DROID_SDK:$GITSCRIPTS:~/bin:$PYTHONPATH:$PATH"
 
 fi # end of if then block
 
