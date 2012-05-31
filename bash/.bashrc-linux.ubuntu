@@ -86,7 +86,7 @@ if [[ -n "$PS1" ]] ; then
   export PYTHONPATH="/usr/local/lib/python2.7/site-packages/:${PYTHONPATH}"
 
   # Android SDK
-  export DROID_SDK="~/build/google/android-sdk-linux/tools"
+  export DROID_SDK="~/build/google/android-sdk-linux/tools:~/build/google/android-sdk-linux/platform-tools/"
 
   # Git scripts
   export GITSCRIPTS="~/programming/ht/git-scripts"
