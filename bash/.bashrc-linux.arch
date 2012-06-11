@@ -27,6 +27,11 @@ export GOOS="linux"
 export GOROOT="$HOME/build/google/go"
 export GOBIN="$GOROOT/bin"
 export GOPATH="$HOME/build/google/golang"
+ 
+# Opscode Platform
+OPSCODE_USER="neuro"
+ORGNAME="hoteltonight"
+
 
 #PATH
 export PATH="$PATH:$GOBIN:${GOPATH//://bin:}/bin"
