@@ -67,6 +67,11 @@ if [[ -n "$PS1" ]] ; then
   export PDSH_RCMD_TYPE="ssh"
   export PDSH_SSH_ARGS_APPEND="-l neuro"
 
+  # Bash completion
+  if [ -f ~/.bash_completion.d/knife ]; then
+	  . ~/.bash_completion.d/knife
+  fi
+
   #
   # Programming
   #
