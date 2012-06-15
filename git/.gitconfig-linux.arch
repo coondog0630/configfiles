@@ -31,3 +31,5 @@
 	file-view-hpane-position = 375
 	history-view-vpane-position = 502
 	file-view-vpane-position = 548
+[credential]
+	helper = cache

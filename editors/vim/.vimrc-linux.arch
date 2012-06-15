@@ -30,6 +30,9 @@ if has("mouse")
   set mouse=a
 endif
 
+" Thor file support using ruby filetype
+au BufRead,BufNewFile *.thor set filetype=ruby
+
 " Omni Complete
 let g:rubycomplete_rails = 1
 
@@ -73,7 +76,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDShutUp = 1
 let g:NERDTreeHijackNetrw = 0
 let g:NERDChristmasTree = 1
-let g:NERDTreeWinPos = "left"
+let g:NERDTreeWinPos = "right"
 let g:NERDTreeCaseSensitiveSort = 1
 let g:NERDTreeIgnore = ['\.vim$', '\-$','\.git']
 
