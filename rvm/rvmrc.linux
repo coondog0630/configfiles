@@ -3,3 +3,4 @@ export rvm_install_on_use_flag=1
 export rvm_make_flags="-j 3"
 export rvm_archflags="-arch x86_64"
 
+rvm_auto_reload_flag=1
