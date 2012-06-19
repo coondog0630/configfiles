@@ -37,18 +37,18 @@ au BufRead,BufNewFile *.thor set filetype=ruby
 let g:rubycomplete_rails = 1
 
 " Set the GUI Font
-if has("gui")
+if has("gui_running")
   set t_Co=256 " many pretty colors
   if has("unix") || has("linux")
-    set guifont=drift
-    colorscheme vividchalk
+    set guifont=lime
+    colorscheme darkdevel
   endif
   if has("mac")
     set guifont=ProggyOptiS:h11
     colorscheme vividchalk
   endif
 else
-  colorscheme elflord
+  colorscheme vividchalk
 endif
 
 " Cscope settings
@@ -67,6 +67,14 @@ if has ("cscope")
 
   "command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMRC/src
 endif
+
+"
+" MiniBufExplorer
+"
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
 
 "           
 "Nerd Core
