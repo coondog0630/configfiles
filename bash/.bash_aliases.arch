@@ -42,6 +42,10 @@ alias ht="cd ~/programming/ht"
 alias htrails="ht; cd hotelstonight"
 alias htchef="ht; cd ht-chef-repo"
 
+# Muttrc
+alias htmutt="mutt -F ~/.mutt_configs/hoteltonight.muttrc"
+alias tlbmutt="mutt -F ~/.mutt_configs/tlbninjas.muttrc"
+
 # Twidge
 alias tweetsn="twidge lsrecent -su"
 
