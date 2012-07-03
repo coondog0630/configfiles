@@ -1,0 +1,18 @@
+# Functions
+function rvm_ctags {
+	ctags -R --exclude=.git --exclude=log * ~/.rvm/gems/"$(~/.rvm/bin/rvm-prompt)";
+}
+
+function parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+function get_exit_status() {
+  es=$?
+  if [ $es -eq 0 ]
+  then
+    echo -e "$GREEN${es}$NONE"
+  else
+    echo -e "$RED${es}$NONE"
+  fi
+}

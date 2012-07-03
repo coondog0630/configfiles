@@ -1,5 +1,10 @@
+# load up .bashrc in case we didn't
 if [ -e $HOME/.bashrc ]; then
 	. $HOME/.bashrc
+fi
+# if we have bash functions let's call them
+if [ -e $HOME/.bash_functions ]; then
+	. $HOME/.bash_functions
 fi
 
 # ls colors
@@ -14,6 +19,10 @@ YELLOW="$(tput setaf 3)"
 GREEN="$(tput setaf 2)"
 
 # Functions
+function rvm_ctags {
+	ctags -R --exclude=.git --exclude=log * ~/.rvm/gems/"$(~/.rvm/bin/rvm-prompt)";
+}
+
 function parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }

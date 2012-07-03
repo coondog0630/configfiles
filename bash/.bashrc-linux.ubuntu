@@ -72,6 +72,11 @@ if [[ -n "$PS1" ]] ; then
 	  . ~/.bash_completion.d/knife
   fi
 
+  # aws
+  if [ -f ~/.aws/aws_creds ]; then
+	  source ~/.aws/aws_creds
+  fi
+
   #
   # Programming
   #
