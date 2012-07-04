@@ -56,4 +56,4 @@ alias ec="emacsclient"
 alias vnc_server="x11vnc -ncache_cr -noxdamage -display :0"
 
 # Ctags
-alias ctags_ruby="ctags -R --exclude=.git --exclude=log * ~/.rvm/gems//*"
+alias ctags_ruby="ctags -R --exclude=.git --exclude=log * ~/.rvm/gems/$give_me_current_rvm_ruby_version/*"
