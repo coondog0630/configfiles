@@ -36,9 +36,14 @@ alias gsh="git sh"
 alias gst="git st"
 alias glol="git lol"
 alias glola="git lola"
+alias gfa="git fetch -a"
 
 # Apt
 alias yum="sudo yum"
+
+# Hoteltonight
+alias ht="cd ~/programming/ht"
+alias htrails="cd ~/programming/ht/hotelstonight"
 
 # Dir shortcuts
 alias gh="cd ~/programming/github"
