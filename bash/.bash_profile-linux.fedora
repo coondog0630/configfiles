@@ -1,21 +1,26 @@
 # Setup screen output
 if [ $TERM == "screen" ]; then
-      echo -ne "\ek${HOSTNAME}\e\\";
+  echo -ne "\ek${HOSTNAME}\e\\";
 fi  
 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+  . ~/.bashrc
 fi
 
 # Load Aliases
 if [ -e ~/.bash_aliases ]; then
-    . $HOME/.bash_aliases
+  . $HOME/.bash_aliases
+fi
+
+# Load Functions
+if [ -e ~/.bash_functions ]; then
+  . $HOME/.bash_functions
 fi
 
 # Bash Completion
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+  . /etc/bash_completion
 fi
 
 ##

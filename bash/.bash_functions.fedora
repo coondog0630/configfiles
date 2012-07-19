@@ -16,3 +16,19 @@ function get_exit_status() {
     echo -e "$RED${es}$NONE"
   fi
 }
+
+function parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+function fancy_prompt() {
+    local NONE=$(tput setaf 9)
+    local WHITE=$(tput setaf 7)
+    local RED=$(tput setaf 1)
+    local HC=$(tput setaf 6)
+    local YELLOW=$(tput setaf 3)
+
+    # PS1
+    PS1="\[$RED\][\[$WHITE\]\u\[$RED\]][\[$HC\]\h\[$RED\]][\[$WHITE\]\t\[$RED\]]\n[:\[$WHITE\]\w\[$RED\]:]\[$YELLOW\]\$(parse_git_branch)\[$WHITE\]\n:]\[$NONE\]"
+}
+fancy_prompt
