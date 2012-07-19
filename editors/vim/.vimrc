@@ -36,6 +36,7 @@ let g:rubycomplete_rails = 1
 " Set the GUI Font
 if has("gui")
   set t_Co=256 " many pretty colors
+  set guioptions-=T " remove the toolbar from the gui
   if has("unix") || has("linux")
     set guifont=lime\ 9
     colorscheme vividchalk
