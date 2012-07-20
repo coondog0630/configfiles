@@ -1,6 +1,6 @@
 # Functions
 function rvm_ctags {
-	ctags -R --exclude=.git --exclude=log * ~/.rvm/gems/"$(~/.rvm/bin/rvm-prompt)";
+  ctags -R --exclude=.git --exclude=log * ~/.rvm/gems/"$(~/.rvm/bin/rvm-prompt)";
 }
 
 function parse_git_branch() {
@@ -22,13 +22,14 @@ function parse_git_branch() {
 }
 
 function fancy_prompt() {
-    local NONE=$(tput setaf 9)
-    local WHITE=$(tput setaf 7)
-    local RED=$(tput setaf 1)
-    local HC=$(tput setaf 6)
-    local YELLOW=$(tput setaf 3)
+	 local NONE="$(tput setaf 9)"
+	 local WHITE="$(tput setaf 7)"
+	 local RED="$(tput setaf 1)"
+	 local HC="$(tput setaf 6)"
+	 local YELLOW="$(tput setaf 3)"
+	 local GREEN="$(tput setaf 2)"
 
-    # PS1
-    PS1="\[$RED\][\[$WHITE\]\u\[$RED\]][\[$HC\]\h\[$RED\]][\[$WHITE\]\t\[$RED\]]\n[:\[$WHITE\]\w\[$RED\]:]\[$YELLOW\]\$(parse_git_branch)\[$WHITE\]\n:]\[$NONE\]"
+	 # PS1 Variable setup
+      	 export PS1="\[$RED\][\[$WHITE\]\u\[$RED\]][\[$HC\]\h\[$RED\]][\[$WHITE\]\t\[$RED\]][\[$WHITE\]\$(get_exit_status)\[$RED\]]\n[:\[$WHITE\]\w\[$RED:\]]\[$RED\][:\[$GREEN\]\$(~/.rvm/bin/rvm-prompt)\[$RED\]:]\[$YELLOW\]\$(parse_git_branch)\[$WHITE\]\n:]\[$WHITE\]"
 }
 fancy_prompt
