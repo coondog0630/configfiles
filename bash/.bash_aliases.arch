@@ -41,6 +41,8 @@ alias db="cd ~/Dropbox" # because I hate typing cap letters and a sym link cause
 alias ht="cd ~/programming/ht"
 alias htrails="ht; cd hotelstonight"
 alias htchef="ht; cd ht-chef-repo"
+# nook
+alias nookchef="cd ~/programming/tlbninjas/nook/nook-chef"
 
 # Muttrc
 alias htmutt="mutt -F ~/.mutt_configs/hoteltonight.muttrc"
