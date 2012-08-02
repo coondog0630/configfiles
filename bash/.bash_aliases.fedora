@@ -45,6 +45,9 @@ alias yum="sudo yum"
 alias ht="cd ~/programming/ht"
 alias htrails="cd ~/programming/ht/hotelstonight"
 
+# tlbninjas
+alias tlb="cd ~/programming/tlb"
+
 # Dir shortcuts
 alias gh="cd ~/programming/github"
 alias mb="cd ~/programming/mixbook"
